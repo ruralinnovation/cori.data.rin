@@ -1,0 +1,28 @@
+---
+title: "Rural Innovation Network"
+favicon: "./assets/favicon.ico"
+resources:
+  - "./assets"
+  - "./favicon.ico"
+include-after-body:
+  - file: "./frontend/dist/index.html"
+#      - text: |
+#        <script>
+#          alert("This is triggered by a custom script tag inserted after </body>");
+#        </script>
+
+# include-before-body:
+#   text: |
+#     <script>
+#       window.global = window;
+#       window.process = {
+#         env: { DEBUG: undefined },
+#       };
+#       const exports = {};
+#     </script>
+
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

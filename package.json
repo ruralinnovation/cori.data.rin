@@ -1,0 +1,30 @@
+{
+  "name": "@cori-risi/rural-innovation-network",
+  "version": "0.0.1",
+  "author": "Rural Innovation Strategies, Inc.",
+  "description": "MDA team wiki",
+  "private": true,
+  "license": "ISC",
+  "homepage": "https://ruralinnovation.github.io/wiki/",
+  "keywords": [
+    "documentation",
+    "quarto",
+    "template",
+    "r"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ruralinnovation/wiki"
+  },
+  "scripts": {
+    "build": "quarto render --output-dir docs",
+    "clean": "rm -rf _site/*",
+    "preview": "quarto render --output-dir _site  && python -m http.server -d _site 3000",
+    "render:mermaid": "mmdc -i whole-game.mmd -o whole-game.svg",
+    "test:mermaid": "mmdc -i input.mmd -o output.svg",
+    "mermaid": "mmdc"
+  },
+  "workspaces": [
+    "@cori-risi/cisco"
+  ]
+}
