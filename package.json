@@ -25,6 +25,7 @@
     "mermaid": "mmdc"
   },
   "workspaces": [
-    "@cori-risi/cisco"
+    "cisco",
+    "frontend"
   ]
 }

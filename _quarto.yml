@@ -7,20 +7,20 @@ website:
   favicon: assets/images/Logo-Mark_Black.png
   navbar:
     left:
-      - href: Cisco/index.qmd
+      - href: RIN-data-infrastructure.qmd
         text: "Rural Innovation Network data"
   sidebar:
     style: "docked"
     search: true
     contents:
+      - href: RIN-data-infrastructure.qmd
+        text: RIN data infrastructure
       - section: "Cisco"
         contents:
-          - href: Cisco/index.qmd
+          - href: cisco/index.qmd
             text: Applicant & Learner progress
-          - href: Cisco/downloads/index.qmd
+          - href: cisco/downloads.qmd
             text: Data downloads
-          - href: Cisco/Cisco flowchart.svg
-            text: Data infrastructure overview
 format:
   html:
     theme:

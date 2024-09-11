@@ -1,6 +1,6 @@
-[submodule "Cisco"]
-	path = Cisco
+[submodule "cisco"]
+	path = cisco
 	url = git@github.com:ruralinnovation/cori.data.cisco.git
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:ruralinnovation/cisco.data.rin.frontend.git
+	url = git@github.com:ruralinnovation/cori.data.rin.frontend.git
