@@ -1,0 +1,20 @@
+"rin_community","number_of_applicants","number_of_learners","overall_enrollment_rate","number_of_networking_learners","completed_1st_modules.x","completed_all_modules.x","networking_course_participation_rate","networking_course_completion_rate","number_of_cybersecurity_learners","completed_1st_modules.y","completed_all_modules.y","cybersecurity_course_participation_rate","cybersecurity_course_completion_rate"
+"Aberdeen",4,2,0.5,2,2,0,1,0,1,0,0,0,0
+"Ada",27,16,0.592592592592593,11,4,1,0.363636363636364,0.0909090909090909,10,3,3,0.3,0.3
+"Chambers County",8,6,0.75,3,1,0,0.333333333333333,0,4,0,0,0,0
+"Durango",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Greenfield",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Kirksville",2,1,0.5,1,0,0,0,0,1,0,0,0,0
+"MISSING_RIN_COMMUNITY",30,2,0.0666666666666667,1,0,0,0,0,2,0,0,0,0
+"Manitowoc",2,2,1,2,2,2,1,1,1,1,1,1,1
+"Nacogdoches",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Portsmouth",8,6,0.75,5,2,2,0.4,0.4,5,1,0,0.2,0
+"Pryor Creek",2,1,0.5,1,1,1,1,1,1,1,1,1,1
+"Rutland",3,2,0.666666666666667,1,0,0,0,0,1,0,0,0,0
+"Springfield",2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Taos",5,3,0.6,1,0,0,0,0,2,0,0,0,0
+"The Berkshires",5,3,0.6,2,1,0,0.5,0,3,0,0,0,0
+"Traverse City",40,27,0.675,14,3,0,0.214285714285714,0,20,2,0,0.1,0
+"Wilkes County",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Wilson",41,27,0.658536585365854,18,4,0,0.222222222222222,0,16,0,0,0,0
+"Total",183,98,0.53551912568306,62,20,6,0.32258064516129,0.0967741935483871,67,8,5,0.119402985074627,0.0746268656716418

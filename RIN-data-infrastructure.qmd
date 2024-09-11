@@ -1,0 +1,19 @@
+---
+title: "Data infrastructure overview"
+execute:
+  echo: true
+  output: true
+  message: false
+  warning: false
+---
+
+
+<div style="background-color: #fff">
+<a href="" target="_blank" style="background-color: #fff">
+![](cisco/cisco%20flowchart.svg)
+<!--
+<img src="cisco/cisco%20flowchart.svg" alt="mermaid-diagram" style="background-color: #fff" width="100%" />
+-->
+</a>
+</div>
+<br/>
