@@ -1,11 +1,11 @@
 *.DS_Store
 *.bak
 *.idea
+.R*
 /.obsidian/
 /.quarto/
 /data/
 /_freeze/
 /_site/
-#docs
-node_modules
-.Rproj.user
+/_targets/
+node_modules/

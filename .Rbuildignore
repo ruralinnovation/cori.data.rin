@@ -23,6 +23,10 @@
 ^cisco\/cisco\ flowchart\.drawio\.xml$
 ^cisco\/node_modules$
 ^cisco\/node_modules\/
+^data\/[.]csv$
+^data\/[.]xlsx$
+^data-raw$
+^data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT)\.csv$
 ^frontend$
 ^frontend\/$
 ^frontend\/\.env$
@@ -35,4 +39,3 @@
 ^node_modules$
 ^node_modules\/
 [.]qmd$
-^data-raw$

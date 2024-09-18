@@ -17,12 +17,9 @@
     "url": "git+ssh://git@github.com/ruralinnovation/wiki"
   },
   "scripts": {
-    "build": "quarto render --output-dir docs",
+    "build": "R CMD build --no-manual \"$(pwd)\" && quarto render --output-dir docs",
     "clean": "rm -rf _site/*",
-    "preview": "quarto render --output-dir _site  && python -m http.server -d _site 3000",
-    "render:mermaid": "mmdc -i whole-game.mmd -o whole-game.svg",
-    "test:mermaid": "mmdc -i input.mmd -o output.svg",
-    "mermaid": "mmdc"
+    "preview": "quarto render --output-dir _site  && python -m http.server -d _site 3000"
   },
   "workspaces": [
     "cisco",

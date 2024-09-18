@@ -21,6 +21,8 @@ website:
             text: Applicant & Learner progress
           - href: cisco/downloads.qmd
             text: Data downloads
+          - href: cisco/eda.qmd
+            text: EDA for impact evaluation
 format:
   html:
     theme:
