@@ -7,11 +7,23 @@
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
+    "objectID": "cisco/eda.html",
+    "href": "cisco/eda.html",
+    "title": "Exploratory data analysis for impact evaluation",
+    "section": "",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\n\n\n\n\n\n\n\n\nSimple EDA\nWho completed the training?\n\n\n[1] \"Age group\"\n\n\n[1] \"18-24\" \"25-34\" \"35-44\" \"45-54\" \"55+\"  \n\n\n                         Age group         .1         .2         .3        .4\n completed_first_course      18-24      25-34      35-44      45-54       55+\n                  FALSE 15 (16.7%) 31 (34.4%) 23 (25.6%) 14 (15.6%) 7  (7.8%)\n                   TRUE  2 (16.7%)  6 (50.0%)  1  (8.3%)  2 (16.7%) 1  (8.3%)\n\n\n\n16.7% of the 18 - 24-year-old leaners group completed their first Cisco course.\n50% of the 25 - 34-year-old leaners group completed their first Cisco course.\n8.3% of the 35 - 44-year-old leaners group completed their first Cisco course.\n16.7% of the 45 - 54-year-old leaners group completed their first Cisco course.\n8.3% of the 55-year-old and older leaners group completed their first Cisco course.\n\nWhy did learners want to complete this certificate training?\n\n\n[1] \"Why do you want to complete this certificate training? Select all that apply.\"\n\n\n[1] \"Increase my skills\"       \"Get a new or better job\" \n[3] \"Start my own business\"    \"Case Manager recommended\"\n[5] \"I don't know\"            \n\n\n                        increase_my_skills          .1\n completed_first_course              FALSE        TRUE\n                  FALSE           8 (8.9%) 82  (91.1%)\n                   TRUE           0 (0.0%) 12 (100.0%)\n\n\n                        get_a_new_or_better_job          .1\n completed_first_course                   FALSE        TRUE\n                  FALSE              31 (34.4%) 59  (65.6%)\n                   TRUE               7 (58.3%)  5  (41.7%)\n\n\n                        start_my_own_business         .1\n completed_first_course                 FALSE       TRUE\n                  FALSE           71  (78.9%) 19 (21.1%)\n                   TRUE           12 (100.0%)  0  (0.0%)\n\n\n                        case_manager_recommended       .1\n completed_first_course                    FALSE     TRUE\n                  FALSE              84  (93.3%) 6 (6.7%)\n                   TRUE              12 (100.0%) 0 (0.0%)\n\n\n                        i_don_t_know       .1\n completed_first_course        FALSE     TRUE\n                  FALSE  89  (98.9%) 1 (1.1%)\n                   TRUE  12 (100.0%) 0 (0.0%)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
     "objectID": "cisco/downloads.html",
     "href": "cisco/downloads.html",
     "title": "Data downloads",
     "section": "",
-    "text": "Download summary data about Cisco applicants\nDownload summary data about learners enrolled in Cisco course: Introduction to Networks\nDownload summary data about enrollment rate and learner progress by RIN community",
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco",
