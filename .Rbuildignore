@@ -1,0 +1,41 @@
+^\.DS_Store$
+^\.git$
+^\.github$
+^\.gitignore$
+^\.idea$
+^\.Renviron$
+^\.Rprofile$
+^\.quarto$
+^\.ssh$
+^\.viminfo$
+^\.vscode$
+^\.Rproj\.user$
+^_quarto\.yml$
+^_site$
+^assets$
+^docs$
+^cisco$
+^cisco\/
+^cisco\/cisco\.Rproj$
+^cisco\/cisco\.iml$
+^cisco\/cisco\ flowchart\.svg$
+^cisco\/cisco\ flowchart\.diagram\.io\.xml$
+^cisco\/cisco\ flowchart\.drawio\.xml$
+^cisco\/node_modules$
+^cisco\/node_modules\/
+^data\/[.]csv$
+^data\/[.]xlsx$
+^data-raw$
+^data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT)\.csv$
+^frontend$
+^frontend\/$
+^frontend\/\.env$
+^frontend\/\.env\.development\.local$
+^frontend\/\.idea$
+^frontend\/node_modules$
+^frontend\/node_modules\/\.vite$
+^frontend\/node_modules\/\.package-lock\.json$
+^LICENSE\.md$
+^node_modules$
+^node_modules\/
+[.]qmd$
