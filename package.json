@@ -17,8 +17,9 @@
     "url": "git+ssh://git@github.com/ruralinnovation/wiki"
   },
   "scripts": {
-    "build": "R CMD build --no-manual \"$(pwd)\" && quarto render --output-dir docs",
+    "build": "npm run package -w cisco && quarto render --output-dir docs",
     "clean": "rm -rf _site/*",
+    "package": "R CMD build --no-manual",
     "preview": "quarto render --output-dir _site  && python -m http.server -d _site 3000"
   },
   "workspaces": [
