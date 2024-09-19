@@ -4,6 +4,7 @@ favicon: "./assets/favicon.ico"
 resources:
   - "./assets"
   - "./favicon.ico"
+  - "./frontend/dist/assets"
 include-after-body:
   - file: "./frontend/dist/index.html"
 #      - text: |
