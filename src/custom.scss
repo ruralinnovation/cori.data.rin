@@ -25,80 +25,77 @@ body {
   background-color: #16343E !important;
 }
 
-header#quarto-header {
-  background-color: #16343E;
+header {
 
-  nav.navbar {
-    //font-family: $font-family-sans-serif;
-    text-shadow: -1px -1px 0 rgba(0,0,0,.3);
+  &#quarto-header {
+    background-color: #16343E;
 
-    &[data-bs-theme="dark"] {
-      background-color: #16343E;
+    nav.navbar {
+      //font-family: $font-family-sans-serif;
+      text-shadow: -1px -1px 0 rgba(0,0,0,.3);
 
-      .navbar-brand {
-        min-width: 7em;
-        min-height: 3.5em;
-        background-image: url(assets/images/Full-Logo_CORI_Cream.svg);
-        background-size: calc(100% - 1em);
-        background-position: left top;
-        background-repeat: no-repeat;
-        padding-left: 0.5em;
+      &[data-bs-theme="dark"] {
+        background-color: #16343E;
 
-        .navbar-title {
-          display: none;
-        }
-      }
+        .navbar-brand {
+          min-width: 7em;
+          min-height: 3.5em;
+          background-image: url('assets/images/Full-Logo_CORI_Cream.svg');
+          background-size: calc(100% - 1em);
+          background-position: left top;
+          background-repeat: no-repeat;
+          padding-left: 0.5em;
 
-      .nav-link, .nav-link.active {
-
-        &:hover {
-          color: #FFF;
+          .navbar-title {
+            display: none;
+          }
         }
 
-        .menu-text, i {
-          color: #FBF8E9;
+        .navbar-brand-container {
+          min-width: 196px;
+        }
+
+        .nav-link, .nav-link.active {
 
           &:hover {
             color: #FFF;
           }
+
+          .menu-text, i {
+            color: #FBF8E9;
+
+            &:hover {
+              color: #FFF;
+            }
+          }
         }
       }
     }
-}
 
-  * a:visited {
-    color: #FFF !important;
+    * a:visited {
+      color: #FFF !important;
+    }
+    * a:hover {
+      color: #7a7a7a !important;
+      text-shadow: none;
+    }
+
+    * a.nav-link {
+      font-variant: small-caps;
+    }
+
+    * a .navbar-title {
+      //font-family: $font-family-sans-serif;
+      font-weight: bold;
+    }
+
   }
-  * a:hover {
-    color: #7a7a7a !important;
-    text-shadow: none;
-  }
 
-  * a.nav-link {
-    font-variant: small-caps;
-  }
-
-  * a .navbar-title {
-    //font-family: $font-family-sans-serif;
-    font-weight: bold;
-  }
-
-}
-
-div.quarto-title-banner {
-  background-color: #16343E;
-}
-
-div.quarto-title {
-  &, & .title, .title {
-    color: #fff;
-  }
-}
-
-header {
   &#title-block-header {
-    background-color: #FFF;
     margin-bottom: 0;
+    margin-top: 10px;
+    background-color: transparent !important;
+    z-index: 2;
   }
 
   .quarto-title-breadcrumbs .breadcrumb {
@@ -122,6 +119,16 @@ header {
       color: rgb(22, 52, 62);
 
     }
+  }
+}
+
+div.quarto-title-banner {
+  background-color: #16343E;
+}
+
+div.quarto-title {
+  &, & .title, .title {
+    color: #fff;
   }
 }
 
@@ -226,4 +233,22 @@ div#quarto-content {
     background-color: #FFF;
   }
 
+}
+
+.content {
+  &#app {
+    position: absolute;
+    top: 92px;
+    left: 225px;
+
+    &>div {
+      width: calc(100vw - 225px);
+      height: calc(100vh - 92px);
+
+      .mapboxgl-map {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }

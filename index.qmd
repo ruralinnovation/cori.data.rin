@@ -4,26 +4,17 @@ favicon: "./assets/favicon.ico"
 resources:
   - "./assets"
   - "./favicon.ico"
-  - "./frontend/dist/assets"
+  - "./frontend/dist"
 include-after-body:
   - file: "./frontend/dist/index.html"
-#      - text: |
-#        <script>
-#          alert("This is triggered by a custom script tag inserted after </body>");
-#        </script>
-
-# include-before-body:
 #   text: |
 #     <script>
-#       window.global = window;
-#       window.process = {
-#         env: { DEBUG: undefined },
-#       };
-#       const exports = {};
+#       alert('This is triggered by a custom script tag inserted after </body>');
 #     </script>
+# include-before-body:
+#   text: |
+#     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+#     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
 
 ---
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
