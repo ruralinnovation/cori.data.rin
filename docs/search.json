@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rural Innovation Network",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
     "objectID": "cisco/eda.html",
     "href": "cisco/eda.html",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "",
-    "text": "Full table view may require scrolling to the right =&gt;",
+    "text": "Note: Some enrolled learners have completed both courses simultaneously\n\n\n\n\n\n\n\n\n\n\nNote: Full table view may require scrolling to the right =&gt;",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco",
@@ -23,7 +16,7 @@
     "href": "cisco/eda.html#simple-eda",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "",
-    "text": "Full table view may require scrolling to the right =&gt;",
+    "text": "Note: Some enrolled learners have completed both courses simultaneously\n\n\n\n\n\n\n\n\n\n\nNote: Full table view may require scrolling to the right =&gt;",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco",
@@ -35,7 +28,7 @@
     "href": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "Original data about all Cisco learners in RIN communities",
-    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco",
