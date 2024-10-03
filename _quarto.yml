@@ -7,7 +7,7 @@ website:
   favicon: assets/images/Logo-Mark_Black.png
   navbar:
     left:
-      - href: RIN-data-infrastructure.qmd
+      - href: index.qmd
         text: "Rural Innovation Network data"
   sidebar:
     style: "docked"
