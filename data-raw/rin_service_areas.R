@@ -5,5 +5,3 @@ library(targets)
 targets::tar_make()
 
 rin_service_areas <- targets::tar_read(rin_service_areas)
-
-usethis::use_data(rin_service_areas, overwrite = TRUE)

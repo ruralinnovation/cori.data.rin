@@ -389,8 +389,6 @@ geocode_address_df <- function(geocoder_cache_filename, state_id_crosswalk, addr
 load_rin_service_areas <- function (data_uri) {
   data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
 
-  state_id_crosswalk <-
-
   if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
     message(paste0("Loading ", data_file))
 
@@ -406,8 +404,6 @@ load_rin_service_areas <- function (data_uri) {
       }
     ) |> dplyr::bind_rows()
 
-    ## TODO: map rin areas to primary counties
-
     rin_service_areas <- rin_service_areas_df |>
       dplyr::inner_join(
         counties,
@@ -418,6 +414,8 @@ load_rin_service_areas <- function (data_uri) {
         lon = sf::st_coordinates(centroid)[, 1],
         lat = sf::st_coordinates(centroid)[, 2]
       )
+
+    message("Ready to package rin_service_areas...")
 
     return(as.data.frame(rin_service_areas))
 
@@ -476,3 +474,8 @@ write_places_geojson <- function (dt, file_path) {
 #       write_dataset(path = file_path, format = "parquet")
 #   }
 # }
+
+save_data_to_package <- function (df) {
+  rin_service_areas <- df
+  usethis::use_data(rin_service_areas, overwrite = TRUE)
+}
