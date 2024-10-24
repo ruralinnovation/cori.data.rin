@@ -392,32 +392,56 @@ load_rin_service_areas <- function (data_uri) {
   if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
     message(paste0("Loading ", data_file))
 
-    rin_service_areas_df <- readr::read_csv(data_file, col_names = TRUE)
+    rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
 
     counties <- lapply(
-      state_id_crosswalk$state_abbr[rin_service_areas_df$state_abbr %in% state_id_crosswalk$state_abbr],
+      state_id_crosswalk$state_abbr[rin_service_areas_csv$state_abbr %in% state_id_crosswalk$state_abbr],
       function(st){
         tigris::counties(cb = TRUE, year = 2020, state = st, progress_bar = FALSE) |>
           dplyr::filter(
-            GEOID %in% rin_service_areas_df$geoid_co
+            GEOID %in% rin_service_areas_csv$geoid_co
           )
       }
     ) |> dplyr::bind_rows()
 
-    rin_service_areas <- rin_service_areas_df |>
+    rin_service_areas <- rin_service_areas_csv |>
       dplyr::inner_join(
         counties,
         by = c("geoid_co"="GEOID")
       ) |>
+      as.data.frame() |>
       dplyr::mutate(
         centroid = sf::st_centroid(geometry),
         lon = sf::st_coordinates(centroid)[, 1],
         lat = sf::st_coordinates(centroid)[, 2]
-      )
+      ) |>
+      dplyr::mutate(
+        geom = sf::st_as_text(geometry)
+      ) |>
+      dplyr::select(c(-geometry))
+
+    names(rin_service_areas) <- snakecase::to_snake_case(names(rin_service_areas))
+
+    # for (r in c(1:nrow(rin_service_areas))) {
+    #   message(paste(rin_service_areas[r, ]$geom, collapse = " "))
+    # }
+
+    ## Move geometry column to end of each row and make sf data.frame
+    rin_service_areas <- rin_service_areas |>
+      dplyr::rename(
+        geometry = geom
+      ) |>
+      # sf::st_as_sf(wkt = geometry, crs = 4269) |>
+      sf::st_as_sf(crs = 4269)
+
+    message(paste(class(rin_service_areas), collapse = " "))
+    message(paste(names(rin_service_areas), collapse = " "))
+
+    cori.utils::find_missing(rin_service_areas)
 
     message("Ready to package rin_service_areas...")
 
-    return(as.data.frame(rin_service_areas))
+    return(rin_service_areas)
 
   } else {
     message("Manually download CSV...")
@@ -448,23 +472,63 @@ load_zips_to_counties <- function () {
   }
 }
 
-write_places_geojson <- function (dt, file_path) {
-  dt |>
-    dplyr::mutate(
-      centroid = sf::st_centroid(geometry),
-      lon = sf::st_coordinates(centroid)[, 1],
-      lat = sf::st_coordinates(centroid)[, 2]
-    ) |>
-    sf::st_drop_geometry() |>
+save_data_to_package <- function (df) {
+  rin_service_areas <- df
+  usethis::use_data(rin_service_areas, overwrite = TRUE)
+}
+
+save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) {
+
+  dest <- paste0('"', schema_name, '"."', table_name, '"')
+  rin_service_areas <- df
+
+  message(class(rin_service_areas))
+
+  if (is.null(df)) {
+    stop(paste0(dest, " is NULL"), call. = FALSE)
+  } else {
+    con <- cori.db::connect_to_db(schema_name, dbname = db_instance)
+    message(paste0("Writing data frame to tableau db as ", dest))
+    # DBI::dbWriteTable(con, table_name, df, overwrite = TRUE)
+    cori.db::write_db(con, table_name, rin_service_areas , overwrite = TRUE, spatial = TRUE)  # TODO: this should take optional
+    #       args to set roles/permissions
+    tryCatch({
+      message(paste0("Set access permissions on ", dest))
+      # Grant access to read_only_access group role (for testing):
+      DBI::dbExecute(con, paste0("GRANT SELECT ON TABLE ", dest, " TO read_only_access;"))
+      # Grant access to r_team role:
+      DBI::dbExecute(con, paste0("GRANT SELECT ON TABLE ", dest, " TO r_team;"))
+    }, error = function (e) {
+      stop(paste0("Failed to set permissions on ", dest, "\n", e))
+    })
+
+    # df <- cori.db::read_db(con, table = table_name) # <= Error: ...
+    df <- DBI::dbReadTable(con, table_name)
+    DBI::dbDisconnect(con)
+  }
+
+  return(df)
+}
+
+
+write_data_to_geojson <- function (df, file_path) {
+
+  rin_service_areas <- df
+
+  message(class(rin_service_areas))
+
+  rin_service_areas |>
     dplyr::select(-c(geometry, centroid)) |>
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4269) |>
     sf::st_write(
       file_path,
       append = FALSE
     )
+
+  return(file_path)
 }
 
-# write_places_parquet <- function (dt, file_path, grouping) {
+# write_data_to_parquet <- function (dt, file_path, grouping) {
 #   if (missing(grouping)) {
 #     dt |>
 #       write_dataset(path = file_path, format = "parquet")
@@ -475,7 +539,8 @@ write_places_geojson <- function (dt, file_path) {
 #   }
 # }
 
-save_data_to_package <- function (df) {
-  rin_service_areas <- df
-  usethis::use_data(rin_service_areas, overwrite = TRUE)
+write_data_to_s3 <- function (bucket_name, file_name, file_path) {
+  s3_key <- paste0("examples/cori.data.rin/", file_name)
+  return(cori.db::put_s3_object(bucket_name, s3_key, file_path))
+
 }
