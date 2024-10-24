@@ -542,5 +542,4 @@ write_data_to_geojson <- function (df, file_path) {
 write_data_to_s3 <- function (bucket_name, file_name, file_path) {
   s3_key <- paste0("examples/cori.data.rin/", file_name)
   return(cori.db::put_s3_object(bucket_name, s3_key, file_path))
-
 }
