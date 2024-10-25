@@ -18,9 +18,18 @@ include-after-body:
 ---
 
 
-<!--
 <div style="position:relative; max-width: 480px;padding: 2px 12px;border-radius: 6px;margin: 20px 2px;background-color: rgba(255, 255, 255, 0.5);">
 And here's some more stuff to say about the network.
-Should we drop a micro dashboard here?
+Should we drop a micro dashboard here? <br />
+
+<tableau-viz
+  src="https://10ax.online.tableau.com/t/realcurrents/views/RINcommunitytechinvestment/RINcommunityVCfundedtech?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+  device="phone"
+  width="550px"
+  height="1000px"
+  hide-tabs
+  style="background-color: transparent;"
+  toolbar="bottom" >
+</tableau-viz>
 </div>
--->
+
