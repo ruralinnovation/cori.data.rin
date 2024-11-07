@@ -24,7 +24,7 @@ And here's some more stuff to say about the network.
 Should we drop a micro dashboard here? <br />
 -->
 <tableau-viz
-  src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+  src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech_1?:origin=card_share_link&:embed=n4?:origin=card_share_link"
   device="desktop"
   width="600px"
   height="calc(100vh - 200px)"

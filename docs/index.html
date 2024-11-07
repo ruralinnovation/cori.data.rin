@@ -177,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 And here's some more stuff to say about the network.
 Should we drop a micro dashboard here? <br />
 -->
-<p><tableau-viz src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech?:origin=card_share_link&amp;:embed=n4?:origin=card_share_link" device="desktop" width="600px" height="calc(100vh - 200px)" style="margin: 0 -2px; background-color: transparent !important;" toolbar="bottom"> </tableau-viz></p>
+<p><tableau-viz src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech_1?:origin=card_share_link&amp;:embed=n4?:origin=card_share_link" device="desktop" width="600px" height="calc(100vh - 200px)" style="margin: 0 -2px; background-color: transparent !important;" toolbar="bottom"> </tableau-viz></p>
 </div>
 
 
@@ -628,12 +628,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           };
           if (typeof window.exports === "undefined") { const exports = {}; }
       </script>
-    <script type="module" crossorigin="" src="./assets/index-3214b01e.js"></script>
+    <script type="module" crossorigin="" src="./assets/index-f19a5a1d.js"></script>
     <link rel="stylesheet" href="./assets/index-a9a39f4f.css">
   
   
     <div id="app" class="content"></div>
-  
+
+    <div class="hide tableau-viz-container" style="display: block; visibility: hidden; width: 0; height: 0">
+        <!-- The follow viz element will be moved into the react root container as a child component... -->
+<!--        <tableau-viz-->
+<!--                src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech?:origin=card_share_link&:embed=n4?:origin=card_share_link"-->
+<!--                device="desktop"-->
+<!--                width="600px"-->
+<!--                height="calc(100vh - 200px)"-->
+<!--                style="margin: 0 -2px; background-color: transparent !important;"-->
+<!--                toolbar="bottom" >-->
+<!--        </tableau-viz>-->
+    </div>
+
   
   
 

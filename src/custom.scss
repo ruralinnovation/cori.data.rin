@@ -139,6 +139,8 @@ div#quarto-content {
   margin: 0;
   padding: 0;
   width: 100vw;
+  //max-height: calc(-91px + 100vh);
+  //overflow: hidden;
   background-color:  #FFF;
 
   & > * {
@@ -262,6 +264,10 @@ div#quarto-content {
     position: absolute;
     top: 92px;
     left: 225px;
+    max-width: calc(100vw - 225px);
+    overflow-x: hidden;
+    //max-height: calc(100vw - 92px);
+    //overflow: hidden;
 
     &>div {
       width: calc(100vw - 225px);
