@@ -32,8 +32,9 @@
 ^cisco\/node_modules\/
 ^data\/[.]csv$
 ^data\/[.]xlsx$
-^data-raw$
+^data/Network_Communities_Current_1746543710\.xlsx$
 ^data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT)\.csv$
+^data-raw$
 ^frontend$
 ^frontend\/$
 ^frontend\/\.env$
@@ -48,4 +49,3 @@
 ^node_modules\/
 [.]qmd$
 ^google\/
-^data/Network_Communities_Current_1746543710\.xlsx$
