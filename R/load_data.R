@@ -386,69 +386,161 @@ geocode_address_df <- function(geocoder_cache_filename, state_id_crosswalk, addr
 
 }
 
+
 load_rin_service_areas <- function (data_uri) {
-  data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
+  # data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
 
-  if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
-    message(paste0("Loading ", data_file))
+  # if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
+    
+    # message(paste0("Loading ", data_file))
 
-    rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
+    # rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
+  
+    ### RIN data downloaded as of 2025-05-06
+    #### Monday board: https://ruralinnovation-group.monday.com/boards/6951894369
+    #### Monday group: Current
 
-    counties <- lapply(
-      state_id_crosswalk$state_abbr[rin_service_areas_csv$state_abbr %in% state_id_crosswalk$state_abbr],
-      function(st){
-        tigris::counties(cb = TRUE, year = 2020, state = st, progress_bar = FALSE) |>
-          dplyr::filter(
-            GEOID %in% rin_service_areas_csv$geoid_co
-          )
+    global_params <- cori.utils::get_params("global")
+
+    stopifnot(file.exists("data"))
+
+    data_dir <- "./data"
+
+    ### functions ------
+    get_county_geoid_name_lookup <- function(year = 2024) {
+      
+      counties <- cori.data::tiger_line_counties(year) |>
+      sf::st_drop_geometry()
+      
+      states <- cori.data::tiger_line_states(year) |> 
+        sf::st_drop_geometry()
+      
+      # state_names <- states %>%
+      #   select(GEOID, STUSPS)
+      
+      county_geoid_name_lookup <- counties |>
+        left_join(
+          states,
+          by = c("STATEFP" = "GEOID")
+        ) %>%
+        mutate(
+          name_co = paste0(NAMELSAD, ", ", STUSPS)
+        ) |>
+        select(geoid_co = GEOID, name_co) |>
+        distinct()
+      
+      return(county_geoid_name_lookup)
+      
+    }
+
+    # Load a county geoid_co name_co lookup
+    county_geoid_name_lookup <- get_county_geoid_name_lookup(global_params$current_year)
+
+    ## read in
+    rin <- readxl::read_excel(paste0(data_dir, "/", global_params$monday_network_communities_file_name), skip = 2)
+
+    rin_only <- rin |> 
+      dplyr::filter(!is.na(Name)) |> 
+      dplyr::filter(Name != "Subitems")
+
+
+    rin_places <- rin_only %>% 
+      select(
+        Name,
+        place = `Primary Place`
+      )
+
+    rin_primary_co <- rin_only |>
+      select(
+        Name,
+        county = `Primary County`
+      )
+
+      rin_service_areas <- rin_only %>% 
+        select(
+          `Name`,
+          county = `Other Counties`
+        ) %>% 
+        filter(
+          !is.na(county)
+        ) %>% 
+        separate_rows(county, sep = "(?<=,\\s[A-Z]{2}),\\s*") %>% 
+        bind_rows(rin_primary_co) %>% 
+        left_join(county_geoid_name_lookup, by = c('county' = 'name_co')) %>% 
+        mutate(
+          geoid_co = ifelse(county == 'Harrisonburg County, VA', '51660',geoid_co)
+        ) %>% 
+        ## TODO: Something is going on from this mutate on, that is causing a double counting of primary county...
+        mutate(
+          # primary_county_flag = ifelse(county %in% rin_primary_co$county, 'Yes', 'No'),
+          primary_county_flag = "No",
+          data_run_date = Sys.Date()
+          ) %>% 
+        select(
+          geoid_co,
+          rin_community = Name,
+          county,
+          primary_county_flag,
+          data_run_date
+        )
+      
+      check_primary_county <- function (county, name, rin_primary_counties) {
+        
+          primary_county <- (rin_primary_counties |> dplyr::filter(Name == name))$county
+        
+          if (length(primary_county) > 0) {
+            if (county %in% primary_county) return("Yes")
+            else return("No")
+          } else {
+            return("No")
+          }
+        }
+      
+      for (r in c(1:nrow(rin_service_areas))) {
+        name <- rin_service_areas[r, ]$rin_community
+        county <- rin_service_areas[r, ]$county
+      
+        rin_service_areas[r, ]$primary_county_flag <- check_primary_county(county, name, rin_primary_co)
       }
-    ) |> dplyr::bind_rows()
+    
+     return(rin_service_areas |> as.data.frame())
 
-    rin_service_areas <- rin_service_areas_csv |>
-      dplyr::inner_join(
-        counties,
-        by = c("geoid_co"="GEOID")
-      ) |>
-      as.data.frame() |>
-      dplyr::mutate(
-        centroid = sf::st_centroid(geometry),
-        lon = sf::st_coordinates(centroid)[, 1],
-        lat = sf::st_coordinates(centroid)[, 2]
-      ) |>
-      dplyr::mutate(
-        geom = sf::st_as_text(geometry)
-      ) |>
-      dplyr::select(c(-geometry))
-
-    names(rin_service_areas) <- snakecase::to_snake_case(names(rin_service_areas))
-
-    # for (r in c(1:nrow(rin_service_areas))) {
-    #   message(paste(rin_service_areas[r, ]$geom, collapse = " "))
+    # } else {
+    #   message("Manually download CSV...")
+    #   message(paste0("From : ", data_uri))
+    #   message(paste0("To : ", data_file))
+    #   message("... then rerun tar_make()")
     # }
+}
 
-    ## Move geometry column to end of each row and make sf data.frame
-    rin_service_areas <- rin_service_areas |>
-      dplyr::rename(
-        geometry = geom
-      ) |>
-      # sf::st_as_sf(wkt = geometry, crs = 4269) |>
-      sf::st_as_sf(crs = 4269)
 
-    message(paste(class(rin_service_areas), collapse = " "))
-    message(paste(names(rin_service_areas), collapse = " "))
+load_rin_service_areas_sf <- function (rin_service_areas) {
 
-    cori.utils::find_missing(rin_service_areas)
+  counties <- cori.data::tiger_line_counties(2024)
 
-    message("Ready to package rin_service_areas...")
+  rin_service_areas_sf <- rin_service_areas |>
+    dplyr::left_join(counties |> dplyr::mutate(geom = geometry) |> sf::st_drop_geometry(), by = c("geoid_co"="GEOID")) |>
+    dplyr::mutate(
+      centroid = sf::st_centroid(geom),
+      lon = sf::st_coordinates(centroid)[, 1],
+      lat = sf::st_coordinates(centroid)[, 2]
+    ) |>
+    dplyr::select(-geom) |>
+    dplyr::left_join(counties |> dplyr::select(GEOID, geometry), by = c("geoid_co"="GEOID")) |>
+    sf::st_as_sf() |>
+    sf::st_as_sf(crs = 4269)
 
-    return(rin_service_areas)
+  names(rin_service_areas_sf) <- snakecase::to_snake_case(names(rin_service_areas_sf))
 
-  } else {
-    message("Manually download CSV...")
-    message(paste0("From : ", data_uri))
-    message(paste0("To : ", data_file))
-    message("... then rerun tar_make()")
-  }
+  # message(paste(class(rin_service_areas_sf), collapse = " "))
+  # message(paste(names(rin_service_areas_sf), collapse = " "))
+
+  message("Missing values in")
+  cori.utils::find_missing(rin_service_areas_sf)
+
+  message("Ready to package rin_service_areas...")
+
+  return(rin_service_areas_sf)
 }
 
 load_zips_to_counties <- function () {
