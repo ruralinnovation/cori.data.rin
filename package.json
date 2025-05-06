@@ -17,19 +17,16 @@
     "url": "git+ssh://git@github.com/ruralinnovation/wiki"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:frontend && npm run build --ws && quarto render --output-dir docs",
+    "build": "npm run clean && npm run build:frontend && npm run package && npm run package --ws && npm run build --ws && quarto render --output-dir docs",
     "build:frontend": "npm run build -w @cori-risi/frontend && npm run cp:frontend",
     "cp:frontend": "cp -LR frontend/dist/assets ./",
     "clean": "rm -rf _freeze/* _site/* assets/*",
     "dev": "npm run build:frontend && quarto render --output-dir _site",
     "package": "R CMD build --no-manual",
-    "preview": "npm run dev && python -m http.server -d _site 3000"
+    "preview": "python -m http.server -d _site 3000"
   },
   "workspaces": [
     "cisco",
     "frontend"
-  ],
-  "dependencies": {
-    "@cori-risi/cori.data.api": "file:../cori.data.api"
-  }
+  ]
 }
