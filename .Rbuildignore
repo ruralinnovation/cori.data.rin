@@ -47,3 +47,5 @@
 ^node_modules$
 ^node_modules\/
 [.]qmd$
+^google\/
+^data/Network_Communities_Current_1746543710\.xlsx$

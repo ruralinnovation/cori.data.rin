@@ -387,7 +387,9 @@ geocode_address_df <- function(geocoder_cache_filename, state_id_crosswalk, addr
 }
 
 
-load_rin_service_areas <- function (data_uri) {
+load_rin_service_areas <- function () {
+
+  ### OLD ----
   # data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
 
   # if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
@@ -396,9 +398,12 @@ load_rin_service_areas <- function (data_uri) {
 
     # rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
   
-    ### RIN data downloaded as of 2025-05-06
-    #### Monday board: https://ruralinnovation-group.monday.com/boards/6951894369
-    #### Monday group: Current
+  ### NEW ----
+  ### RIN data downloaded as of 2025-05-06
+  #### Monday board: https://ruralinnovation-group.monday.com/boards/6951894369
+  #### Monday group: Current
+  #### When downloading new data, run:
+  # usethis::use_build_ignore("data/Network_Communities_Current_1746543710.xlsx", escape = TRUE)
 
     global_params <- cori.utils::get_params("global")
 

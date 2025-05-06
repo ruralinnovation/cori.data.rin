@@ -23,8 +23,12 @@ targets::tar_source(files = "R")
 if (! file.exists("data/")) dir.create("data/")
 
 list(
-  targets::tar_target(rin_service_areas_url, c("https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw")),
-  targets::tar_target(rin_service_areas, load_rin_service_areas(rin_service_areas_url)),
+  ### OLD ---
+  # targets::tar_target(rin_service_areas_url, c("https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw")),
+  # targets::tar_target(rin_service_areas, load_rin_service_areas(rin_service_areas_url)),
+
+  ### NEW ---
+  targets::tar_target(rin_service_areas, load_rin_service_areas()),
   targets::tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
   targets::tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf)),
 
