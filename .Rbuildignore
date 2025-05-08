@@ -49,3 +49,12 @@
 ^node_modules\/
 [.]qmd$
 ^google\/
+^src/custom\.scss$
+^_quarto\.yml$
+^_targets\.R$
+^favicon\.ico$
+^package-lock\.json$
+^package\.json$
+^params\.yml$
+[.]qmd$
+^\.*\\.bak$$

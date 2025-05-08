@@ -1,23 +1,24 @@
 Package: cori.data.rin
 Title: Rural Innovation Network data
-Version: 1.0.0.1
+Version: 1.0.1
 Authors@R: 
     person("John", "Hall", , "john.hall@ruralinnovation.us", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Framework for ingesting and presenting Rural Innovation Network data.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: file LICENSE
+Maintainer: John Hall <john.hall@ruralinnovation.us>
 Encoding: UTF-8
 Imports:
     DBI,
+    cori.data,
+    cori.db,
     cori.utils,
     dplyr,
     readxl,
-    rlang,
-    stringr,
     sf,
-    targets,
-    tidyr
+    snakecase,
+    tidyr,
+    usethis
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
