@@ -4,10 +4,15 @@
 \alias{load_rin_service_areas}
 \title{A function to generate RIN service areas (county level) from an XLSX extract from Monday (see params.yml)}
 \usage{
-load_rin_service_areas(params = cori.utils::get_params("global"))
+load_rin_service_areas(
+  params = cori.utils::get_params("global"),
+  old_rin_service_areas
+)
 }
 \arguments{
 \item{params}{An object containing values for the $current_year and $monday_network_communities_file_name parameters}
+
+\item{old_rin_service_areas}{data.frame of previous RIN service areas build}
 }
 \value{
 data.frame of all counties associated with each RIN community

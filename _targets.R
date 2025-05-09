@@ -34,8 +34,8 @@ list(
   tar_target(global_params, cori.utils::get_params("global", params_file)),
   tar_target(sheet_id, googlesheets4::as_sheets_id(global_params$sheet_url)),
   tar_target(all_sheet_names, googlesheets4::sheet_names(sheet_id)),
-  
-  tar_target(rin_service_areas, load_rin_service_areas(global_params)),
+
+  tar_target(rin_service_areas, load_rin_service_areas(global_params, cori.data.rin::rin_service_areas)),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
   tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf)),
 
