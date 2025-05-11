@@ -195,7 +195,10 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
       `county`,
       `primary_county_flag`,
       `data_run_date`
-    )
+    ) |>
+      dplyr::mutate(
+          `year` = params$current_year
+      )
   
   check_primary_county <- function (county, name, rin_primary_counties) {
     
