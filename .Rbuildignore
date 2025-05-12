@@ -58,3 +58,4 @@
 ^params\.yml$
 [.]qmd$
 ^\.*\\.bak$$
+^coursera$
