@@ -15,7 +15,7 @@ website:
     contents:
       - href: RIN-data-infrastructure.qmd
         text: RIN data infrastructure
-      - section: "Cisco"
+      - section: "Cisco Network Academy (2024)"
         contents:
           - href: cisco/index.qmd
             text: Applicant & Learner progress
