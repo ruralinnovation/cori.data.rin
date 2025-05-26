@@ -1,5 +1,24 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Rural Innovation Network data",
+    "section": "",
+    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+  },
+  {
+    "objectID": "cisco/downloads.html",
+    "href": "cisco/downloads.html",
+    "title": "Data downloads",
+    "section": "",
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco Network Academy (2024)",
+      "Data downloads"
+    ]
+  },
+  {
     "objectID": "cisco/eda.html",
     "href": "cisco/eda.html",
     "title": "Exploratory data analysis for impact evaluation",
@@ -28,30 +47,11 @@
     "href": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "Original data about all Cisco learners in RIN communities",
-    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)\n\n\n\n\n\n\nError : connection to server at \"cori-risi-ad-postgresql.c6zaibvi9wyg.us-east-1.rds.amazonaws.com\" (172.30.5.83), port 5432 failed: Operation timed out\n    Is the server running on that host and accepting TCP/IP connections?",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco Network Academy (2024)",
       "EDA for impact evaluation"
     ]
-  },
-  {
-    "objectID": "cisco/downloads.html",
-    "href": "cisco/downloads.html",
-    "title": "Data downloads",
-    "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
-    "crumbs": [
-      "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
-      "Data downloads"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Rural Innovation Network data",
-    "section": "",
-    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
   }
 ]

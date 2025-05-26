@@ -1,5 +1,5 @@
 {
-  "name": "@cori-risi/rural-innovation-network",
+  "name": "cori.data.rin",
   "version": "0.0.1",
   "author": "Rural Innovation Strategies, Inc.",
   "description": "MDA team wiki",
@@ -19,12 +19,12 @@
   "scripts": {
     "build": "npm run clean && npm run build:frontend && npm run package && npm run package:cisco && npm run build:cisco && quarto render --output-dir docs",
     "build:frontend": "npm run build -w @cori-risi/frontend && npm run cp:frontend",
-    "build:cisco": "npm run build -w @cori-risi/cisco",
+    "build:cisco": "npm run build -w cori.data.cisco",
     "cp:frontend": "cp -LR frontend/dist/assets ./",
     "clean": "rm -rf _freeze/* _site/* assets/*",
     "dev": "npm run build:frontend && quarto render --output-dir docs",
     "package": "R CMD build --no-manual",
-    "package:cisco":  "npm run package -w @cori-risi/cisco",
+    "package:cisco":  "npm run package -w cori.data.cisco",
     "preview": "python -m http.server -d docs 3000"
   },
   "workspaces": [
