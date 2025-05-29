@@ -4,7 +4,7 @@ project:
 website:
   title: "Rural Innovation Network data"
   search: false
-  favicon: assets/images/Logo-Mark_Black.png
+  favicon: assets/images/Logo-Mark_CORI_Black.svg
   navbar:
     left:
       - href: index.qmd
@@ -27,6 +27,8 @@ website:
         contents:
           - href: coursera/index.qmd
             text: Applicant & Learner progress
+          - href: coursera/eda.qmd
+            text: EDA for impact evaluation
 format:
   html:
     theme:

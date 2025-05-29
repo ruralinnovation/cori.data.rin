@@ -1,21 +1,14 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Rural Innovation Network data",
+    "objectID": "coursera/eda.html",
+    "href": "coursera/eda.html",
+    "title": "Grow With Google: Exploratory data analysis for impact evaluation",
     "section": "",
-    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
-  },
-  {
-    "objectID": "cisco/downloads.html",
-    "href": "cisco/downloads.html",
-    "title": "Data downloads",
-    "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "text": "[1] \"Total learners with application data: 17\"\n\n\n[1] \"Total unmatched learners: 3\"\n\n\n                       coursera_id       full_name                     email\n1 98c02749e137752af3c82b5710bbaa9b    justin cooks    justinrcooks@gmail.com\n2 2fcdb3713f14ef34a1fb81075f5101d1    nayeli roman nayeliroman2005@gmail.com\n3 bbac5df7d6b8ab96ce2d8d1ba3a54928 shaniqua corley      slcorley90@gmail.com\n\n\n[1] \"\"\n\n\n[1] \"=== SEARCH FOR NAYELI OR ROMAN IN APPLICANTS ===\"\n\n\n[1] \"No Nayeli or Roman found in applicants\"",
     "crumbs": [
       "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
-      "Data downloads"
+      "Grow With Google (2025)",
+      "EDA for impact evaluation"
     ]
   },
   {
@@ -53,5 +46,24 @@
       "Cisco Network Academy (2024)",
       "EDA for impact evaluation"
     ]
+  },
+  {
+    "objectID": "cisco/downloads.html",
+    "href": "cisco/downloads.html",
+    "title": "Data downloads",
+    "section": "",
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco Network Academy (2024)",
+      "Data downloads"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Rural Innovation Network data",
+    "section": "",
+    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
   }
 ]
