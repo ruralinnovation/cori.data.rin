@@ -84,7 +84,7 @@ h6 { font-size: .76em; line-height: 1.35; }
 
 /* Larger than phablet */
 @media (min-width: 550px) {
-  h1 { font-size: 2.8em; }
+  h1 { font-size: 2.5em; }
   h2 { font-size: 2.3em; }
   h3 { font-size: 1.8em; }
   h4 { font-size: 1.5em; }

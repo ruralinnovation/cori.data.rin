@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "coursera/eda.html",
-    "href": "coursera/eda.html",
-    "title": "Grow With Google: Exploratory data analysis for impact evaluation",
-    "section": "",
-    "text": "[1] \"Total learners with application data: 17\"\n\n\n[1] \"Total unmatched learners: 3\"\n\n\n                       coursera_id       full_name                     email\n1 98c02749e137752af3c82b5710bbaa9b    justin cooks    justinrcooks@gmail.com\n2 2fcdb3713f14ef34a1fb81075f5101d1    nayeli roman nayeliroman2005@gmail.com\n3 bbac5df7d6b8ab96ce2d8d1ba3a54928 shaniqua corley      slcorley90@gmail.com\n\n\n[1] \"\"\n\n\n[1] \"=== SEARCH FOR NAYELI OR ROMAN IN APPLICANTS ===\"\n\n\n[1] \"No Nayeli or Roman found in applicants\"",
+    "objectID": "coursera/eda.html#original-data-about-all-grow-with-google-learners",
+    "href": "coursera/eda.html#original-data-about-all-grow-with-google-learners",
+    "title": "Exploratory data analysis for impact evaluation",
+    "section": "Original data about all Grow With Google learners",
+    "text": "Original data about all Grow With Google learners\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2025)",
