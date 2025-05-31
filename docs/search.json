@@ -4,7 +4,7 @@
     "href": "coursera/eda.html#original-data-about-all-grow-with-google-learners",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "Original data about all Grow With Google learners",
-    "text": "Original data about all Grow With Google learners\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)\n\n\nCourse completion by geographic proximity to RIN communities",
+    "text": "Original data about all Grow With Google learners\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2025)",
@@ -40,7 +40,7 @@
     "href": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "Original data about all Cisco learners in RIN communities",
-    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)\n\n\n\n\n\n\nError : connection to server at \"cori-risi-ad-postgresql.c6zaibvi9wyg.us-east-1.rds.amazonaws.com\" (172.30.5.83), port 5432 failed: Operation timed out\n    Is the server running on that host and accepting TCP/IP connections?",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco Network Academy (2024)",
