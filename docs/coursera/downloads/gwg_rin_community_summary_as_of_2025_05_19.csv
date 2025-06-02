@@ -1,0 +1,12 @@
+"rin_community","number_of_eligible_applicants","number_of_enrolled_learners","data_analytics_learners","data_analytics_completions","project_management_learners","project_management_completions","cybersecurity_learners","cybersecurity_completions","it_support_learners","it_support_completions","ux_design_learners","ux_design_completions","total_completions","overall_enrollment_rate","overall_completion_rate","data_analytics_completion_rate","project_management_completion_rate","cybersecurity_completion_rate","it_support_completion_rate","ux_design_completion_rate"
+"Ada",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Chambers County",4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Eastern Kentucky",2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Manitowoc County",1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,NA,NA,NA,NA
+"Nacogdoches",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Portsmouth",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Shenandoah Valley",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Taos",1,1,0,0,1,0,0,0,1,0,0,0,0,1,0,NA,0,NA,0,NA
+"Traverse City",47,14,9,2,13,4,5,0,3,0,0,0,6,0.297872340425532,0.428571428571429,0.222222222222222,0.307692307692308,0,0,NA
+"Windham County",1,1,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,NA,NA,NA
+"Total",60,17,11,2,15,4,5,0,4,0,0,0,6,0.283333333333333,0.352941176470588,0.181818181818182,0.266666666666667,0,0,NA
