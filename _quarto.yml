@@ -4,7 +4,7 @@ project:
 website:
   title: "Rural Innovation Network data"
   search: false
-  favicon: assets/images/Logo-Mark_Black.png
+  favicon: assets/images/Logo-Mark_CORI_Black.svg
   navbar:
     left:
       - href: index.qmd
@@ -15,13 +15,19 @@ website:
     contents:
       - href: RIN-data-infrastructure.qmd
         text: RIN data infrastructure
-      - section: "Cisco"
+      - section: "Cisco Network Academy (2024)"
         contents:
           - href: cisco/index.qmd
             text: Applicant & Learner progress
           - href: cisco/downloads.qmd
             text: Data downloads
           - href: cisco/eda.qmd
+            text: EDA for impact evaluation
+      - section: "Grow With Google (2025)"
+        contents:
+          - href: coursera/index.qmd
+            text: Applicant & Learner progress
+          - href: coursera/eda.qmd
             text: EDA for impact evaluation
 format:
   html:

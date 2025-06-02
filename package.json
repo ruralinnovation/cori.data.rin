@@ -1,5 +1,5 @@
 {
-  "name": "@cori-risi/rural-innovation-network",
+  "name": "cori.data.rin",
   "version": "0.0.1",
   "author": "Rural Innovation Strategies, Inc.",
   "description": "MDA team wiki",
@@ -17,16 +17,21 @@
     "url": "git+ssh://git@github.com/ruralinnovation/wiki"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:frontend && npm run package && npm run package --ws && npm run build --ws && quarto render --output-dir docs",
+    "build": "npm run clean && npm run build:frontend && npm run package && npm run package:cisco && npm run package:coursera && quarto render --output-dir docs",
     "build:frontend": "npm run build -w @cori-risi/frontend && npm run cp:frontend",
+    "build:cisco": "npm run build -w cori.data.cisco",
+    "build:coursera": "npm run build -w cori.data.coursera",
     "cp:frontend": "cp -LR frontend/dist/assets ./",
-    "clean": "rm -rf _freeze/* _site/* assets/*",
-    "dev": "npm run build:frontend && quarto render --output-dir _site",
+    "clean": "rm -rf _freeze/* _site/* assets/index*",
+    "dev": "npm run build:frontend && quarto render --output-dir docs",
     "package": "R CMD build --no-manual",
-    "preview": "python -m http.server -d _site 3000"
+    "package:cisco":  "npm run package -w cori.data.cisco",
+    "package:coursera":  "npm run package -w cori.data.coursera",
+    "preview": "python -m http.server -d docs 3000"
   },
   "workspaces": [
     "cisco",
+    "coursera",
     "frontend"
   ]
 }

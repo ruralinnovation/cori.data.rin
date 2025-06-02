@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Hall">
+
+<title>Exploratory data analysis for impact evaluation – Rural Innovation Network data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assets/images/Logo-Mark_CORI_Black.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../site_libs/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+<script src="../site_libs/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script>
+
+
+<link rel="stylesheet" href="../assets/fonts.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Rural Innovation Network data</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Rural Innovation Network data</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../coursera/index.html">Grow With Google (2025)</a></li><li class="breadcrumb-item"><a href="../coursera/eda.html">EDA for impact evaluation</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../RIN-data-infrastructure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RIN data infrastructure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Cisco Network Academy (2024)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applicant &amp; Learner progress</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data downloads</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EDA for impact evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Grow With Google (2025)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursera/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applicant &amp; Learner progress</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursera/eda.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">EDA for impact evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-many-rin-community-members-enrolled-in-a-grow-with-google-course" id="toc-how-many-rin-community-members-enrolled-in-a-grow-with-google-course" class="nav-link active" data-scroll-target="#how-many-rin-community-members-enrolled-in-a-grow-with-google-course">How many RIN community members enrolled in a Grow With Google course?</a></li>
+  <li><a href="#how-many-rin-community-members-completed-grow-with-google-coursework" id="toc-how-many-rin-community-members-completed-grow-with-google-coursework" class="nav-link" data-scroll-target="#how-many-rin-community-members-completed-grow-with-google-coursework">How many RIN community members completed Grow With Google coursework?</a></li>
+  <li><a href="#who-are-the-rin-community-members-enrolled-in-grow-with-google-courses" id="toc-who-are-the-rin-community-members-enrolled-in-grow-with-google-courses" class="nav-link" data-scroll-target="#who-are-the-rin-community-members-enrolled-in-grow-with-google-courses">Who are the RIN community members enrolled in Grow With Google course(s)?</a></li>
+  <li><a href="#who-completed-the-training" id="toc-who-completed-the-training" class="nav-link" data-scroll-target="#who-completed-the-training">Who completed the training?</a></li>
+  <li><a href="#what-certificates-were-learners-most-interested-in" id="toc-what-certificates-were-learners-most-interested-in" class="nav-link" data-scroll-target="#what-certificates-were-learners-most-interested-in">What certificates were learners most interested in?</a></li>
+  <li><a href="#original-data-about-all-grow-with-google-learners" id="toc-original-data-about-all-grow-with-google-learners" class="nav-link" data-scroll-target="#original-data-about-all-grow-with-google-learners">Original data about all Grow With Google learners</a>
+  <ul class="collapse">
+  <li><a href="#expansion-of-learner-demographics-and-motivation-responses" id="toc-expansion-of-learner-demographics-and-motivation-responses" class="nav-link" data-scroll-target="#expansion-of-learner-demographics-and-motivation-responses">Expansion of learner demographics and motivation responses</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../coursera/index.html">Grow With Google (2025)</a></li><li class="breadcrumb-item"><a href="../coursera/eda.html">EDA for impact evaluation</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Exploratory data analysis for impact evaluation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Hall </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="how-many-rin-community-members-enrolled-in-a-grow-with-google-course" class="level3">
+<h3 class="anchored" data-anchor-id="how-many-rin-community-members-enrolled-in-a-grow-with-google-course">How many RIN community members enrolled in a Grow With Google course?</h3>
+<h4 style="color:#00825b" class="anchored">
+17
+</h4>
+</section>
+<section id="how-many-rin-community-members-completed-grow-with-google-coursework" class="level3">
+<h3 class="anchored" data-anchor-id="how-many-rin-community-members-completed-grow-with-google-coursework">How many RIN community members completed Grow With Google coursework?</h3>
+<h4 style="color:#00825b" class="anchored">
+4
+</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-e7db72823dc541310e19" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e7db72823dc541310e19">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Learners who have completed at least one course","Total enrollments across all learners","Total course completions across all learners"],[4,28,7]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Metric<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Metric","targets":1},{"name":"Value","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="who-are-the-rin-community-members-enrolled-in-grow-with-google-courses" class="level3">
+<h3 class="anchored" data-anchor-id="who-are-the-rin-community-members-enrolled-in-grow-with-google-courses">Who are the RIN community members enrolled in Grow With Google course(s)?</h3>
+<p><em>Note: Full table view may require scrolling to the right =&gt;</em></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-706793a5e6df00b6057a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-706793a5e6df00b6057a">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],["Age: 18-24","Age: 25-34","Age: 35-44","Age: 45-54","Age: 55+","Ethnicity: American Indian or Alaska Native","Ethnicity: Asian","Ethnicity: Black or African American","Ethnicity: White","Ethnicity: Native Hawaiian or Other Pacific Islander","Ethnicity: Prefer not to say","Gender: Female","Gender: Male","Gender: Non-Binary","Gender: Prefer not to say"],["1 (6%)","5 (29%)","7 (41%)","3 (18%)","1 (6%)","0 (0%)","2 (12%)","1 (6%)","14 (82%)","0 (0%)","0 (0%)","13 (76%)","4 (24%)","0 (0%)","0 (0%)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Demographic<\/th>\n      <th>Count (Percentage)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Demographic","targets":1},{"name":"Count (Percentage)","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="who-completed-the-training" class="level3">
+<h3 class="anchored" data-anchor-id="who-completed-the-training">Who completed the training?</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/Simple EDA (age)-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-3eb9040071e7b4e03dff" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3eb9040071e7b4e03dff">{"x":{"filter":"none","vertical":false,"data":[["2","3","4","5","6"],["18-24","25-34","35-44","45-54","55+"],["1 (100.0%)","4  (80.0%)","6  (85.7%)","1  (33.3%)","1 (100.0%)"],["0   (0.0%)","1  (20.0%)","1  (14.3%)","2  (66.7%)","0   (0.0%)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>age_group<\/th>\n      <th>Have not completed first course<\/th>\n      <th>Completed first course<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"age_group","targets":1},{"name":"Have not completed first course","targets":2},{"name":"Completed first course","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/Simple EDA (ethnicity)-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9abae13dca4843f9e626" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9abae13dca4843f9e626">{"x":{"filter":"none","vertical":false,"data":[["2","3","4","5","6"],["\"Asian or Pacific Islander, White / Caucasian\"","\"Asian or Pacific Islander\"","\"Black or African American\"","\"Prefer not to answer\"","\"White / Caucasian\""],["1 (100.0%)","1 (100.0%)","1 (100.0%)","1 (100.0%)","9  (69.2%)"],["0  (0.0%)","0  (0.0%)","0  (0.0%)","0  (0.0%)","4 (30.8%)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>what_is_your_ethnicity_and_or_race_please_select_all_that_apply<\/th>\n      <th>Have not completed first course<\/th>\n      <th>Completed first course<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"what_is_your_ethnicity_and_or_race_please_select_all_that_apply","targets":1},{"name":"Have not completed first course","targets":2},{"name":"Completed first course","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/Simple EDA (gender)-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-30c36e9690b1456b8148" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-30c36e9690b1456b8148">{"x":{"filter":"none","vertical":false,"data":[["2","3"],["\"Female\"","\"Male\""],["9  (69.2%)","4 (100.0%)"],["4 (30.8%)","0  (0.0%)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>what_is_your_gender<\/th>\n      <th>Have not completed first course<\/th>\n      <th>Completed first course<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"what_is_your_gender","targets":1},{"name":"Have not completed first course","targets":2},{"name":"Completed first course","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="what-certificates-were-learners-most-interested-in" class="level3">
+<h3 class="anchored" data-anchor-id="what-certificates-were-learners-most-interested-in">What certificates were learners most interested in?</h3>
+<h4 class="anchored">
+<em style="color:#00825b">18%</em> of learners who selected ‘Data Analytics’ completed their first course.
+</h4>
+<h4 class="anchored">
+<em style="color:#00825b">27%</em> of learners who selected ‘Project Management’ completed their first course.
+</h4>
+<h4 class="anchored">
+<em style="color:#00825b">0%</em> of learners who selected ‘Cybersecurity’ completed their first course.
+</h4>
+<h4 class="anchored">
+<em style="color:#00825b">0%</em> of learners who selected ‘IT Support’ completed their first course.
+</h4>
+<h4 class="anchored">
+No completion data available for learners who selected ‘UX Design’
+</h4>
+<br>
+<hr>
+<p><br></p>
+</section>
+<section id="original-data-about-all-grow-with-google-learners" class="level2">
+<h2 class="anchored" data-anchor-id="original-data-about-all-grow-with-google-learners">Original data about all Grow With Google learners</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-cc9bed54457c5f639404" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cc9bed54457c5f639404">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["e4cebbc6fd2ad93c6d7fb1e06d3b3f0b","f31932f2a77118f4480cda519b5e6742","d087aa2d82bf5156b592d74fdeb0f600","2a260e52c29cd403ed8a3d12ccda0f5c","a12146e771b7721137b1610b79a42f7a","9ab78c90f52c32d8e6f2cfecbecedb30","3ea741cb77a5764fe11c8e12e403bc68","49a88c80a4aeb203734a83508b6fd3a6","7796215084e33d098fdf372ecf45d3b9","4f1a31beef316f972a4cd2cc131718a2","23e6342d22eaf4335efab6f7f1034199","a04f4aec50af16d9af342861f51683b6","69e50da91609de0d9fa195b431604555","c3ac6e9f0854a555c4b833e0111e6494","65d73cf507e5229816f75b0e4d2f3308","b8e9ee69f36aac30a5418d3a13d3f657","d62b6db788811ca59a71ce574dca6d2a"],["45-54","45-54","25-34","45-54","35-44","35-44","35-44","35-44","25-34","25-34","35-44","25-34","35-44","35-44","18-24","25-34","55+"],["\"Female\"","\"Female\"","\"Male\"","\"Female\"","\"Female\"","\"Female\"","\"Male\"","\"Female\"","\"Female\"","\"Female\"","\"Female\"","\"Male\"","\"Female\"","\"Female\"","\"Male\"","\"Female\"","\"Female\""],["\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"Asian or Pacific Islander\"","\"Asian or Pacific Islander, White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"White / Caucasian\"","\"Prefer not to answer\"","\"Black or African American\"","\"White / Caucasian\"","\"White / Caucasian\""],["\"She/her\"","\"She/her\"","\"He/his\"","\"She/her\"","\"She/her\"","\"She/her\"","\"He/his\"","\"She/her\"","\"She/her\"","\"She/her\"","\"She/her\"","\"He/his\"","\"She/her\"","\"She/her\"","\"He/his\"","\"She/her\"","\"She/her\""],[null,null,"Full-time",null,null,"Full-time",null,null,"Full-time","Full-time","Full-time","Full-time","Full-time",null,null,"Full-time","Full-time"],["0","0","8000","1500","2,000","1,400","Currently Unemployed","2200","3000","5000","4,000","$4,300","5,667 gross","$350","$2000","7000","5000.00"],["\"Project Management\"","\"Data Analytics, Project Management\"","\"Data Analytics, Project Management\"","\"Project Management, UX (User Experience) Design\"","\"Data Analytics, Project Management, Cybersecurity, IT Support, UX (User Experience) Design\"","\"Project Management, UX (User Experience) Design\"","\"Data Analytics\"","\"Project Management, IT Support\"","\"Data Analytics\"","\"Data Analytics, Project Management\"","\"Project Management, UX (User Experience) Design\"","\"Data Analytics, Project Management, Cybersecurity, IT Support\"","\"Data Analytics, Project Management\"","\"Project Management, Cybersecurity, UX (User Experience) Design\"","\"Data Analytics, Project Management\"","\"Data Analytics, Project Management, Cybersecurity\"","\"Data Analytics, Project Management, Cybersecurity, IT Support, UX (User Experience) Design\""],["\"Referrals to job opportunities\"","\"Referrals to job opportunities, Resume assistance, Practice interviewing\"","\"Information about other training programs\"","\"Referrals to job opportunities\"","\"Information about other training programs, No, I don't need additional services\"","\"No, I don't need additional services\"","\"Referrals to job opportunities\"","\"Referrals to job opportunities, Resume assistance, Information about other training programs\"","\"Referrals to job opportunities, Resume assistance, Job seeking skills training, Practice interviewing\"","\"Referrals to job opportunities, Resume assistance\"","\"Referrals to job opportunities, Resume assistance, Practice interviewing\"","\"Referrals to job opportunities\"","\"Information about other training programs\"","\"Referrals to job opportunities, Practice interviewing\"","\"Referrals to job opportunities, Resume assistance, Job seeking skills training, Practice interviewing\"","\"Information about other training programs\"","\"Resume assistance, Information about other training programs\""],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],["2025-02-20T19:42:54Z","2025-03-05T16:59:01Z","2025-02-03T20:23:23Z","2025-02-28T21:08:22Z","2025-03-10T13:29:55Z","2025-04-16T15:57:15Z","2025-04-30T03:46:37Z","2025-04-28T18:30:36Z","2025-05-07T01:21:54Z","2025-04-29T18:07:35Z","2025-04-07T14:52:54Z","2025-03-05T18:43:15Z","2025-04-10T19:19:28Z","2025-04-10T19:35:52Z","2025-04-26T18:49:57Z","2025-03-05T17:36:23Z","2025-03-31T17:48:39Z"],["2025-04-10T22:17:27Z","2025-04-29T19:32:23Z","2025-02-21T17:15:10Z","2025-02-28T22:12:16Z","2025-03-18T18:53:01Z","2025-05-12T12:33:59Z","2025-04-30T03:47:12Z","2025-04-30T17:36:53Z","2025-05-07T01:26:46Z","2025-05-11T20:07:04Z","2025-04-07T16:06:26Z","2025-03-06T19:23:25Z","2025-04-22T18:05:47Z","2025-04-28T16:16:20Z","2025-05-07T18:01:19Z","2025-03-05T17:38:32Z","2025-04-16T15:52:52Z"],[3,2,1,1,1,4,1,2,1,3,1,1,2,1,1,1,2],[2,1,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0],[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],[true,true,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false],[0.6666666666666666,0.5,0,0,0,0.5,0,0,0,0.6666666666666666,0,0,0,0,0,0,0],[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],["49686","49684","49684","49690","49690","49686","60608","87571","49685","49686","49684","49668","49686","49684","03440","49680","49686"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>coursera_id<\/th>\n      <th>age_group<\/th>\n      <th>what_is_your_gender<\/th>\n      <th>what_is_your_ethnicity_and_or_race_please_select_all_that_apply<\/th>\n      <th>what_pronouns_do_you_use<\/th>\n      <th>employment_status<\/th>\n      <th>what_is_you_approximate_monthly_income<\/th>\n      <th>which_certificate_s_are_you_most_interested_in<\/th>\n      <th>after_completion_of_the_course_which_wrap_around_supports_will_you_need<\/th>\n      <th>are_you_able_to_commit_10_15_hours_per_week_for_this_training<\/th>\n      <th>your_google_scholarship_gives_you_6_months_to_complete_your_certification_s_are_you_willing_to_commit_to_the_successful_completion_of_your_certification_s_within_this_time_constraint<\/th>\n      <th>this_training_is_online_please_rate_your_personal_computer_skills<\/th>\n      <th>are_you_a_veteran_of_the_united_states_armed_forces<\/th>\n      <th>join_date<\/th>\n      <th>latest_program_activity_date<\/th>\n      <th>cnt_enrollments<\/th>\n      <th>cnt_completions<\/th>\n      <th>enrolled_in_first_course<\/th>\n      <th>completed_first_course<\/th>\n      <th>completion_rate<\/th>\n      <th>has_recent_activity<\/th>\n      <th>zip_code<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"fixedColumns":{"leftColumns":2},"columnDefs":[{"className":"dt-right","targets":[16,17,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"coursera_id","targets":1},{"name":"age_group","targets":2},{"name":"what_is_your_gender","targets":3},{"name":"what_is_your_ethnicity_and_or_race_please_select_all_that_apply","targets":4},{"name":"what_pronouns_do_you_use","targets":5},{"name":"employment_status","targets":6},{"name":"what_is_you_approximate_monthly_income","targets":7},{"name":"which_certificate_s_are_you_most_interested_in","targets":8},{"name":"after_completion_of_the_course_which_wrap_around_supports_will_you_need","targets":9},{"name":"are_you_able_to_commit_10_15_hours_per_week_for_this_training","targets":10},{"name":"your_google_scholarship_gives_you_6_months_to_complete_your_certification_s_are_you_willing_to_commit_to_the_successful_completion_of_your_certification_s_within_this_time_constraint","targets":11},{"name":"this_training_is_online_please_rate_your_personal_computer_skills","targets":12},{"name":"are_you_a_veteran_of_the_united_states_armed_forces","targets":13},{"name":"join_date","targets":14},{"name":"latest_program_activity_date","targets":15},{"name":"cnt_enrollments","targets":16},{"name":"cnt_completions","targets":17},{"name":"enrolled_in_first_course","targets":18},{"name":"completed_first_course","targets":19},{"name":"completion_rate","targets":20},{"name":"has_recent_activity","targets":21},{"name":"zip_code","targets":22}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="expansion-of-learner-demographics-and-motivation-responses" class="level3">
+<h3 class="anchored" data-anchor-id="expansion-of-learner-demographics-and-motivation-responses">Expansion of learner demographics and motivation responses</h3>
+<p>Download CSV table of <a href="./downloads/learners_all_impact_vars_as_of_2025_05_19.csv" class="external" target="_blank">expansion of individual impact variables (i.e., demographic categories as boolean flags)</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
