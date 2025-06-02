@@ -17,18 +17,21 @@
     "url": "git+ssh://git@github.com/ruralinnovation/wiki"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:frontend && npm run package && npm run package:cisco && npm run build:cisco && quarto render --output-dir docs",
+    "build": "npm run clean && npm run build:frontend && npm run package && npm run package:cisco && npm run package:coursera && quarto render --output-dir docs",
     "build:frontend": "npm run build -w @cori-risi/frontend && npm run cp:frontend",
     "build:cisco": "npm run build -w cori.data.cisco",
+    "build:coursera": "npm run build -w cori.data.coursera",
     "cp:frontend": "cp -LR frontend/dist/assets ./",
     "clean": "rm -rf _freeze/* _site/* assets/index*",
     "dev": "npm run build:frontend && quarto render --output-dir docs",
     "package": "R CMD build --no-manual",
     "package:cisco":  "npm run package -w cori.data.cisco",
+    "package:coursera":  "npm run package -w cori.data.coursera",
     "preview": "python -m http.server -d docs 3000"
   },
   "workspaces": [
     "cisco",
+    "coursera",
     "frontend"
   ]
 }
