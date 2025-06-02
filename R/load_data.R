@@ -321,7 +321,10 @@ save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) 
 
 write_data_to_geojson <- function (df, file_path) {
 
-  rin_service_areas <- df
+  rin_service_areas <- df |>
+    dplyr::filter(
+      `primary_county_flag` == "Yes"
+    )
 
   message(class(rin_service_areas))
 
