@@ -248,6 +248,9 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
 
   names(rin_service_areas_sf) <- snakecase::to_snake_case(names(rin_service_areas_sf))
 
+  # Make sure to use "geometry" as the st_geometry column
+  st_geometry(rin_service_areas_sf) <- "geometry"
+
   # message(paste(class(rin_service_areas_sf), collapse = " "))
   # message(paste(names(rin_service_areas_sf), collapse = " "))
 
@@ -325,6 +328,10 @@ write_data_to_geojson <- function (df, file_path) {
     dplyr::filter(
       `primary_county_flag` == "Yes"
     )
+  
+  # Use the centroid as the geometry for json
+
+  sf::st_geometry(rin_service_areas) <- "centroid"
 
   message(class(rin_service_areas))
 
