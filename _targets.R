@@ -45,7 +45,7 @@ list(
     result <- cori.db::write_db(con, table_name, dta, spatial = TRUE)
     if (result == table_name) return(dta)
     else return(NULL)
-  })("rin", "rin_service_areas",rin_service_areas_sf)),
+  })("rin", "rin_service_areas", rin_service_areas_sf)),
 
   ## This is handled in impact_metrics project (ruralinnovation/proj_cori_impact_metrics)
   # tar_target(rin_service_areas_tableau_db, save_data_to_db_instance("tableau", "rin", "rin_service_areas", rin_service_areas_db)),
