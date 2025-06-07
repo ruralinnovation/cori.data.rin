@@ -59,3 +59,14 @@
 [.]qmd$
 ^\.*\\.bak$$
 ^coursera$
+^\.claude$
+^counties_2024\.rds$
+^counties\.rds$
+^county_state_fips\.rds$
+^Network_Communities_Current_1749008415\.xlsx$
+^places\.rds$
+^rin_service_areas\.geojson$
+^states_2024\.rds$
+^states\.rds$
+^tiger$
+^zip_code_centroids\.rds$
