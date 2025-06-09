@@ -18,18 +18,18 @@ include-after-body:
 ---
 
 
-<!-- <div class="embedded-content side-bar">
 <!--
   -- And here's some more stuff to say about the network.
   -- Should we drop a micro dashboard here?
   -->
-<!-- <tableau-viz
+<div class="embedded-content side-bar">
+<tableau-viz
   src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech_1?:origin=card_share_link&:embed=n4?:origin=card_share_link"
   device="desktop"
   width="600px"
   height="calc(100vh - 200px)"
   style="margin: 0 -2px; background-color: transparent !important;"
   toolbar="bottom" >
-</tableau-viz> -->
-<!-- </div> -->
+</tableau-viz>
+</div>
 
