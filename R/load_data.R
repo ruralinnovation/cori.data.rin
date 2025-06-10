@@ -195,10 +195,68 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
       `county`,
       `primary_county_flag`,
       `data_run_date`
+  ### THIS IS A BUG! Not all RIN communities in this set are valid for the specified year...
+  #   ) |>
+  #   dplyr::mutate(
+  #       `year` = params$current_year
+  #   )
+  
+  ## ... so, we're going to hand code the list for each year, based on data gathered during
+  ## the compilation of the Impact dashboard dataset; see https://docs.google.com/spreadsheets/d/1R_UccunBsg6TiKD_lAsj37wI5_1H4TKCCd25q914p9U/edit?gid=1698657911#gid=1698657911
+  ###
     ) |>
-      dplyr::mutate(
-          `year` = params$current_year
+    dplyr::mutate(
+      `year` = ifelse(
+        `rin_community` %in% c( # 2025 list...
+          "Helena-West Helena, AR",
+          "Newport, AR"
+        ),
+        2025,
+        ifelse(
+          `rin_community` %in% c( # 2024 list ... remaining network communities will need to move up to 2025 list at end-of-year
+            "Ada",
+            "Aberdeen",
+            "The Berkshires",
+            "Cape Girardeau",
+            "Central Wisconsin",
+            "Chambers County",
+            "Cochise County",
+            "The Dalles",
+            "Durango",
+            "Eastern Kentucky",
+            "Emporia",
+            "Greenfield",
+            "Independence",
+            "Indiana County",
+            "Kirksville",
+            "Manitowoc County",
+            "Marquette",
+            "Nacogdoches",
+            "NEK",
+            "Norfolk",
+            "Paducah",
+            "Pine Bluff",
+            "Platteville",
+            "Portsmouth",
+            "Pryor Creek",
+            "Randolph",
+            "Red Wing",
+            "Rutland",
+            "Seward County, NE",
+            "Shenandoah Valley",
+            "Springfield",
+            "Taos",
+            "Traverse City",
+            "Waterville",
+            "Wilkes County",
+            "Wilson",
+            "Windham County"
+          ),
+          2024,
+          2023 # Fall back to 2023 for non-recent communities
+        )
       )
+    )
   
   check_primary_county <- function (county, name, rin_primary_counties) {
     

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:400,700,400italic,700italic');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap');
@@ -8,9 +9,12 @@
   font-weight: normal;
   font-style: normal;
   src: local('TT Hoves'),
-    url('./fonts/TypeType - TT Hoves Regular.ttf') format('truetype'),
-    url('./fonts/TTHoves-Regular/font.woff') format("woff"),
-    url('./fonts/TTHoves-Regular/font.woff2') format("woff2");
+  url('./fonts/TypeType - TT Hoves Regular.ttf') format('truetype'),
+  url('./fonts/TTHoves-Regular/font.woff') format("woff"),
+  url('./fonts/TTHoves-Regular/font.woff2') format("woff2"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TypeType - TT Hoves Regular.ttf') format('truetype'),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Regular/font.woff') format("woff"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Regular/font.woff2') format("woff2");
 }
 
 @font-face {
@@ -20,7 +24,10 @@
   src: local('TT Hoves'),
     url('./fonts/TypeType - TT Hoves Bold.ttf') format('truetype'),
     url('./fonts/TTHoves-Bold/font.woff') format("woff"),
-    url('./fonts/TTHoves-Bold/font.woff2') format("woff2");
+    url('./fonts/TTHoves-Bold/font.woff2') format("woff2"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TypeType - TT Hoves Bold.ttf') format('truetype'),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Bold/font.woff') format("woff"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Bold/font.woff2') format("woff2");
 }
 
 @font-face {
@@ -30,7 +37,10 @@
   src: local('TT Hoves'),
     url('./fonts/TypeType - TT Hoves Medium.ttf') format('truetype'),
     url('./fonts/TTHoves-Medium/font.woff') format("woff"),
-    url('./fonts/TTHoves-Medium/font.woff2') format("woff2");
+    url('./fonts/TTHoves-Medium/font.woff2') format("woff2"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TypeType - TT Hoves Medium.ttf') format('truetype'),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Medium/font.woff') format("woff"),
+    url('https://cori-risi-apps.s3.amazonaws.com/fonts/TTHoves-Medium/font.woff2') format("woff2");
 }
 
 @font-face {
