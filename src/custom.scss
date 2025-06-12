@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   background-color: #16343E !important;
+  overflow: hidden;
 }
 
 header {
@@ -139,8 +140,8 @@ div#quarto-content {
   margin: 0;
   padding: 0;
   width: 100vw;
-  //max-height: calc(-91px + 100vh);
-  //overflow: hidden;
+  max-height: calc(-91px + 100vh);
+  // overflow: scroll;
   background-color:  #FFF;
 
   & > * {
@@ -199,7 +200,9 @@ div#quarto-content {
   //}
 
   main#quarto-document-content {
-    margin-top: 0;
+      max-height: calc(100vh - 90px);
+      margin-top: 0;
+      overflow: scroll;
 
     &>*{
       z-index: 2;
@@ -225,9 +228,9 @@ div#quarto-content {
       position:relative;
 
       &.side-bar {
-        margin: 20px 2px;
-        max-width: 560px;
-        max-height: calc(100vh - 200px);
+        margin: 10px 2px;
+        max-width: 640px;
+        max-height: calc(100vh - 186px);
         overflow: scroll;
         padding: 2px;
         background-color: rgba(255,255,255,.75);

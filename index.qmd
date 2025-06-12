@@ -17,18 +17,36 @@ include-after-body:
 #     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ---
 
-
 <!--
   -- And here's some more stuff to say about the network.
   -- Should we drop a micro dashboard here?
   -->
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| output: true
+#| results: asis
+
+tableau_client_id <- Sys.getenv("TABLEAU_CLIENT_ID")
+tableau_secret_id <- Sys.getenv("TABLEAU_SECRET_ID")
+tableau_secret_value <- Sys.getenv("TABLEAU_SECRET_VALUE")
+tableau_user <- Sys.getenv("TABLEAU_USER")
+
+cat(paste0('
 <div class="embedded-content side-bar">
 <tableau-viz
-  src="https://10ax.online.tableau.com/t/ruralinnovation/views/RINcommunitytechinvestment/RINcommunityVCfundedtech_1?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+  src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
   device="desktop"
-  width="600px"
-  height="calc(100vh - 200px)"
+  width="640px"
+  height="calc(100vh - 190px)"
   style="margin: 0 -2px; background-color: transparent !important;"
-  toolbar="bottom" >
+  toolbar="bottom"
+  tableau_client_id="', tableau_client_id, '"
+  tableau_secret_id="', tableau_secret_id, '"
+  tableau_secret_value="', tableau_secret_value, '"
+  tableau_user="', tableau_user, '">
 </tableau-viz>
 </div>
+'))
+```

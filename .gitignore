@@ -58,3 +58,5 @@ data/
 /_site/
 /_targets/
 node_modules
+
+/_*.local

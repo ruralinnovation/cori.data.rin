@@ -31,41 +31,6 @@
     ]
   },
   {
-    "objectID": "frontend/TABLEAU_FIX_SUMMARY.html",
-    "href": "frontend/TABLEAU_FIX_SUMMARY.html",
-    "title": "Tableau Dependencies Fix Summary",
-    "section": "",
-    "text": "The project cori.data.rin.frontend had the same issue as impact-dashboard: - Using @tableau/embedding-api npm package with missing internal dependencies - Causing Uncaught SyntaxError: Unexpected token 'export' errors in browser\n\n\n\n\n\n\n✅ Removed problematic import: import { SheetType, TableauEventType } from \"@tableau/embedding-api\"\n✅ Added global access: Now accesses TableauEventType and SheetType from window object\n✅ Added TypeScript ignores: Used @ts-ignore for global Tableau objects loaded via CDN\n✅ Maintained functionality: All existing JWT token generation and visualization logic preserved\n\n\n\n\n\n✅ Added Tableau CDN script: &lt;script type=\"module\" src=\"https://us-east-1.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js\"&gt;&lt;/script&gt;\n✅ Proper loading order: Script loads before the React app initializes\n\n\n\n\n\n✅ Removed npm dependency: Deleted \"@tableau/embedding-api\": \"^3.11.1\" from devDependencies\n✅ Cleaner dependencies: No more problematic npm package that had missing internal deps\n\n\n\n\n\nsrc/@cori-risi/components/TableauViz.tsx.backup\nindex.html.backup\npackage.json.backup\n\n\n\n\n\n\n✅ No more build errors: Eliminates ES module syntax errors\n✅ Official Tableau approach: Uses Tableau’s recommended CDN method\n✅ Maintained functionality: All existing features still work\n✅ Cleaner dependencies: Removed problematic npm package\n✅ Better performance: CDN loading is more reliable than bundled dependencies\n\n\n\n\n\nsrc/@cori-risi/components/TableauViz.tsx - Removed npm imports, added global access\nindex.html - Added Tableau CDN script\npackage.json - Removed problematic dependency\n\nThe fix follows the same pattern successfully applied to the impact-dashboard project."
-  },
-  {
-    "objectID": "frontend/TABLEAU_FIX_SUMMARY.html#problem",
-    "href": "frontend/TABLEAU_FIX_SUMMARY.html#problem",
-    "title": "Tableau Dependencies Fix Summary",
-    "section": "",
-    "text": "The project cori.data.rin.frontend had the same issue as impact-dashboard: - Using @tableau/embedding-api npm package with missing internal dependencies - Causing Uncaught SyntaxError: Unexpected token 'export' errors in browser"
-  },
-  {
-    "objectID": "frontend/TABLEAU_FIX_SUMMARY.html#solution-applied",
-    "href": "frontend/TABLEAU_FIX_SUMMARY.html#solution-applied",
-    "title": "Tableau Dependencies Fix Summary",
-    "section": "",
-    "text": "✅ Removed problematic import: import { SheetType, TableauEventType } from \"@tableau/embedding-api\"\n✅ Added global access: Now accesses TableauEventType and SheetType from window object\n✅ Added TypeScript ignores: Used @ts-ignore for global Tableau objects loaded via CDN\n✅ Maintained functionality: All existing JWT token generation and visualization logic preserved\n\n\n\n\n\n✅ Added Tableau CDN script: &lt;script type=\"module\" src=\"https://us-east-1.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js\"&gt;&lt;/script&gt;\n✅ Proper loading order: Script loads before the React app initializes\n\n\n\n\n\n✅ Removed npm dependency: Deleted \"@tableau/embedding-api\": \"^3.11.1\" from devDependencies\n✅ Cleaner dependencies: No more problematic npm package that had missing internal deps\n\n\n\n\n\nsrc/@cori-risi/components/TableauViz.tsx.backup\nindex.html.backup\npackage.json.backup"
-  },
-  {
-    "objectID": "frontend/TABLEAU_FIX_SUMMARY.html#benefits",
-    "href": "frontend/TABLEAU_FIX_SUMMARY.html#benefits",
-    "title": "Tableau Dependencies Fix Summary",
-    "section": "",
-    "text": "✅ No more build errors: Eliminates ES module syntax errors\n✅ Official Tableau approach: Uses Tableau’s recommended CDN method\n✅ Maintained functionality: All existing features still work\n✅ Cleaner dependencies: Removed problematic npm package\n✅ Better performance: CDN loading is more reliable than bundled dependencies"
-  },
-  {
-    "objectID": "frontend/TABLEAU_FIX_SUMMARY.html#files-modified",
-    "href": "frontend/TABLEAU_FIX_SUMMARY.html#files-modified",
-    "title": "Tableau Dependencies Fix Summary",
-    "section": "",
-    "text": "src/@cori-risi/components/TableauViz.tsx - Removed npm imports, added global access\nindex.html - Added Tableau CDN script\npackage.json - Removed problematic dependency\n\nThe fix follows the same pattern successfully applied to the impact-dashboard project."
-  },
-  {
     "objectID": "cisco/eda.html",
     "href": "cisco/eda.html",
     "title": "Exploratory data analysis for impact evaluation",
@@ -94,7 +59,7 @@
     "href": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
     "title": "Exploratory data analysis for impact evaluation",
     "section": "Original data about all Cisco learners in RIN communities",
-    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)\n\n\n\n\n\n\nError : connection to server at \"cori-risi-ad-postgresql.c6zaibvi9wyg.us-east-1.rds.amazonaws.com\" (172.30.5.83), port 5432 failed: Operation timed out\n    Is the server running on that host and accepting TCP/IP connections?",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
       "Cisco Network Academy (2024)",
