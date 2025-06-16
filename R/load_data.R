@@ -30,15 +30,17 @@ library(purrr)
 #' @export
 load_rin_service_areas <- function (params = cori.utils::get_params("global"), old_rin_service_areas) {
 
-  ### OLD ----
+  # ### OLD ----
   
-  # # data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
+  # data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
 
-  # # if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
+  # if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
     
-  # #   message(paste0("Loading ", data_file))
+  #   message(paste0("Loading ", data_file))
 
-  # #   rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
+  #   rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
+
+  # ### TODO: Invert this process so that we always start with Newest data and then fill gaps (missing communities) using previous
   
   # sheet_url <- params$sheet_url
   # sheet_name <- params$sheet_name
@@ -52,7 +54,7 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   # credentials <- Sys.getenv("GOOGLE_API_CREDENTIALS")
 
   # # Point to your service account key file
-  # gs4_auth(path = credentials)
+  # googlesheets4::gs4_auth(path = credentials)
 
   # sheet_id <- googlesheets4::as_sheets_id(sheet_url)
 
@@ -258,17 +260,17 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
       )
     )
   
-  check_primary_county <- function (county, name, rin_primary_counties) {
+  check_primary_county <- function (county, rin_community_name, rin_primary_counties) {
     
-      primary_county <- (rin_primary_counties |> dplyr::filter(`name` == name))$county
-    
-      if (length(primary_county) > 0) {
-        if (county %in% primary_county) return("Yes")
-        else return("No")
-      } else {
-        return("No")
-      }
+    primary_county <- (rin_primary_counties |> dplyr::filter(`name` == rin_community_name))$county
+  
+    if (length(primary_county) > 0) {
+      if (county %in% primary_county) return("Yes")
+      else return("No")
+    } else {
+      return("No")
     }
+  }
   
   for (r in c(1:nrow(areas))) {
     name <- areas[r, ]$rin_community
