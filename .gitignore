@@ -18,7 +18,7 @@
 /*.Rcheck/
 
 # RStudio files
-.Rproj.user/
+*Rproj*
 
 # produced vignettes
 vignettes/*.html
@@ -41,6 +41,7 @@ vignettes/*.pdf
 # By default, data files should not be added to version control,
 # but excpetions can be made when needed with `git add -f ...`
 data/
+ext_data/
 *.csv
 *.gpkg
 *.shp
@@ -57,6 +58,11 @@ data/
 /_freeze/
 /_site/
 /_targets/
+/docs/
 node_modules
 
 /_*.local
+
+CLAUDE.md
+
+cori.data.rin*

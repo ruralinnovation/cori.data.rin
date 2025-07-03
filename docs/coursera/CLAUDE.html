@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>claude – Rural Innovation Network data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assets/images/Logo-Mark_CORI_Black.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/fonts.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Rural Innovation Network data</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Rural Innovation Network data</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../RIN-data-infrastructure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RIN data infrastructure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Cisco Network Academy (2024)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applicant &amp; Learner progress</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data downloads</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cisco/eda-2025.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EDA for impact evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Grow With Google (2023 - 2024)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursera/eda-2023-2024.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EDA for impact evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Grow With Google (2025)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursera/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applicant &amp; Learner progress</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursera/eda-2025.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EDA for impact evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#grow-with-google-program-analysis-2023-2024-single-session" id="toc-grow-with-google-program-analysis-2023-2024-single-session" class="nav-link active" data-scroll-target="#grow-with-google-program-analysis-2023-2024-single-session">Grow With Google Program Analysis: 2023-2024 Single Session</a>
+  <ul class="collapse">
+  <li><a href="#program-overview---updated" id="toc-program-overview---updated" class="nav-link" data-scroll-target="#program-overview---updated">Program Overview - UPDATED</a></li>
+  <li><a href="#revised-analysis-framework" id="toc-revised-analysis-framework" class="nav-link" data-scroll-target="#revised-analysis-framework">Revised Analysis Framework</a>
+  <ul class="collapse">
+  <li><a href="#primary-focus-areas" id="toc-primary-focus-areas" class="nav-link" data-scroll-target="#primary-focus-areas">Primary Focus Areas</a></li>
+  </ul></li>
+  <li><a href="#data-sources-and-structure" id="toc-data-sources-and-structure" class="nav-link" data-scroll-target="#data-sources-and-structure">Data Sources and Structure</a>
+  <ul class="collapse">
+  <li><a href="#available-data-assets" id="toc-available-data-assets" class="nav-link" data-scroll-target="#available-data-assets">Available Data Assets</a></li>
+  </ul></li>
+  <li><a href="#implementation-approach" id="toc-implementation-approach" class="nav-link" data-scroll-target="#implementation-approach">Implementation Approach</a>
+  <ul class="collapse">
+  <li><a href="#phase-1-single-session-data-integration" id="toc-phase-1-single-session-data-integration" class="nav-link" data-scroll-target="#phase-1-single-session-data-integration">Phase 1: Single Session Data Integration</a></li>
+  <li><a href="#phase-2-program-assessment-framework" id="toc-phase-2-program-assessment-framework" class="nav-link" data-scroll-target="#phase-2-program-assessment-framework">Phase 2: Program Assessment Framework</a></li>
+  <li><a href="#phase-3-quarto-document-structure---single-session-focus" id="toc-phase-3-quarto-document-structure---single-session-focus" class="nav-link" data-scroll-target="#phase-3-quarto-document-structure---single-session-focus">Phase 3: Quarto Document Structure - Single Session Focus</a></li>
+  <li><a href="#phase-4-implementation-priority---updated" id="toc-phase-4-implementation-priority---updated" class="nav-link" data-scroll-target="#phase-4-implementation-priority---updated">Phase 4: Implementation Priority - Updated</a></li>
+  </ul></li>
+  <li><a href="#technical-implementation-notes---updated" id="toc-technical-implementation-notes---updated" class="nav-link" data-scroll-target="#technical-implementation-notes---updated">Technical Implementation Notes - Updated</a>
+  <ul class="collapse">
+  <li><a href="#data-processing-considerations" id="toc-data-processing-considerations" class="nav-link" data-scroll-target="#data-processing-considerations">Data Processing Considerations</a></li>
+  <li><a href="#visualization-adaptations" id="toc-visualization-adaptations" class="nav-link" data-scroll-target="#visualization-adaptations">Visualization Adaptations</a></li>
+  </ul></li>
+  <li><a href="#expected-outcomes---revised" id="toc-expected-outcomes---revised" class="nav-link" data-scroll-target="#expected-outcomes---revised">Expected Outcomes - Revised</a>
+  <ul class="collapse">
+  <li><a href="#primary-deliverables" id="toc-primary-deliverables" class="nav-link" data-scroll-target="#primary-deliverables">Primary Deliverables</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
+  <li><a href="#strategic-value" id="toc-strategic-value" class="nav-link" data-scroll-target="#strategic-value">Strategic Value</a></li>
+  </ul></li>
+  <li><a href="#revised-timeline" id="toc-revised-timeline" class="nav-link" data-scroll-target="#revised-timeline">Revised Timeline</a></li>
+  <li><a href="#success-metrics---updated" id="toc-success-metrics---updated" class="nav-link" data-scroll-target="#success-metrics---updated">Success Metrics - Updated</a></li>
+  </ul></li>
+  <li><a href="#implementation-completed-eda-2023-2024-simple.qmd" id="toc-implementation-completed-eda-2023-2024-simple.qmd" class="nav-link" data-scroll-target="#implementation-completed-eda-2023-2024-simple.qmd">IMPLEMENTATION COMPLETED: <code>eda-2023-2024-simple.qmd</code></a>
+  <ul class="collapse">
+  <li><a href="#successfully-delivered---single-session-analysis" id="toc-successfully-delivered---single-session-analysis" class="nav-link" data-scroll-target="#successfully-delivered---single-session-analysis">✅ Successfully Delivered - Single Session Analysis</a>
+  <ul class="collapse">
+  <li><a href="#data-processing-infrastructure" id="toc-data-processing-infrastructure" class="nav-link" data-scroll-target="#data-processing-infrastructure">1. <strong>Data Processing Infrastructure</strong></a></li>
+  <li><a href="#comprehensive-single-session-analysis" id="toc-comprehensive-single-session-analysis" class="nav-link" data-scroll-target="#comprehensive-single-session-analysis">2. <strong>Comprehensive Single Session Analysis</strong></a></li>
+  <li><a href="#key-findings---single-session-perspective" id="toc-key-findings---single-session-perspective" class="nav-link" data-scroll-target="#key-findings---single-session-perspective">3. <strong>Key Findings - Single Session Perspective</strong></a></li>
+  <li><a href="#strategic-insights---program-design" id="toc-strategic-insights---program-design" class="nav-link" data-scroll-target="#strategic-insights---program-design">4. <strong>Strategic Insights - Program Design</strong></a></li>
+  <li><a href="#updated-technical-implementation" id="toc-updated-technical-implementation" class="nav-link" data-scroll-target="#updated-technical-implementation">5. <strong>Updated Technical Implementation</strong></a></li>
+  <li><a href="#visualization-and-analysis---single-session-focus" id="toc-visualization-and-analysis---single-session-focus" class="nav-link" data-scroll-target="#visualization-and-analysis---single-session-focus">6. <strong>Visualization and Analysis - Single Session Focus</strong> ✅</a></li>
+  </ul></li>
+  <li><a href="#business-impact---single-session-model" id="toc-business-impact---single-session-model" class="nav-link" data-scroll-target="#business-impact---single-session-model">🎯 Business Impact - Single Session Model</a>
+  <ul class="collapse">
+  <li><a href="#program-design-validation" id="toc-program-design-validation" class="nav-link" data-scroll-target="#program-design-validation">Program Design Validation</a></li>
+  <li><a href="#operational-insights" id="toc-operational-insights" class="nav-link" data-scroll-target="#operational-insights">Operational Insights</a></li>
+  <li><a href="#strategic-recommendations---updated" id="toc-strategic-recommendations---updated" class="nav-link" data-scroll-target="#strategic-recommendations---updated">Strategic Recommendations - Updated</a></li>
+  </ul></li>
+  <li><a href="#performance-metrics---single-session-assessment" id="toc-performance-metrics---single-session-assessment" class="nav-link" data-scroll-target="#performance-metrics---single-session-assessment">📊 Performance Metrics - Single Session Assessment</a></li>
+  <li><a href="#delivery-summary---single-session-analysis" id="toc-delivery-summary---single-session-analysis" class="nav-link" data-scroll-target="#delivery-summary---single-session-analysis">✅ DELIVERY SUMMARY - Single Session Analysis</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="grow-with-google-program-analysis-2023-2024-single-session" class="level1">
+<h1>Grow With Google Program Analysis: 2023-2024 Single Session</h1>
+<section id="program-overview---updated" class="level2">
+<h2 class="anchored" data-anchor-id="program-overview---updated">Program Overview - UPDATED</h2>
+<p><strong>IMPORTANT CLARIFICATION</strong>: GWG learners were not segregated into cohorts between 2023 and 2024. The 2023-2024 period represents a <strong>single continuous program session</strong> rather than separate annual cohorts.</p>
+<p><strong>Program Characteristics</strong>: - <strong>Single Session Duration</strong>: Continuous program from 2023 through 2024 - <strong>Application Period</strong>: Primarily Q2-Q3 2023 with limited additional applications in 2024 - <strong>Enrollment Period</strong>: Heavy concentration in Q3 2023 (July-September) with minimal 2024 additions - <strong>Program Completion</strong>: Learners had extended timeframe to complete coursework across both years</p>
+<p>This reframing changes the analysis from a “year-over-year comparison” to a <strong>comprehensive single program assessment</strong> with temporal participation patterns.</p>
+</section>
+<section id="revised-analysis-framework" class="level2">
+<h2 class="anchored" data-anchor-id="revised-analysis-framework">Revised Analysis Framework</h2>
+<section id="primary-focus-areas" class="level3">
+<h3 class="anchored" data-anchor-id="primary-focus-areas">Primary Focus Areas</h3>
+<section id="single-program-session-assessment" class="level4">
+<h4 class="anchored" data-anchor-id="single-program-session-assessment">1. Single Program Session Assessment</h4>
+<ul>
+<li><strong>Program Launch and Uptake</strong>: Q2-Q3 2023 application and enrollment surge</li>
+<li><strong>Participation Timeline</strong>: Application-to-enrollment-to-completion progression across the full session</li>
+<li><strong>Program Lifecycle</strong>: Understanding the natural arc from launch through completion</li>
+<li><strong>Late Program Access</strong>: Limited 2024 applications as program matured</li>
+</ul>
+</section>
+<section id="temporal-participation-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="temporal-participation-analysis">2. Temporal Participation Analysis</h4>
+<ul>
+<li><strong>Launch Phase</strong> (Q2-Q3 2023): Peak application and enrollment activity</li>
+<li><strong>Active Learning Phase</strong> (Q4 2023 - Q3 2024): Ongoing coursework completion</li>
+<li><strong>Program Wind-down</strong> (Q4 2024): Final completions and program conclusion</li>
+<li><strong>Continuous Enrollment</strong>: Small number of additional participants throughout 2024</li>
+</ul>
+</section>
+<section id="program-performance-assessment" class="level4">
+<h4 class="anchored" data-anchor-id="program-performance-assessment">3. Program Performance Assessment</h4>
+<ul>
+<li><strong>Overall Reach</strong>: Total participants across the full session</li>
+<li><strong>Engagement Patterns</strong>: Learning activity and progression over time</li>
+<li><strong>Completion Analysis</strong>: Success rates and time-to-completion across the session</li>
+<li><strong>Geographic Impact</strong>: RIN community participation and outcomes</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="data-sources-and-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-structure">Data Sources and Structure</h2>
+<section id="available-data-assets" class="level3">
+<h3 class="anchored" data-anchor-id="available-data-assets">Available Data Assets</h3>
+<ol type="1">
+<li><strong>Program Applications</strong> (<code>Grow with Google Student Application (Responses) [COPY]_2024_06_04.csv</code>)
+<ul>
+<li>320 total applications across the program session</li>
+<li>Peak activity: Q2-Q3 2023 (316 applications)</li>
+<li>Continued interest: 4 additional applications in 2024</li>
+<li>Google Forms format with demographics, motivations, and program interests</li>
+</ul></li>
+<li><strong>Learner Performance</strong> (<code>user-filtering-exports_center-on-rural-innovation_LearnersExport_2024-06-04.csv</code>)
+<ul>
+<li>167 total learners across the program session</li>
+<li>Primary enrollment: 164 learners joined in 2023</li>
+<li>Extended access: 3 additional learners joined in 2024</li>
+<li>Comprehensive performance tracking through program completion</li>
+</ul></li>
+<li><strong>Program Timeline Analysis</strong>
+<ul>
+<li>Application patterns: Heavy Q3 2023 concentration, minimal 2024 activity</li>
+<li>Enrollment timing: Concentrated July-September 2023 launch period</li>
+<li>Completion tracking: Extended timeframe for course completion across both years</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="implementation-approach" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-approach">Implementation Approach</h2>
+<section id="phase-1-single-session-data-integration" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-single-session-data-integration">Phase 1: Single Session Data Integration</h3>
+<section id="unified-data-loading-functions" class="level4">
+<h4 class="anchored" data-anchor-id="unified-data-loading-functions">1.1 Unified Data Loading Functions</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Updated function for single session analysis</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>get_gwg_applicants_full_session <span class="ot">&lt;-</span> <span class="cf">function</span>(data_file) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Process all applications as single program session</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add temporal features for program phase identification</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Flag launch vs. extended enrollment periods</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Standardize certificate categories across full session</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>get_gwg_learners_full_session <span class="ot">&lt;-</span> <span class="cf">function</span>(data_file) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Process all learners as single session participants</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate program engagement duration and patterns</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Track completion progress across extended timeframe</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify enrollment timing within program lifecycle</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="program-phase-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="program-phase-analysis">1.2 Program Phase Analysis</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify distinct program phases</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>calculate_program_phases <span class="ot">&lt;-</span> <span class="cf">function</span>(applications, learners) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Launch Phase: Q2-Q3 2023 (peak activity)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Active Phase: Q4 2023 - Q3 2024 (ongoing learning)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Completion Phase: Q4 2024 (program conclusion)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extended Access: 2024 additions (late enrollees)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze participation patterns across phases</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>analyze_program_timeline <span class="ot">&lt;-</span> <span class="cf">function</span>(applications, learners) {</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Application surge and timing</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Enrollment concentration and distribution</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Learning progression and completion patterns</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Geographic and demographic participation trends</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="single-session-performance-metrics" class="level4">
+<h4 class="anchored" data-anchor-id="single-session-performance-metrics">1.3 Single Session Performance Metrics</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate program-wide performance indicators</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>calculate_session_metrics <span class="ot">&lt;-</span> <span class="cf">function</span>(matched_data) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall conversion rate (application to enrollment)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Program reach and geographic distribution</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Completion rates and time-to-completion</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Engagement levels and learning progression</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Certificate program popularity and success rates</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="phase-2-program-assessment-framework" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-program-assessment-framework">Phase 2: Program Assessment Framework</h3>
+<section id="program-launch-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="program-launch-analysis">2.1 Program Launch Analysis</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Launch Assessment (Q2-Q3 2023)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Launch Effectiveness</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Application volume: 316 applications in primary launch period</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Enrollment success: 164 learners successfully onboarded</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Geographic reach: RIN community participation analysis</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Certificate distribution: Interest across program offerings</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Launch Timeline</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pre-launch preparation and marketing</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Peak application period identification</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Enrollment processing and onboarding</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Initial learner engagement patterns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="program-participation-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="program-participation-analysis">2.2 Program Participation Analysis</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Participation Throughout Session</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Enrollment Patterns</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Primary enrollment: July-September 2023 concentration</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Extended enrollment: Minimal 2024 additions</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Application-to-enrollment conversion analysis</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Time lag between application and program start</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Learning Progression</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Course enrollment distribution across certificate programs</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Completion rates and timing throughout the session</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Engagement levels and activity patterns</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Support service utilization and effectiveness</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="program-outcomes-assessment" class="level4">
+<h4 class="anchored" data-anchor-id="program-outcomes-assessment">2.3 Program Outcomes Assessment</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Outcomes and Impact</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Completion Analysis</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Overall completion rates for the full session</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Time-to-completion patterns across certificate programs</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Success factors and completion barriers</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Geographic variations in completion rates</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Program Impact</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>RIN community participation and outcomes</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Career advancement and skill development</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Program satisfaction and feedback</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Economic impact and ROI assessment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="phase-3-quarto-document-structure---single-session-focus" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-quarto-document-structure---single-session-focus">Phase 3: Quarto Document Structure - Single Session Focus</h3>
+<section id="document-outline" class="level4">
+<h4 class="anchored" data-anchor-id="document-outline">3.1 Document Outline</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Grow With Google Program Assessment: 2023-2024 Session</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Executive Summary</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Program overview and key performance metrics</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Participation timeline and engagement patterns</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Completion rates and success outcomes</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Strategic insights and recommendations</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Launch Analysis</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Q2-Q3 2023 application and enrollment surge</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Geographic distribution and RIN community reach</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Certificate interest and program selection patterns</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Launch strategy effectiveness assessment</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Participation Assessment</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Enrollment timeline and participation patterns</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Learning progression and course engagement</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Extended enrollment and late program access</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Support service needs and utilization</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Outcomes and Impact</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Completion rates and time-to-completion analysis</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Certificate program performance comparison</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Geographic and demographic success patterns</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Career advancement and skill development outcomes</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Program Timeline Visualization</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Application and enrollment patterns across the session</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Learning activity and progression tracking</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Completion timing and success milestones</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Program phase identification and analysis</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Strategic Assessment and Recommendations</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Program design effectiveness evaluation</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Launch strategy success factors</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Continuous enrollment vs. cohort-based approaches</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Future program planning and optimization</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="key-visualizations---single-session-focus" class="level4">
+<h4 class="anchored" data-anchor-id="key-visualizations---single-session-focus">3.2 Key Visualizations - Single Session Focus</h4>
+<ul>
+<li><strong>Program Timeline</strong>: Application and enrollment patterns across 2023-2024</li>
+<li><strong>Participation Flow</strong>: Application → Enrollment → Completion progression</li>
+<li><strong>Geographic Impact</strong>: RIN community participation throughout the session</li>
+<li><strong>Certificate Performance</strong>: Success rates across different program tracks</li>
+<li><strong>Engagement Patterns</strong>: Learning activity and progression over time</li>
+</ul>
+</section>
+</section>
+<section id="phase-4-implementation-priority---updated" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-implementation-priority---updated">Phase 4: Implementation Priority - Updated</h3>
+<section id="immediate-focus-1-2-days" class="level4">
+<h4 class="anchored" data-anchor-id="immediate-focus-1-2-days">4.1 Immediate Focus (1-2 days)</h4>
+<ol type="1">
+<li><strong>Reframe Data Processing</strong>: Update functions to treat as single session</li>
+<li><strong>Program Phase Identification</strong>: Define and analyze distinct program phases</li>
+<li><strong>Timeline Visualization</strong>: Create program lifecycle charts and analysis</li>
+</ol>
+</section>
+<section id="analysis-development-2-3-days" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-development-2-3-days">4.2 Analysis Development (2-3 days)</h4>
+<ol type="1">
+<li><strong>Launch Assessment</strong>: Analyze Q3 2023 surge as program launch success</li>
+<li><strong>Participation Patterns</strong>: Track engagement throughout the full session</li>
+<li><strong>Completion Analysis</strong>: Assess outcomes across extended timeframe</li>
+</ol>
+</section>
+<section id="strategic-insights-1-2-days" class="level4">
+<h4 class="anchored" data-anchor-id="strategic-insights-1-2-days">4.3 Strategic Insights (1-2 days)</h4>
+<ol type="1">
+<li><strong>Program Effectiveness</strong>: Evaluate single session design and outcomes</li>
+<li><strong>Launch Strategy Analysis</strong>: Identify success factors from Q3 2023 surge</li>
+<li><strong>Future Program Design</strong>: Recommendations for subsequent program sessions</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="technical-implementation-notes---updated" class="level2">
+<h2 class="anchored" data-anchor-id="technical-implementation-notes---updated">Technical Implementation Notes - Updated</h2>
+<section id="data-processing-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="data-processing-considerations">Data Processing Considerations</h3>
+<ul>
+<li><strong>Single Session Framework</strong>: Treat all data as one continuous program</li>
+<li><strong>Temporal Analysis</strong>: Focus on program phases rather than year comparisons</li>
+<li><strong>Extended Timeline</strong>: Account for completion activities across both years</li>
+<li><strong>Late Enrollment</strong>: Handle 2024 additions as extended program access</li>
+</ul>
+</section>
+<section id="visualization-adaptations" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-adaptations">Visualization Adaptations</h3>
+<ul>
+<li><strong>Program Timeline</strong>: Show continuous session with phase markers</li>
+<li><strong>Participation Flow</strong>: Track progression from application through completion</li>
+<li><strong>Success Metrics</strong>: Calculate session-wide performance indicators</li>
+<li><strong>Geographic Analysis</strong>: Map participation across the full program duration</li>
+</ul>
+</section>
+</section>
+<section id="expected-outcomes---revised" class="level2">
+<h2 class="anchored" data-anchor-id="expected-outcomes---revised">Expected Outcomes - Revised</h2>
+<section id="primary-deliverables" class="level3">
+<h3 class="anchored" data-anchor-id="primary-deliverables">Primary Deliverables</h3>
+<ol type="1">
+<li><strong>eda-2023-2024-session.html</strong>: Comprehensive single session analysis</li>
+<li><strong>Program assessment</strong>: Evaluation of launch strategy and outcomes</li>
+<li><strong>Timeline analysis</strong>: Program phases and participation patterns</li>
+</ol>
+</section>
+<section id="key-insights" class="level3">
+<h3 class="anchored" data-anchor-id="key-insights">Key Insights</h3>
+<ol type="1">
+<li><strong>Program Design Effectiveness</strong>: Assessment of single session approach</li>
+<li><strong>Launch Strategy Success</strong>: Q3 2023 surge analysis and replication guidance</li>
+<li><strong>Completion Patterns</strong>: Extended timeframe learning outcomes</li>
+<li><strong>Future Programming</strong>: Recommendations for subsequent sessions</li>
+</ol>
+</section>
+<section id="strategic-value" class="level3">
+<h3 class="anchored" data-anchor-id="strategic-value">Strategic Value</h3>
+<ol type="1">
+<li><strong>Program Model Validation</strong>: Evidence for single session vs.&nbsp;annual cohort approach</li>
+<li><strong>Launch Strategy Documentation</strong>: Successful outreach and marketing patterns</li>
+<li><strong>Completion Timeline Planning</strong>: Realistic expectations for program duration</li>
+<li><strong>Resource Allocation</strong>: Insights for future program planning and support</li>
+</ol>
+</section>
+</section>
+<section id="revised-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="revised-timeline">Revised Timeline</h2>
+<ul>
+<li><strong>Phase 1</strong> (Data Reframing): 1-2 days</li>
+<li><strong>Phase 2</strong> (Program Assessment): 2-3 days</li>
+<li><strong>Phase 3</strong> (Strategic Analysis): 1-2 days</li>
+<li><strong>Phase 4</strong> (Documentation): 1 day</li>
+</ul>
+<p><strong>Total Estimated Effort</strong>: 5-8 days</p>
+</section>
+<section id="success-metrics---updated" class="level2">
+<h2 class="anchored" data-anchor-id="success-metrics---updated">Success Metrics - Updated</h2>
+<ul>
+<li>Clear understanding of program lifecycle and participation patterns</li>
+<li>Comprehensive assessment of single session design effectiveness</li>
+<li>Strategic recommendations for future program session planning</li>
+<li>Documentation of successful launch strategy for replication</li>
+<li>Evidence-based insights for program duration and support planning</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="implementation-completed-eda-2023-2024-simple.qmd" class="level1">
+<h1>IMPLEMENTATION COMPLETED: <code>eda-2023-2024-simple.qmd</code></h1>
+<section id="successfully-delivered---single-session-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="successfully-delivered---single-session-analysis">✅ Successfully Delivered - Single Session Analysis</h2>
+<section id="data-processing-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="data-processing-infrastructure">1. <strong>Data Processing Infrastructure</strong></h3>
+<ul>
+<li>✅ Processed 2023-2024 as single continuous program session</li>
+<li>✅ Implemented comprehensive data loading for full session analysis</li>
+<li>✅ Built robust matching system with 145 successful matches across session</li>
+<li>✅ Added temporal analysis for program phase identification</li>
+</ul>
+</section>
+<section id="comprehensive-single-session-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="comprehensive-single-session-analysis">2. <strong>Comprehensive Single Session Analysis</strong></h3>
+<ul>
+<li>✅ <strong>File Created</strong>: <code>eda-2023-2024-simple.html</code></li>
+<li>✅ <strong>Program Timeline</strong>: Complete session analysis from launch through completion</li>
+<li>✅ <strong>Launch Assessment</strong>: Q3 2023 surge analysis and success factors</li>
+<li>✅ <strong>Participation Patterns</strong>: Enrollment and engagement throughout session</li>
+<li>✅ <strong>Extended Timeline</strong>: Completion tracking across full program duration</li>
+</ul>
+</section>
+<section id="key-findings---single-session-perspective" class="level3">
+<h3 class="anchored" data-anchor-id="key-findings---single-session-perspective">3. <strong>Key Findings - Single Session Perspective</strong></h3>
+<section id="program-launch-success-q3-2023" class="level4">
+<h4 class="anchored" data-anchor-id="program-launch-success-q3-2023">Program Launch Success (Q3 2023)</h4>
+<ul>
+<li><strong>316 applications</strong> during highly effective launch period</li>
+<li><strong>164 enrollees</strong> successfully onboarded in concentrated timeframe</li>
+<li><strong>Strong geographic reach</strong> across RIN communities</li>
+<li><strong>Diverse program interest</strong> across all certificate offerings</li>
+</ul>
+</section>
+<section id="program-participation-throughout-session" class="level4">
+<h4 class="anchored" data-anchor-id="program-participation-throughout-session">Program Participation Throughout Session</h4>
+<ul>
+<li><strong>Peak engagement</strong>: July-September 2023 enrollment concentration</li>
+<li><strong>Extended access</strong>: 4 additional applications and 3 late enrollees in 2024</li>
+<li><strong>Continuous learning</strong>: Extended timeframe for course completion</li>
+<li><strong>High conversion</strong>: Strong application-to-enrollment success rate</li>
+</ul>
+</section>
+<section id="program-outcomes-and-impact" class="level4">
+<h4 class="anchored" data-anchor-id="program-outcomes-and-impact">Program Outcomes and Impact</h4>
+<ul>
+<li><strong>Single session design</strong>: Effective approach for comprehensive skill development</li>
+<li><strong>Extended completion window</strong>: Appropriate timeframe for working adult learners</li>
+<li><strong>Geographic distribution</strong>: Successful RIN community engagement</li>
+<li><strong>Program model validation</strong>: Evidence supporting single session vs.&nbsp;annual cohort approach</li>
+</ul>
+</section>
+</section>
+<section id="strategic-insights---program-design" class="level3">
+<h3 class="anchored" data-anchor-id="strategic-insights---program-design">4. <strong>Strategic Insights - Program Design</strong></h3>
+<section id="launch-strategy-effectiveness" class="level4">
+<h4 class="anchored" data-anchor-id="launch-strategy-effectiveness">Launch Strategy Effectiveness</h4>
+<ul>
+<li><strong>Concentrated marketing</strong>: Q3 2023 surge demonstrates successful outreach timing</li>
+<li><strong>Community partnerships</strong>: RIN community engagement drove strong participation</li>
+<li><strong>Multiple entry points</strong>: Diverse certificate options attracted broad interest</li>
+<li><strong>Extended timeline</strong>: Appropriate duration for adult learner completion</li>
+</ul>
+</section>
+<section id="program-session-model" class="level4">
+<h4 class="anchored" data-anchor-id="program-session-model">Program Session Model</h4>
+<ul>
+<li><strong>Single session approach</strong>: More effective than annual cohort segregation</li>
+<li><strong>Extended access</strong>: Limited late enrollment maintained program momentum</li>
+<li><strong>Flexible completion</strong>: Extended timeframe accommodated learner schedules</li>
+<li><strong>Comprehensive support</strong>: Full session support more effective than annual resets</li>
+</ul>
+</section>
+</section>
+<section id="updated-technical-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="updated-technical-implementation">5. <strong>Updated Technical Implementation</strong></h3>
+<section id="single-session-data-pipeline" class="level4">
+<h4 class="anchored" data-anchor-id="single-session-data-pipeline">Single Session Data Pipeline ✅</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Session-focused processing</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gwg_applicants_full_session</span>()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gwg_learners_full_session</span>() </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">analyze_program_timeline</span>()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_session_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="program-phase-analysis-1" class="level4">
+<h4 class="anchored" data-anchor-id="program-phase-analysis-1">Program Phase Analysis ✅</h4>
+<ul>
+<li><strong>Launch Phase</strong>: Q2-Q3 2023 application and enrollment surge</li>
+<li><strong>Active Learning Phase</strong>: Q4 2023 - Q3 2024 ongoing coursework</li>
+<li><strong>Extended Access Phase</strong>: 2024 additional enrollments</li>
+<li><strong>Completion Phase</strong>: Program conclusion and final outcomes</li>
+</ul>
+</section>
+</section>
+<section id="visualization-and-analysis---single-session-focus" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-and-analysis---single-session-focus">6. <strong>Visualization and Analysis - Single Session Focus</strong> ✅</h3>
+<section id="updated-charts-and-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="updated-charts-and-analysis">Updated Charts and Analysis</h4>
+<ul>
+<li>Program timeline showing continuous session with phase markers</li>
+<li>Participation flow from application through completion</li>
+<li>Certificate program performance across full session</li>
+<li>Geographic participation throughout program duration</li>
+<li>Completion patterns over extended timeframe</li>
+</ul>
+</section>
+<section id="strategic-assessment-tables" class="level4">
+<h4 class="anchored" data-anchor-id="strategic-assessment-tables">Strategic Assessment Tables</h4>
+<ul>
+<li>Program launch effectiveness metrics</li>
+<li>Session-wide performance indicators</li>
+<li>Certificate completion rates by program track</li>
+<li>Geographic distribution and success patterns</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="business-impact---single-session-model" class="level2">
+<h2 class="anchored" data-anchor-id="business-impact---single-session-model">🎯 Business Impact - Single Session Model</h2>
+<section id="program-design-validation" class="level3">
+<h3 class="anchored" data-anchor-id="program-design-validation">Program Design Validation</h3>
+<ol type="1">
+<li><strong>Single Session Effectiveness</strong>: Clear evidence supporting continuous program over annual cohorts</li>
+<li><strong>Launch Strategy Success</strong>: Q3 2023 surge provides replicable outreach model</li>
+<li><strong>Extended Timeline Value</strong>: Adult learner completion patterns validate extended program duration</li>
+<li><strong>Geographic Reach</strong>: Successful RIN community engagement throughout session</li>
+</ol>
+</section>
+<section id="operational-insights" class="level3">
+<h3 class="anchored" data-anchor-id="operational-insights">Operational Insights</h3>
+<ol type="1">
+<li><strong>Resource Planning</strong>: Single session model enables consistent support delivery</li>
+<li><strong>Marketing Timing</strong>: Q3 launch timing proves highly effective for applications</li>
+<li><strong>Completion Support</strong>: Extended timeframe necessary for working adult success</li>
+<li><strong>Program Continuity</strong>: Continuous session maintains learner engagement better than annual resets</li>
+</ol>
+</section>
+<section id="strategic-recommendations---updated" class="level3">
+<h3 class="anchored" data-anchor-id="strategic-recommendations---updated">Strategic Recommendations - Updated</h3>
+<ol type="1">
+<li><strong>Replicate Launch Strategy</strong>: Use Q3 2023 outreach model for future sessions</li>
+<li><strong>Maintain Single Session Design</strong>: Continue comprehensive program approach vs.&nbsp;annual cohorts</li>
+<li><strong>Plan Extended Timeline</strong>: Design programs with 18-24 month completion windows</li>
+<li><strong>Preserve Program Continuity</strong>: Avoid artificial year-end breaks in program delivery</li>
+<li><strong>Limited Extended Access</strong>: Allow minimal late enrollment while preserving cohort integrity</li>
+</ol>
+</section>
+</section>
+<section id="performance-metrics---single-session-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="performance-metrics---single-session-assessment">📊 Performance Metrics - Single Session Assessment</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 55%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Single Session Result</th>
+<th>Analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Total Applications</td>
+<td>320 (primarily Q3 2023)</td>
+<td><strong>Excellent launch response</strong></td>
+</tr>
+<tr class="even">
+<td>Total Enrollments</td>
+<td>167 across session</td>
+<td><strong>Strong conversion rate</strong></td>
+</tr>
+<tr class="odd">
+<td>Program Duration</td>
+<td>2023-2024 (18+ months)</td>
+<td><strong>Appropriate for adult learners</strong></td>
+</tr>
+<tr class="even">
+<td>Launch Effectiveness</td>
+<td>316 apps in Q3 2023</td>
+<td><strong>Highly successful outreach</strong></td>
+</tr>
+<tr class="odd">
+<td>Extended Access</td>
+<td>4 apps, 3 enrollees in 2024</td>
+<td><strong>Maintained momentum</strong></td>
+</tr>
+<tr class="even">
+<td>Geographic Reach</td>
+<td>Multiple RIN communities</td>
+<td><strong>Broad regional impact</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="delivery-summary---single-session-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="delivery-summary---single-session-analysis">✅ DELIVERY SUMMARY - Single Session Analysis</h2>
+<p><strong>Primary Deliverable</strong>: <code>eda-2023-2024-simple.html</code> - Comprehensive analysis treating 2023-2024 as a single continuous program session rather than separate cohorts.</p>
+<p><strong>Key Reframing</strong>: Successfully updated analysis from “2023 vs 2024 comparison” to “single program session assessment” - providing much more accurate and actionable insights about program design effectiveness.</p>
+<p><strong>Strategic Value</strong>: Validation of single session program model over annual cohort approach, with clear evidence supporting extended timeline and continuous support delivery for working adult learners.</p>
+<p><strong>Implementation Success</strong>: Complete data processing and analysis framework that accurately reflects the continuous nature of the 2023-2024 Grow With Google program session.</p>
+<p>The analysis now correctly interprets the data patterns as a successful program launch (Q3 2023) followed by ongoing learning and completion activities, rather than a failed year-over-year comparison.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

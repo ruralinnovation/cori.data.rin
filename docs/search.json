@@ -1,22 +1,125 @@
 [
   {
-    "objectID": "coursera/eda.html#original-data-about-all-grow-with-google-learners",
-    "href": "coursera/eda.html#original-data-about-all-grow-with-google-learners",
-    "title": "Exploratory data analysis for impact evaluation",
-    "section": "Original data about all Grow With Google learners",
-    "text": "Original data about all Grow With Google learners\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "objectID": "coursera/CLAUDE.html",
+    "href": "coursera/CLAUDE.html",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "IMPORTANT CLARIFICATION: GWG learners were not segregated into cohorts between 2023 and 2024. The 2023-2024 period represents a single continuous program session rather than separate annual cohorts.\nProgram Characteristics: - Single Session Duration: Continuous program from 2023 through 2024 - Application Period: Primarily Q2-Q3 2023 with limited additional applications in 2024 - Enrollment Period: Heavy concentration in Q3 2023 (July-September) with minimal 2024 additions - Program Completion: Learners had extended timeframe to complete coursework across both years\nThis reframing changes the analysis from a “year-over-year comparison” to a comprehensive single program assessment with temporal participation patterns.\n\n\n\n\n\n\n\n\nProgram Launch and Uptake: Q2-Q3 2023 application and enrollment surge\nParticipation Timeline: Application-to-enrollment-to-completion progression across the full session\nProgram Lifecycle: Understanding the natural arc from launch through completion\nLate Program Access: Limited 2024 applications as program matured\n\n\n\n\n\nLaunch Phase (Q2-Q3 2023): Peak application and enrollment activity\nActive Learning Phase (Q4 2023 - Q3 2024): Ongoing coursework completion\nProgram Wind-down (Q4 2024): Final completions and program conclusion\nContinuous Enrollment: Small number of additional participants throughout 2024\n\n\n\n\n\nOverall Reach: Total participants across the full session\nEngagement Patterns: Learning activity and progression over time\nCompletion Analysis: Success rates and time-to-completion across the session\nGeographic Impact: RIN community participation and outcomes\n\n\n\n\n\n\n\n\n\nProgram Applications (Grow with Google Student Application (Responses) [COPY]_2024_06_04.csv)\n\n320 total applications across the program session\nPeak activity: Q2-Q3 2023 (316 applications)\nContinued interest: 4 additional applications in 2024\nGoogle Forms format with demographics, motivations, and program interests\n\nLearner Performance (user-filtering-exports_center-on-rural-innovation_LearnersExport_2024-06-04.csv)\n\n167 total learners across the program session\nPrimary enrollment: 164 learners joined in 2023\nExtended access: 3 additional learners joined in 2024\nComprehensive performance tracking through program completion\n\nProgram Timeline Analysis\n\nApplication patterns: Heavy Q3 2023 concentration, minimal 2024 activity\nEnrollment timing: Concentrated July-September 2023 launch period\nCompletion tracking: Extended timeframe for course completion across both years\n\n\n\n\n\n\n\n\n\n\n# Updated function for single session analysis\nget_gwg_applicants_full_session &lt;- function(data_file) {\n  # Process all applications as single program session\n  # Add temporal features for program phase identification\n  # Flag launch vs. extended enrollment periods\n  # Standardize certificate categories across full session\n}\n\nget_gwg_learners_full_session &lt;- function(data_file) {\n  # Process all learners as single session participants\n  # Calculate program engagement duration and patterns\n  # Track completion progress across extended timeframe\n  # Identify enrollment timing within program lifecycle\n}\n\n\n\n# Identify distinct program phases\ncalculate_program_phases &lt;- function(applications, learners) {\n  # Launch Phase: Q2-Q3 2023 (peak activity)\n  # Active Phase: Q4 2023 - Q3 2024 (ongoing learning)\n  # Completion Phase: Q4 2024 (program conclusion)\n  # Extended Access: 2024 additions (late enrollees)\n}\n\n# Analyze participation patterns across phases\nanalyze_program_timeline &lt;- function(applications, learners) {\n  # Application surge and timing\n  # Enrollment concentration and distribution\n  # Learning progression and completion patterns\n  # Geographic and demographic participation trends\n}\n\n\n\n# Calculate program-wide performance indicators\ncalculate_session_metrics &lt;- function(matched_data) {\n  # Overall conversion rate (application to enrollment)\n  # Program reach and geographic distribution\n  # Completion rates and time-to-completion\n  # Engagement levels and learning progression\n  # Certificate program popularity and success rates\n}\n\n\n\n\n\n\n## Program Launch Assessment (Q2-Q3 2023)\n\n### Launch Effectiveness\n- Application volume: 316 applications in primary launch period\n- Enrollment success: 164 learners successfully onboarded\n- Geographic reach: RIN community participation analysis\n- Certificate distribution: Interest across program offerings\n\n### Launch Timeline\n- Pre-launch preparation and marketing\n- Peak application period identification\n- Enrollment processing and onboarding\n- Initial learner engagement patterns\n\n\n\n## Program Participation Throughout Session\n\n### Enrollment Patterns\n- Primary enrollment: July-September 2023 concentration\n- Extended enrollment: Minimal 2024 additions\n- Application-to-enrollment conversion analysis\n- Time lag between application and program start\n\n### Learning Progression\n- Course enrollment distribution across certificate programs\n- Completion rates and timing throughout the session\n- Engagement levels and activity patterns\n- Support service utilization and effectiveness\n\n\n\n## Program Outcomes and Impact\n\n### Completion Analysis\n- Overall completion rates for the full session\n- Time-to-completion patterns across certificate programs\n- Success factors and completion barriers\n- Geographic variations in completion rates\n\n### Program Impact\n- RIN community participation and outcomes\n- Career advancement and skill development\n- Program satisfaction and feedback\n- Economic impact and ROI assessment\n\n\n\n\n\n\n# Grow With Google Program Assessment: 2023-2024 Session\n\n## Executive Summary\n- Program overview and key performance metrics\n- Participation timeline and engagement patterns\n- Completion rates and success outcomes\n- Strategic insights and recommendations\n\n## Program Launch Analysis\n- Q2-Q3 2023 application and enrollment surge\n- Geographic distribution and RIN community reach\n- Certificate interest and program selection patterns\n- Launch strategy effectiveness assessment\n\n## Program Participation Assessment\n- Enrollment timeline and participation patterns\n- Learning progression and course engagement\n- Extended enrollment and late program access\n- Support service needs and utilization\n\n## Program Outcomes and Impact\n- Completion rates and time-to-completion analysis\n- Certificate program performance comparison\n- Geographic and demographic success patterns\n- Career advancement and skill development outcomes\n\n## Program Timeline Visualization\n- Application and enrollment patterns across the session\n- Learning activity and progression tracking\n- Completion timing and success milestones\n- Program phase identification and analysis\n\n## Strategic Assessment and Recommendations\n- Program design effectiveness evaluation\n- Launch strategy success factors\n- Continuous enrollment vs. cohort-based approaches\n- Future program planning and optimization\n\n\n\n\nProgram Timeline: Application and enrollment patterns across 2023-2024\nParticipation Flow: Application → Enrollment → Completion progression\nGeographic Impact: RIN community participation throughout the session\nCertificate Performance: Success rates across different program tracks\nEngagement Patterns: Learning activity and progression over time\n\n\n\n\n\n\n\n\nReframe Data Processing: Update functions to treat as single session\nProgram Phase Identification: Define and analyze distinct program phases\nTimeline Visualization: Create program lifecycle charts and analysis\n\n\n\n\n\nLaunch Assessment: Analyze Q3 2023 surge as program launch success\nParticipation Patterns: Track engagement throughout the full session\nCompletion Analysis: Assess outcomes across extended timeframe\n\n\n\n\n\nProgram Effectiveness: Evaluate single session design and outcomes\nLaunch Strategy Analysis: Identify success factors from Q3 2023 surge\nFuture Program Design: Recommendations for subsequent program sessions\n\n\n\n\n\n\n\n\n\nSingle Session Framework: Treat all data as one continuous program\nTemporal Analysis: Focus on program phases rather than year comparisons\nExtended Timeline: Account for completion activities across both years\nLate Enrollment: Handle 2024 additions as extended program access\n\n\n\n\n\nProgram Timeline: Show continuous session with phase markers\nParticipation Flow: Track progression from application through completion\nSuccess Metrics: Calculate session-wide performance indicators\nGeographic Analysis: Map participation across the full program duration\n\n\n\n\n\n\n\n\neda-2023-2024-session.html: Comprehensive single session analysis\nProgram assessment: Evaluation of launch strategy and outcomes\nTimeline analysis: Program phases and participation patterns\n\n\n\n\n\nProgram Design Effectiveness: Assessment of single session approach\nLaunch Strategy Success: Q3 2023 surge analysis and replication guidance\nCompletion Patterns: Extended timeframe learning outcomes\nFuture Programming: Recommendations for subsequent sessions\n\n\n\n\n\nProgram Model Validation: Evidence for single session vs. annual cohort approach\nLaunch Strategy Documentation: Successful outreach and marketing patterns\nCompletion Timeline Planning: Realistic expectations for program duration\nResource Allocation: Insights for future program planning and support\n\n\n\n\n\n\nPhase 1 (Data Reframing): 1-2 days\nPhase 2 (Program Assessment): 2-3 days\nPhase 3 (Strategic Analysis): 1-2 days\nPhase 4 (Documentation): 1 day\n\nTotal Estimated Effort: 5-8 days\n\n\n\n\nClear understanding of program lifecycle and participation patterns\nComprehensive assessment of single session design effectiveness\nStrategic recommendations for future program session planning\nDocumentation of successful launch strategy for replication\nEvidence-based insights for program duration and support planning"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#program-overview---updated",
+    "href": "coursera/CLAUDE.html#program-overview---updated",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "IMPORTANT CLARIFICATION: GWG learners were not segregated into cohorts between 2023 and 2024. The 2023-2024 period represents a single continuous program session rather than separate annual cohorts.\nProgram Characteristics: - Single Session Duration: Continuous program from 2023 through 2024 - Application Period: Primarily Q2-Q3 2023 with limited additional applications in 2024 - Enrollment Period: Heavy concentration in Q3 2023 (July-September) with minimal 2024 additions - Program Completion: Learners had extended timeframe to complete coursework across both years\nThis reframing changes the analysis from a “year-over-year comparison” to a comprehensive single program assessment with temporal participation patterns."
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#revised-analysis-framework",
+    "href": "coursera/CLAUDE.html#revised-analysis-framework",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "Program Launch and Uptake: Q2-Q3 2023 application and enrollment surge\nParticipation Timeline: Application-to-enrollment-to-completion progression across the full session\nProgram Lifecycle: Understanding the natural arc from launch through completion\nLate Program Access: Limited 2024 applications as program matured\n\n\n\n\n\nLaunch Phase (Q2-Q3 2023): Peak application and enrollment activity\nActive Learning Phase (Q4 2023 - Q3 2024): Ongoing coursework completion\nProgram Wind-down (Q4 2024): Final completions and program conclusion\nContinuous Enrollment: Small number of additional participants throughout 2024\n\n\n\n\n\nOverall Reach: Total participants across the full session\nEngagement Patterns: Learning activity and progression over time\nCompletion Analysis: Success rates and time-to-completion across the session\nGeographic Impact: RIN community participation and outcomes"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#data-sources-and-structure",
+    "href": "coursera/CLAUDE.html#data-sources-and-structure",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "Program Applications (Grow with Google Student Application (Responses) [COPY]_2024_06_04.csv)\n\n320 total applications across the program session\nPeak activity: Q2-Q3 2023 (316 applications)\nContinued interest: 4 additional applications in 2024\nGoogle Forms format with demographics, motivations, and program interests\n\nLearner Performance (user-filtering-exports_center-on-rural-innovation_LearnersExport_2024-06-04.csv)\n\n167 total learners across the program session\nPrimary enrollment: 164 learners joined in 2023\nExtended access: 3 additional learners joined in 2024\nComprehensive performance tracking through program completion\n\nProgram Timeline Analysis\n\nApplication patterns: Heavy Q3 2023 concentration, minimal 2024 activity\nEnrollment timing: Concentrated July-September 2023 launch period\nCompletion tracking: Extended timeframe for course completion across both years"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#implementation-approach",
+    "href": "coursera/CLAUDE.html#implementation-approach",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "# Updated function for single session analysis\nget_gwg_applicants_full_session &lt;- function(data_file) {\n  # Process all applications as single program session\n  # Add temporal features for program phase identification\n  # Flag launch vs. extended enrollment periods\n  # Standardize certificate categories across full session\n}\n\nget_gwg_learners_full_session &lt;- function(data_file) {\n  # Process all learners as single session participants\n  # Calculate program engagement duration and patterns\n  # Track completion progress across extended timeframe\n  # Identify enrollment timing within program lifecycle\n}\n\n\n\n# Identify distinct program phases\ncalculate_program_phases &lt;- function(applications, learners) {\n  # Launch Phase: Q2-Q3 2023 (peak activity)\n  # Active Phase: Q4 2023 - Q3 2024 (ongoing learning)\n  # Completion Phase: Q4 2024 (program conclusion)\n  # Extended Access: 2024 additions (late enrollees)\n}\n\n# Analyze participation patterns across phases\nanalyze_program_timeline &lt;- function(applications, learners) {\n  # Application surge and timing\n  # Enrollment concentration and distribution\n  # Learning progression and completion patterns\n  # Geographic and demographic participation trends\n}\n\n\n\n# Calculate program-wide performance indicators\ncalculate_session_metrics &lt;- function(matched_data) {\n  # Overall conversion rate (application to enrollment)\n  # Program reach and geographic distribution\n  # Completion rates and time-to-completion\n  # Engagement levels and learning progression\n  # Certificate program popularity and success rates\n}\n\n\n\n\n\n\n## Program Launch Assessment (Q2-Q3 2023)\n\n### Launch Effectiveness\n- Application volume: 316 applications in primary launch period\n- Enrollment success: 164 learners successfully onboarded\n- Geographic reach: RIN community participation analysis\n- Certificate distribution: Interest across program offerings\n\n### Launch Timeline\n- Pre-launch preparation and marketing\n- Peak application period identification\n- Enrollment processing and onboarding\n- Initial learner engagement patterns\n\n\n\n## Program Participation Throughout Session\n\n### Enrollment Patterns\n- Primary enrollment: July-September 2023 concentration\n- Extended enrollment: Minimal 2024 additions\n- Application-to-enrollment conversion analysis\n- Time lag between application and program start\n\n### Learning Progression\n- Course enrollment distribution across certificate programs\n- Completion rates and timing throughout the session\n- Engagement levels and activity patterns\n- Support service utilization and effectiveness\n\n\n\n## Program Outcomes and Impact\n\n### Completion Analysis\n- Overall completion rates for the full session\n- Time-to-completion patterns across certificate programs\n- Success factors and completion barriers\n- Geographic variations in completion rates\n\n### Program Impact\n- RIN community participation and outcomes\n- Career advancement and skill development\n- Program satisfaction and feedback\n- Economic impact and ROI assessment\n\n\n\n\n\n\n# Grow With Google Program Assessment: 2023-2024 Session\n\n## Executive Summary\n- Program overview and key performance metrics\n- Participation timeline and engagement patterns\n- Completion rates and success outcomes\n- Strategic insights and recommendations\n\n## Program Launch Analysis\n- Q2-Q3 2023 application and enrollment surge\n- Geographic distribution and RIN community reach\n- Certificate interest and program selection patterns\n- Launch strategy effectiveness assessment\n\n## Program Participation Assessment\n- Enrollment timeline and participation patterns\n- Learning progression and course engagement\n- Extended enrollment and late program access\n- Support service needs and utilization\n\n## Program Outcomes and Impact\n- Completion rates and time-to-completion analysis\n- Certificate program performance comparison\n- Geographic and demographic success patterns\n- Career advancement and skill development outcomes\n\n## Program Timeline Visualization\n- Application and enrollment patterns across the session\n- Learning activity and progression tracking\n- Completion timing and success milestones\n- Program phase identification and analysis\n\n## Strategic Assessment and Recommendations\n- Program design effectiveness evaluation\n- Launch strategy success factors\n- Continuous enrollment vs. cohort-based approaches\n- Future program planning and optimization\n\n\n\n\nProgram Timeline: Application and enrollment patterns across 2023-2024\nParticipation Flow: Application → Enrollment → Completion progression\nGeographic Impact: RIN community participation throughout the session\nCertificate Performance: Success rates across different program tracks\nEngagement Patterns: Learning activity and progression over time\n\n\n\n\n\n\n\n\nReframe Data Processing: Update functions to treat as single session\nProgram Phase Identification: Define and analyze distinct program phases\nTimeline Visualization: Create program lifecycle charts and analysis\n\n\n\n\n\nLaunch Assessment: Analyze Q3 2023 surge as program launch success\nParticipation Patterns: Track engagement throughout the full session\nCompletion Analysis: Assess outcomes across extended timeframe\n\n\n\n\n\nProgram Effectiveness: Evaluate single session design and outcomes\nLaunch Strategy Analysis: Identify success factors from Q3 2023 surge\nFuture Program Design: Recommendations for subsequent program sessions"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#technical-implementation-notes---updated",
+    "href": "coursera/CLAUDE.html#technical-implementation-notes---updated",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "Single Session Framework: Treat all data as one continuous program\nTemporal Analysis: Focus on program phases rather than year comparisons\nExtended Timeline: Account for completion activities across both years\nLate Enrollment: Handle 2024 additions as extended program access\n\n\n\n\n\nProgram Timeline: Show continuous session with phase markers\nParticipation Flow: Track progression from application through completion\nSuccess Metrics: Calculate session-wide performance indicators\nGeographic Analysis: Map participation across the full program duration"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#expected-outcomes---revised",
+    "href": "coursera/CLAUDE.html#expected-outcomes---revised",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "eda-2023-2024-session.html: Comprehensive single session analysis\nProgram assessment: Evaluation of launch strategy and outcomes\nTimeline analysis: Program phases and participation patterns\n\n\n\n\n\nProgram Design Effectiveness: Assessment of single session approach\nLaunch Strategy Success: Q3 2023 surge analysis and replication guidance\nCompletion Patterns: Extended timeframe learning outcomes\nFuture Programming: Recommendations for subsequent sessions\n\n\n\n\n\nProgram Model Validation: Evidence for single session vs. annual cohort approach\nLaunch Strategy Documentation: Successful outreach and marketing patterns\nCompletion Timeline Planning: Realistic expectations for program duration\nResource Allocation: Insights for future program planning and support"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#revised-timeline",
+    "href": "coursera/CLAUDE.html#revised-timeline",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "Phase 1 (Data Reframing): 1-2 days\nPhase 2 (Program Assessment): 2-3 days\nPhase 3 (Strategic Analysis): 1-2 days\nPhase 4 (Documentation): 1 day\n\nTotal Estimated Effort: 5-8 days"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#success-metrics---updated",
+    "href": "coursera/CLAUDE.html#success-metrics---updated",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "",
+    "text": "Clear understanding of program lifecycle and participation patterns\nComprehensive assessment of single session design effectiveness\nStrategic recommendations for future program session planning\nDocumentation of successful launch strategy for replication\nEvidence-based insights for program duration and support planning"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#successfully-delivered---single-session-analysis",
+    "href": "coursera/CLAUDE.html#successfully-delivered---single-session-analysis",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "✅ Successfully Delivered - Single Session Analysis",
+    "text": "✅ Successfully Delivered - Single Session Analysis\n\n1. Data Processing Infrastructure\n\n✅ Processed 2023-2024 as single continuous program session\n✅ Implemented comprehensive data loading for full session analysis\n✅ Built robust matching system with 145 successful matches across session\n✅ Added temporal analysis for program phase identification\n\n\n\n2. Comprehensive Single Session Analysis\n\n✅ File Created: eda-2023-2024-simple.html\n✅ Program Timeline: Complete session analysis from launch through completion\n✅ Launch Assessment: Q3 2023 surge analysis and success factors\n✅ Participation Patterns: Enrollment and engagement throughout session\n✅ Extended Timeline: Completion tracking across full program duration\n\n\n\n3. Key Findings - Single Session Perspective\n\nProgram Launch Success (Q3 2023)\n\n316 applications during highly effective launch period\n164 enrollees successfully onboarded in concentrated timeframe\nStrong geographic reach across RIN communities\nDiverse program interest across all certificate offerings\n\n\n\nProgram Participation Throughout Session\n\nPeak engagement: July-September 2023 enrollment concentration\nExtended access: 4 additional applications and 3 late enrollees in 2024\nContinuous learning: Extended timeframe for course completion\nHigh conversion: Strong application-to-enrollment success rate\n\n\n\nProgram Outcomes and Impact\n\nSingle session design: Effective approach for comprehensive skill development\nExtended completion window: Appropriate timeframe for working adult learners\nGeographic distribution: Successful RIN community engagement\nProgram model validation: Evidence supporting single session vs. annual cohort approach\n\n\n\n\n4. Strategic Insights - Program Design\n\nLaunch Strategy Effectiveness\n\nConcentrated marketing: Q3 2023 surge demonstrates successful outreach timing\nCommunity partnerships: RIN community engagement drove strong participation\nMultiple entry points: Diverse certificate options attracted broad interest\nExtended timeline: Appropriate duration for adult learner completion\n\n\n\nProgram Session Model\n\nSingle session approach: More effective than annual cohort segregation\nExtended access: Limited late enrollment maintained program momentum\nFlexible completion: Extended timeframe accommodated learner schedules\nComprehensive support: Full session support more effective than annual resets\n\n\n\n\n5. Updated Technical Implementation\n\nSingle Session Data Pipeline ✅\n# Session-focused processing\nget_gwg_applicants_full_session()\nget_gwg_learners_full_session() \nanalyze_program_timeline()\ncalculate_session_metrics()\n\n\nProgram Phase Analysis ✅\n\nLaunch Phase: Q2-Q3 2023 application and enrollment surge\nActive Learning Phase: Q4 2023 - Q3 2024 ongoing coursework\nExtended Access Phase: 2024 additional enrollments\nCompletion Phase: Program conclusion and final outcomes\n\n\n\n\n6. Visualization and Analysis - Single Session Focus ✅\n\nUpdated Charts and Analysis\n\nProgram timeline showing continuous session with phase markers\nParticipation flow from application through completion\nCertificate program performance across full session\nGeographic participation throughout program duration\nCompletion patterns over extended timeframe\n\n\n\nStrategic Assessment Tables\n\nProgram launch effectiveness metrics\nSession-wide performance indicators\nCertificate completion rates by program track\nGeographic distribution and success patterns"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#business-impact---single-session-model",
+    "href": "coursera/CLAUDE.html#business-impact---single-session-model",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "🎯 Business Impact - Single Session Model",
+    "text": "🎯 Business Impact - Single Session Model\n\nProgram Design Validation\n\nSingle Session Effectiveness: Clear evidence supporting continuous program over annual cohorts\nLaunch Strategy Success: Q3 2023 surge provides replicable outreach model\nExtended Timeline Value: Adult learner completion patterns validate extended program duration\nGeographic Reach: Successful RIN community engagement throughout session\n\n\n\nOperational Insights\n\nResource Planning: Single session model enables consistent support delivery\nMarketing Timing: Q3 launch timing proves highly effective for applications\nCompletion Support: Extended timeframe necessary for working adult success\nProgram Continuity: Continuous session maintains learner engagement better than annual resets\n\n\n\nStrategic Recommendations - Updated\n\nReplicate Launch Strategy: Use Q3 2023 outreach model for future sessions\nMaintain Single Session Design: Continue comprehensive program approach vs. annual cohorts\nPlan Extended Timeline: Design programs with 18-24 month completion windows\nPreserve Program Continuity: Avoid artificial year-end breaks in program delivery\nLimited Extended Access: Allow minimal late enrollment while preserving cohort integrity"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#performance-metrics---single-session-assessment",
+    "href": "coursera/CLAUDE.html#performance-metrics---single-session-assessment",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "📊 Performance Metrics - Single Session Assessment",
+    "text": "📊 Performance Metrics - Single Session Assessment\n\n\n\n\n\n\n\n\nMetric\nSingle Session Result\nAnalysis\n\n\n\n\nTotal Applications\n320 (primarily Q3 2023)\nExcellent launch response\n\n\nTotal Enrollments\n167 across session\nStrong conversion rate\n\n\nProgram Duration\n2023-2024 (18+ months)\nAppropriate for adult learners\n\n\nLaunch Effectiveness\n316 apps in Q3 2023\nHighly successful outreach\n\n\nExtended Access\n4 apps, 3 enrollees in 2024\nMaintained momentum\n\n\nGeographic Reach\nMultiple RIN communities\nBroad regional impact"
+  },
+  {
+    "objectID": "coursera/CLAUDE.html#delivery-summary---single-session-analysis",
+    "href": "coursera/CLAUDE.html#delivery-summary---single-session-analysis",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "✅ DELIVERY SUMMARY - Single Session Analysis",
+    "text": "✅ DELIVERY SUMMARY - Single Session Analysis\nPrimary Deliverable: eda-2023-2024-simple.html - Comprehensive analysis treating 2023-2024 as a single continuous program session rather than separate cohorts.\nKey Reframing: Successfully updated analysis from “2023 vs 2024 comparison” to “single program session assessment” - providing much more accurate and actionable insights about program design effectiveness.\nStrategic Value: Validation of single session program model over annual cohort approach, with clear evidence supporting extended timeline and continuous support delivery for working adult learners.\nImplementation Success: Complete data processing and analysis framework that accurately reflects the continuous nature of the 2023-2024 Grow With Google program session.\nThe analysis now correctly interprets the data patterns as a successful program launch (Q3 2023) followed by ongoing learning and completion activities, rather than a failed year-over-year comparison."
+  },
+  {
+    "objectID": "coursera/downloads.html",
+    "href": "coursera/downloads.html",
+    "title": "Data downloads",
+    "section": "",
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Grow With Google applicants\nDownload data about individual learners enrolled in Coursera coursework\nDownload certificate completion data by RIN community\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)"
+  },
+  {
+    "objectID": "cisco/eda-2025.html#simple-eda",
+    "href": "cisco/eda-2025.html#simple-eda",
+    "title": "Cisco Network Academy program analysis",
+    "section": "Simple EDA",
+    "text": "Simple EDA\n\nHow many RIN community members enrolled in a Cisco Networking Academy course?\n\n101\n\n\n\nHow many RIN community members completed the Cisco coursework?\nNote: Some enrolled learners have completed both courses simultaneously\n\n14\n\n\n\n\n\n\n\n\n\nWho are the RIN community members enrolled in Cisco Networking Academy course(s)?\nNote: Full table view may require scrolling to the right =&gt;\n\n\n\n\n\n\n\n\nWho completed the training?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhy did learners want to complete this certificate training?\n\n15% of learners who selected ‘Increase my skills’ completed the first course.\n\n\n8% of learners who selected ‘Get a new or better job’ completed the first course.\n\n\n0% of learners who selected ‘Start my own business’ completed the first course.\n\n\n7% of learners who selected ‘Case Manager recommended’ completed the first course.\n\n\n0% of learners who selected ‘I don’t know’ completed the first course.",
     "crumbs": [
       "Rural Innovation Network data",
-      "Grow With Google (2025)",
+      "Cisco Network Academy (2024)",
       "EDA for impact evaluation"
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Rural Innovation Network data",
-    "section": "",
-    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+    "objectID": "cisco/eda-2025.html#original-data-about-all-cisco-learners-in-rin-communities",
+    "href": "cisco/eda-2025.html#original-data-about-all-cisco-learners-in-rin-communities",
+    "title": "Cisco Network Academy program analysis",
+    "section": "Original data about all Cisco learners in RIN communities",
+    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco Network Academy (2024)",
+      "EDA for impact evaluation"
+    ]
   },
   {
     "objectID": "cisco/downloads.html",
@@ -31,46 +134,163 @@
     ]
   },
   {
-    "objectID": "cisco/eda.html",
-    "href": "cisco/eda.html",
-    "title": "Exploratory data analysis for impact evaluation",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Rural Innovation Network data",
     "section": "",
-    "text": "Note: Some enrolled learners have completed both courses simultaneously\n\n\n\n\n\n\n\n\n\n\nNote: Full table view may require scrolling to the right =&gt;",
+    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+  },
+  {
+    "objectID": "coursera/eda-2025.html#original-data-about-all-grow-with-google-learners",
+    "href": "coursera/eda-2025.html#original-data-about-all-grow-with-google-learners",
+    "title": "Grow With Google program analysis",
+    "section": "Original data about all Grow With Google learners",
+    "text": "Original data about all Grow With Google learners\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
     "crumbs": [
       "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
+      "Grow With Google (2025)",
       "EDA for impact evaluation"
     ]
   },
   {
-    "objectID": "cisco/eda.html#simple-eda",
-    "href": "cisco/eda.html#simple-eda",
-    "title": "Exploratory data analysis for impact evaluation",
-    "section": "",
-    "text": "Note: Some enrolled learners have completed both courses simultaneously\n\n\n\n\n\n\n\n\n\n\nNote: Full table view may require scrolling to the right =&gt;",
+    "objectID": "coursera/eda-2023-2024.html#executive-summary-2023-2024-program-session",
+    "href": "coursera/eda-2023-2024.html#executive-summary-2023-2024-program-session",
+    "title": "Grow With Google program analysis",
+    "section": "Executive Summary: 2023-2024 Program Session",
+    "text": "Executive Summary: 2023-2024 Program Session\n\nProgram Session Highlights\n\nTotal Applications: 319\nTotal Learners: 166\nOverall Conversion Rate: 42.3%\nProgram Design: Single continuous session spanning 2023-2024\nCourse Completion Years: Activity tracked by latest program engagement\n\n\n\n\n\n\n\n\n\nCourse Completion Year Performance\n\n\nCourse Completion Year\nActive Learners\nAvg Enrollments\nAvg Completions\nCompletion Rate (%)\n\n\n\n\n2023\n90\n1.88\n0.74\n17.8\n\n\n2024\n45\n3.87\n2.49\n62.2",
     "crumbs": [
       "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
+      "Grow With Google (2023 - 2024)",
       "EDA for impact evaluation"
     ]
   },
   {
-    "objectID": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
-    "href": "cisco/eda.html#original-data-about-all-cisco-learners-in-rin-communities",
-    "title": "Exploratory data analysis for impact evaluation",
-    "section": "Original data about all Cisco learners in RIN communities",
-    "text": "Original data about all Cisco learners in RIN communities\n\n\n\n\n\n\n\nExpansion of learner demographics and motivation responses\nDownload CSV table of expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "objectID": "coursera/eda-2023-2024.html#application-timeline-analysis",
+    "href": "coursera/eda-2023-2024.html#application-timeline-analysis",
+    "title": "Grow With Google program analysis",
+    "section": "Application Timeline Analysis",
+    "text": "Application Timeline Analysis",
     "crumbs": [
       "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
+      "Grow With Google (2023 - 2024)",
       "EDA for impact evaluation"
     ]
   },
   {
-    "objectID": "coursera/downloads.html",
-    "href": "coursera/downloads.html",
-    "title": "Data downloads",
+    "objectID": "coursera/eda-2023-2024.html#course-completion-year-analysis",
+    "href": "coursera/eda-2023-2024.html#course-completion-year-analysis",
+    "title": "Grow With Google program analysis",
+    "section": "Course Completion Year Analysis",
+    "text": "Course Completion Year Analysis",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#certificate-interest-distribution",
+    "href": "coursera/eda-2023-2024.html#certificate-interest-distribution",
+    "title": "Grow With Google program analysis",
+    "section": "Certificate Interest Distribution",
+    "text": "Certificate Interest Distribution",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#learner-performance-by-course-completion-year",
+    "href": "coursera/eda-2023-2024.html#learner-performance-by-course-completion-year",
+    "title": "Grow With Google program analysis",
+    "section": "Learner Performance by Course Completion Year",
+    "text": "Learner Performance by Course Completion Year\n\n\n\n\n\n\n\n\nLearner Performance Metrics by Course Completion Year\n\n\nCourse Completion Year\nTotal Learners\nAvg Enrollments\nAvg Completions\nCompletion Rate (%)\nHigh Engagement Rate (%)\nAvg Engagement Days\n\n\n\n\n2023\n111\n1.83\n0.77\n18.9\n32.4\n20.8\n\n\n2024\n55\n3.93\n2.47\n61.8\n78.2\n210.7",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#session-conversion-analysis",
+    "href": "coursera/eda-2023-2024.html#session-conversion-analysis",
+    "title": "Grow With Google program analysis",
+    "section": "Session Conversion Analysis",
+    "text": "Session Conversion Analysis\n\n\n\n\n\n\n\n\nSession Conversion Analysis\n\n\nPeriod\nApplications\nConversions\nConversion Rate (%)\n\n\n\n\nOverall Session\n319\n135\n42.3\n\n\n2023 Applications\n315\n135\n42.9\n\n\n2024 Applications\n4\n0\n0.0",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#course-completion-year-progression",
+    "href": "coursera/eda-2023-2024.html#course-completion-year-progression",
+    "title": "Grow With Google program analysis",
+    "section": "Course Completion Year Progression",
+    "text": "Course Completion Year Progression",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#detailed-course-completion-year-profiles",
+    "href": "coursera/eda-2023-2024.html#detailed-course-completion-year-profiles",
+    "title": "Grow With Google program analysis",
+    "section": "Detailed Course Completion Year Profiles",
+    "text": "Detailed Course Completion Year Profiles\n\n\n\n\n\n\n\n\nSample 2024 Course Completion Year Learners\n\n\nName\nEmail\nJoin Date\nEnrollments\nCompletions\nEngagement Level\nDays Active\nLatest Activity\n\n\n\n\njean linkhauer\njean.linkhauer@gmail.com\n2023-07-11 20:34:06.829\n1\n0\nActive Learner\n409.1613\n2024-08-24\n\n\ndelores hagans\ndeeh@futureplans.org\n2023-08-02 18:19:24.627\n2\n0\nActive Learner\n385.1168\n2024-08-21\n\n\nlauren horne\nlhorne9644@gmail.com\n2023-07-10 18:03:57.256\n5\n2\nCompleter\n407.0511\n2024-08-20\n\n\nkatlin okamoto\nkatlin.okamoto@gmail.com\n2023-08-16 05:32:56.911\n1\n0\nActive Learner\n367.6128\n2024-08-17\n\n\npadraig conces\npadraigconces@gmail.com\n2023-12-04 17:01:47.067\n2\n0\nActive Learner\n252.9960\n2024-08-13\n\n\nomar adame\nadameomar5@gmail.com\n2023-07-25 16:14:15.655\n2\n0\nActive Learner\n383.3831\n2024-08-12\n\n\njason pfeifer\njasonpfeifer@hotmail.com\n2023-07-31 16:57:44.725\n5\n3\nCompleter\n371.9854\n2024-08-06\n\n\nchelsea watkins\ncwatkins@shawnee.edu\n2023-07-17 22:49:53.377\n2\n0\nActive Learner\n375.8420\n2024-07-27\n\n\nlaura valerio\nlvalerio@kitcarson.com\n2023-07-27 22:39:07.66\n2\n1\nCompleter\n356.8748\n2024-07-18\n\n\nadelaida dominguez\ndominguezadel@gmail.com\n2023-07-29 13:21:53.565\n15\n13\nCompleter\n353.1489\n2024-07-16",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
+    "href": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
+    "title": "Grow With Google program analysis",
+    "section": "Application to Enrollment Time Analysis",
+    "text": "Application to Enrollment Time Analysis",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#key-findings-and-strategic-insights",
+    "href": "coursera/eda-2023-2024.html#key-findings-and-strategic-insights",
+    "title": "Grow With Google program analysis",
+    "section": "Key Findings and Strategic Insights",
+    "text": "Key Findings and Strategic Insights\n\nSingle Session Program Model Validation\n\nContinuous Learning: 136 learners successfully enrolled in single session design\nExtended Timeline: Learners active across both 2023 and 2024 completion years\nFlexible Progression: Some learners joined in 2023 but were most active in 2024\n\n\n\nCourse Completion Year Analysis\n\n2023 Completion Focus: 90 learners with primary activity in 2023\n2024 Completion Focus: 45 learners with primary activity in 2024\nExtended Engagement: Demonstrates value of extended timeline for working adults\n\n\n\nApplication Patterns\n\nPrimary Launch: 315 applications in 2023 (98.4% of total)\nExtended Access: 4 applications in 2024 (limited late interest)\nStrong Conversion: 43.2% overall application-to-enrollment rate\n\n\n\nStrategic Recommendations\n\nMaintain Single Session Design: Data validates continuous program model over annual cohorts\nPlan Extended Timeline: 18-24 month duration appropriate for course completion patterns\nFocus Launch Efforts: Concentrate marketing in Q3 for maximum application response\nSupport Extended Learning: Provide ongoing support for learners completing across multiple years\nTrack Completion Years: Use latest activity date to understand when learners are most engaged\n\n\n\nPerformance Benchmarks\n\nTarget Application Volume: 200+ annually (based on 2023 success)\nTarget Conversion Rate: 40%+ (maintain strong performance)\nTarget Completion Distribution: Balance between first-year and extended-year completions\nSession Duration: 18-24 months for optimal completion rates\n\n\nAnalysis completed on 2025-07-03 using data as of 2024_06_04\nData Sources: - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "CLAUDE.html",
+    "href": "CLAUDE.html",
+    "title": "CORI Data Analysis Projects - Work Plans",
     "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Grow With Google applicants\nDownload data about individual learners enrolled in Coursera coursework\nDownload certificate completion data by RIN community\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)"
+    "text": "This directory contains data analysis projects for various CORI tech talent development programs.\n\n\n\n\nLocation: ./coursera/CLAUDE.md Status: ✅ Completed - 2023-2024 cohort analysis Deliverable: eda-2023-2024-simple.html Key Findings: - 2023: 316 applications, 164 learners (successful Q3 launch) - 2024: 4 applications, 3 learners (98.7% decline) - Strategic recommendations developed for 2025 program revival\n\n\n\nLocation: ./cisco/ Status: Available for analysis Data Sources: Various Cisco program exports and learner data\n\n\n\n\n\n\n\nEach program directory contains its own CLAUDE.md with detailed work plans\nParent directory maintains high-level project summaries\nImplementation details stay within respective program directories\n\n\n\n\n\nTargets-based reproducible pipelines\nStandardized data loading and cleaning functions\nComprehensive geocoding and RIN community analysis\nProfessional Quarto document outputs\n\n\n\n\n\nExecutive summary with key performance metrics\nTimeline and trend analysis\nConversion funnel analysis\n\nGeographic and demographic breakdowns\nStrategic recommendations for program improvement\n\n\nFor detailed work plans and implementation specifics, see individual program directories."
+  },
+  {
+    "objectID": "CLAUDE.html#current-active-projects",
+    "href": "CLAUDE.html#current-active-projects",
+    "title": "CORI Data Analysis Projects - Work Plans",
+    "section": "",
+    "text": "Location: ./coursera/CLAUDE.md Status: ✅ Completed - 2023-2024 cohort analysis Deliverable: eda-2023-2024-simple.html Key Findings: - 2023: 316 applications, 164 learners (successful Q3 launch) - 2024: 4 applications, 3 learners (98.7% decline) - Strategic recommendations developed for 2025 program revival\n\n\n\nLocation: ./cisco/ Status: Available for analysis Data Sources: Various Cisco program exports and learner data"
+  },
+  {
+    "objectID": "CLAUDE.html#project-standards",
+    "href": "CLAUDE.html#project-standards",
+    "title": "CORI Data Analysis Projects - Work Plans",
+    "section": "",
+    "text": "Each program directory contains its own CLAUDE.md with detailed work plans\nParent directory maintains high-level project summaries\nImplementation details stay within respective program directories\n\n\n\n\n\nTargets-based reproducible pipelines\nStandardized data loading and cleaning functions\nComprehensive geocoding and RIN community analysis\nProfessional Quarto document outputs\n\n\n\n\n\nExecutive summary with key performance metrics\nTimeline and trend analysis\nConversion funnel analysis\n\nGeographic and demographic breakdowns\nStrategic recommendations for program improvement\n\n\nFor detailed work plans and implementation specifics, see individual program directories."
   }
 ]

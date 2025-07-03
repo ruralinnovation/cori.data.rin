@@ -21,13 +21,17 @@ website:
             text: Applicant & Learner progress
           - href: cisco/downloads.qmd
             text: Data downloads
-          - href: cisco/eda.qmd
+          - href: cisco/eda-2025.qmd
+            text: EDA for impact evaluation
+      - section: "Grow With Google (2023 - 2024)"
+        contents:
+          - href: coursera/eda-2023-2024.qmd
             text: EDA for impact evaluation
       - section: "Grow With Google (2025)"
         contents:
           - href: coursera/index.qmd
             text: Applicant & Learner progress
-          - href: coursera/eda.qmd
+          - href: coursera/eda-2025.qmd
             text: EDA for impact evaluation
 format:
   html:
