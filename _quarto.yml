@@ -21,7 +21,7 @@ website:
             text: Applicant & Learner progress
           - href: cisco/downloads.qmd
             text: Data downloads
-          - href: cisco/eda-2025.qmd
+          - href: cisco/eda-2024.qmd
             text: EDA for impact evaluation
       - section: "Grow With Google (2023 - 2024)"
         contents:

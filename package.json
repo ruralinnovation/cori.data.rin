@@ -22,7 +22,7 @@
     "build:cisco": "npm run build -w cori.data.cisco",
     "build:coursera": "npm run build -w cori.data.coursera",
     "cp:frontend": "cp -LR frontend/dist/assets ./",
-    "clean": "rm -rf _freeze/* _site/* assets/index*",
+    "clean": "rm -rf .quarto _freeze/* _site/* assets/index*",
     "dev": "npm run build:frontend && quarto render --output-dir docs",
     "package": "R CMD build --no-manual",
     "package:cisco":  "npm run package -w cori.data.cisco",
