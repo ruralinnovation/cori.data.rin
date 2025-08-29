@@ -10,7 +10,7 @@ execute:
 
 <div style="background-color: #fff">
 <a href="" target="_blank" style="background-color: #fff">
-![](cisco/cisco%20flowchart.svg)
+![](ttd_flowchart.svg)
 <!--
 <img src="cisco/cisco%20flowchart.svg" alt="mermaid-diagram" style="background-color: #fff" width="100%" />
 -->

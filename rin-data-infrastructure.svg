@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1072px" height="1000px" viewBox="-0.5 -0.5 1072 1000" style="background-color: rgb(255, 255, 255);">
+  <defs/>
+  <g>
+    <!-- Main container box with dashed orange border -->
+    <rect x="180" y="120" width="890" height="850" fill="none" stroke="#FFB800" stroke-width="2" stroke-dasharray="8 8" pointer-events="all"/>
+    
+    <!-- Title "Tech Talent Development" in header -->
+    <text x="625" y="105" fill="#000000" font-family="Arial, sans-serif" font-size="18px" text-anchor="middle" font-weight="bold" text-decoration="underline">Tech Talent Development</text>
+    
+    <!-- Community Leader Outreach (green circle) -->
+    <ellipse cx="400" cy="210" rx="80" ry="40" fill="#28a745" stroke="#28a745" stroke-width="2" pointer-events="all"/>
+    <text x="400" y="208" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Community</text>
+    <text x="400" y="224" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Leader Outreach</text>
+    
+    <!-- Main flow boxes (blue) -->
+    <rect x="195" y="290" width="200" height="60" rx="8" ry="8" fill="#007bff" stroke="#007bff" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="316" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Receives</text>
+    <text x="295" y="332" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Registration Form</text>
+    
+    <rect x="195" y="370" width="200" height="60" rx="8" ry="8" fill="#007bff" stroke="#007bff" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="396" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Submits</text>
+    <text x="295" y="412" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Registration Form</text>
+    
+    <rect x="195" y="450" width="200" height="60" rx="8" ry="8" fill="#00cc44" stroke="#00cc44" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="476" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Joins Rural</text>
+    <text x="295" y="492" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Tech Collective</text>
+    
+    <rect x="195" y="530" width="200" height="60" rx="8" ry="8" fill="#00cc44" stroke="#00cc44" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="556" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Enrolls in</text>
+    <text x="295" y="572" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Initial Course</text>
+    
+    <rect x="195" y="610" width="200" height="60" rx="8" ry="8" fill="#007bff" stroke="#007bff" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="636" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Completes</text>
+    <text x="295" y="652" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Initial Course</text>
+    
+    <!-- Orange voucher box -->
+    <rect x="195" y="690" width="200" height="60" rx="8" ry="8" fill="#ff9800" stroke="#ff9800" stroke-width="2" pointer-events="all"/>
+    <text x="295" y="716" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Learner Receives</text>
+    <text x="295" y="732" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Voucher</text>
+    
+    <!-- Vertical flow arrows -->
+    <path d="M 400 250 L 400 270 L 295 270 L 295 290" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 295 350 L 295 370" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 295 430 L 295 450" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 295 510 L 295 530" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 295 590 L 295 610" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 295 670 L 295 690" fill="none" stroke="#333333" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+    
+    <!-- RIN Engagement DB (cylinder on right) -->
+    <g>
+      <path d="M 530 170 L 680 170 L 680 270 Q 605 310 530 270 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+      <path d="M 530 170 L 680 170 Q 605 210 530 170 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="605" y="205" fill="#000000" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold" text-decoration="underline">RIN Engagement DB</text>
+      <text x="605" y="225" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">(i.e., data store,</text>
+      <text x="605" y="240" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">not necessarily a database;</text>
+      <text x="605" y="255" fill="#FFB800" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Monday?)</text>
+    </g>
+    
+    <!-- Data update triangles -->
+    <g>
+      <path d="M 480 290 L 520 290 L 500 320 Z" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="500" y="307" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">?</text>
+    </g>
+    
+    <g>
+      <path d="M 480 370 L 520 370 L 500 400 Z" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="500" y="387" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">?</text>
+    </g>
+    
+    <g>
+      <path d="M 480 450 L 520 450 L 500 480 Z" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="500" y="467" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">?</text>
+    </g>
+    
+    <g>
+      <path d="M 480 530 L 520 530 L 500 560 Z" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="500" y="547" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">?</text>
+    </g>
+    
+    <g>
+      <path d="M 480 610 L 520 610 L 500 640 Z" fill="#ffffff" stroke="#000000" stroke-width="1" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="500" y="627" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">?</text>
+    </g>
+    
+    <!-- Data update arrows (dashed) -->
+    <path d="M 395 320 L 480 320 L 480 305" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    <text x="440" y="315" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">Data tracking update</text>
+    
+    <path d="M 395 400 L 480 400 L 480 385" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    <text x="440" y="395" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">Data update</text>
+    
+    <path d="M 395 480 L 480 480 L 480 465" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    <text x="440" y="475" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">Data update</text>
+    
+    <path d="M 395 560 L 480 560 L 480 545" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    <text x="440" y="555" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">Data update</text>
+    
+    <path d="M 395 640 L 480 640 L 480 625" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    <text x="440" y="635" fill="#000000" font-family="Arial, sans-serif" font-size="11px" text-anchor="middle">Data update</text>
+    
+    <!-- Triangles to DB connections -->
+    <path d="M 520 305 L 560 270 L 605 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 520 385 L 560 270 L 605 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 520 465 L 560 270 L 605 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 520 545 L 560 270 L 605 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 520 625 L 560 270 L 605 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    
+    <!-- Rural Tech Collective / Mighty Network (left side) -->
+    <ellipse cx="50" cy="400" rx="80" ry="40" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="all"/>
+    <text x="50" y="395" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle" font-weight="bold">Rural Tech</text>
+    <text x="50" y="410" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle" font-weight="bold">Collective</text>
+    <text x="50" y="425" fill="#000000" font-family="Arial, sans-serif" font-size="10px" text-anchor="middle">Mighty Networks</text>
+    
+    <!-- Zap automation -->
+    <path d="M 50 360 L 80 380 L 50 400 L 20 380 Z" fill="#ffffff" stroke="#000000" stroke-width="1" pointer-events="all"/>
+    <text x="50" y="385" fill="#000000" font-family="Arial, sans-serif" font-size="10px" text-anchor="middle">Zap</text>
+    
+    <!-- Connection from registration to zap to RTC -->
+    <path d="M 195 420 L 130 420 L 50 380" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 130 460 L 195 460" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    
+    <!-- Airtable (cylinder on far right) -->
+    <g>
+      <path d="M 760 240 L 830 240 L 830 320 Q 795 350 760 320 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+      <path d="M 760 240 L 830 240 Q 795 270 760 240 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+      <text x="795" y="285" fill="#000000" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle" font-weight="bold">Airtable</text>
+    </g>
+    
+    <!-- Right side circles with ??? -->
+    <ellipse cx="870" cy="300" rx="60" ry="30" fill="#ffffff" stroke="#000000" stroke-width="1" pointer-events="all"/>
+    <text x="870" y="305" fill="#000000" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle">???</text>
+    
+    <ellipse cx="870" cy="400" rx="60" ry="30" fill="#ffffff" stroke="#000000" stroke-width="1" pointer-events="all"/>
+    <text x="870" y="405" fill="#000000" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle">???</text>
+    
+    <ellipse cx="870" cy="500" rx="60" ry="30" fill="#ffffff" stroke="#000000" stroke-width="1" pointer-events="all"/>
+    <text x="870" y="505" fill="#000000" font-family="Arial, sans-serif" font-size="14px" text-anchor="middle">???</text>
+    
+    <!-- Community Engagement Report (bottom right) -->
+    <ellipse cx="870" cy="600" rx="80" ry="40" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="all"/>
+    <text x="870" y="595" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Community</text>
+    <text x="870" y="610" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Engagement</text>
+    <text x="870" y="625" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Report</text>
+    
+    <!-- Curved arrows from right side elements to Community Engagement Report -->
+    <path d="M 870 330 Q 900 450 870 560" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 870 430 Q 900 500 870 560" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 870 530 L 870 560" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    
+    <!-- Connection from Mighty Network to right side -->
+    <path d="M 770 200 Q 820 250 870 270" fill="none" stroke="#333333" stroke-width="1" stroke-miterlimit="10" pointer-events="stroke"/>
+    
+    <!-- Program Applications (left side) -->
+    <ellipse cx="50" cy="320" rx="80" ry="30" fill="#ffffff" stroke="#000000" stroke-width="1" pointer-events="all"/>
+    <text x="50" y="315" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Program</text>
+    <text x="50" y="328" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Applications</text>
+    <text x="50" y="340" fill="#000000" font-family="Arial, sans-serif" font-size="10px" text-anchor="middle">SurveyMonkey</text>
+    
+    <!-- Analytics Dashboard (bottom left) -->
+    <ellipse cx="50" cy="800" rx="80" ry="50" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="all"/>
+    <text x="50" y="790" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Analytics for</text>
+    <text x="50" y="805" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Monitoring &amp;</text>
+    <text x="50" y="820" fill="#000000" font-family="Arial, sans-serif" font-size="12px" text-anchor="middle">Evaluation</text>
+    <text x="50" y="835" fill="#000000" font-family="Arial, sans-serif" font-size="10px" text-anchor="middle">(Dashboard data)</text>
+    
+  </g>
+</svg>
