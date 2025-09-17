@@ -52,6 +52,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="../assets/fonts.css">
@@ -199,19 +209,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024" id="toc-exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="nav-link active" data-scroll-target="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</a></li>
-  <li><a href="#executive-summary-2023-2024-program-session" id="toc-executive-summary-2023-2024-program-session" class="nav-link" data-scroll-target="#executive-summary-2023-2024-program-session">Executive Summary: 2023-2024 Program Session</a>
+  <li><a href="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024" id="toc-exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="nav-link active" data-scroll-target="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</a>
   <ul class="collapse">
   <li><a href="#program-session-highlights" id="toc-program-session-highlights" class="nav-link" data-scroll-target="#program-session-highlights">Program Session Highlights</a></li>
+  <li><a href="#course-completion-rates-across-rin-communties" id="toc-course-completion-rates-across-rin-communties" class="nav-link" data-scroll-target="#course-completion-rates-across-rin-communties">Course completion rates across RIN communties</a></li>
   </ul></li>
   <li><a href="#application-timeline-analysis" id="toc-application-timeline-analysis" class="nav-link" data-scroll-target="#application-timeline-analysis">Application Timeline Analysis</a></li>
+  <li><a href="#application-to-enrollment-time-analysis" id="toc-application-to-enrollment-time-analysis" class="nav-link" data-scroll-target="#application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</a></li>
   <li><a href="#course-completion-year-analysis" id="toc-course-completion-year-analysis" class="nav-link" data-scroll-target="#course-completion-year-analysis">Course Completion Year Analysis</a></li>
   <li><a href="#certificate-interest-distribution" id="toc-certificate-interest-distribution" class="nav-link" data-scroll-target="#certificate-interest-distribution">Certificate Interest Distribution</a></li>
   <li><a href="#learner-performance-by-course-completion-year" id="toc-learner-performance-by-course-completion-year" class="nav-link" data-scroll-target="#learner-performance-by-course-completion-year">Learner Performance by Course Completion Year</a></li>
   <li><a href="#session-conversion-analysis" id="toc-session-conversion-analysis" class="nav-link" data-scroll-target="#session-conversion-analysis">Session Conversion Analysis</a></li>
   <li><a href="#course-completion-year-progression" id="toc-course-completion-year-progression" class="nav-link" data-scroll-target="#course-completion-year-progression">Course Completion Year Progression</a></li>
-  <li><a href="#detailed-course-completion-year-profiles" id="toc-detailed-course-completion-year-profiles" class="nav-link" data-scroll-target="#detailed-course-completion-year-profiles">Detailed Course Completion Year Profiles</a></li>
-  <li><a href="#application-to-enrollment-time-analysis" id="toc-application-to-enrollment-time-analysis" class="nav-link" data-scroll-target="#application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</a></li>
   <li><a href="#key-findings-and-strategic-insights" id="toc-key-findings-and-strategic-insights" class="nav-link" data-scroll-target="#key-findings-and-strategic-insights">Key Findings and Strategic Insights</a>
   <ul class="collapse">
   <li><a href="#single-session-program-model-validation" id="toc-single-session-program-model-validation" class="nav-link" data-scroll-target="#single-session-program-model-validation">Single Session Program Model Validation</a></li>
@@ -253,9 +262,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</h2>
-</section>
-<section id="executive-summary-2023-2024-program-session" class="level2">
-<h2 class="anchored" data-anchor-id="executive-summary-2023-2024-program-session">Executive Summary: 2023-2024 Program Session</h2>
 <section id="program-session-highlights" class="level3">
 <h3 class="anchored" data-anchor-id="program-session-highlights">Program Session Highlights</h3>
 <ul>
@@ -267,23 +273,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rixcybqdlh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rixcybqdlh table {
+<div id="qukxxkrwwo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qukxxkrwwo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rixcybqdlh thead, #rixcybqdlh tbody, #rixcybqdlh tfoot, #rixcybqdlh tr, #rixcybqdlh td, #rixcybqdlh th {
+#qukxxkrwwo thead, #qukxxkrwwo tbody, #qukxxkrwwo tfoot, #qukxxkrwwo tr, #qukxxkrwwo td, #qukxxkrwwo th {
   border-style: none;
 }
 
-#rixcybqdlh p {
+#qukxxkrwwo p {
   margin: 0;
   padding: 0;
 }
 
-#rixcybqdlh .gt_table {
+#qukxxkrwwo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -309,12 +315,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_caption {
+#qukxxkrwwo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rixcybqdlh .gt_title {
+#qukxxkrwwo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -326,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#rixcybqdlh .gt_subtitle {
+#qukxxkrwwo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -338,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#rixcybqdlh .gt_heading {
+#qukxxkrwwo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -350,13 +356,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_bottom_border {
+#qukxxkrwwo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_col_headings {
+#qukxxkrwwo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -371,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_col_heading {
+#qukxxkrwwo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -391,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rixcybqdlh .gt_column_spanner_outer {
+#qukxxkrwwo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -403,15 +409,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#rixcybqdlh .gt_column_spanner_outer:first-child {
+#qukxxkrwwo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rixcybqdlh .gt_column_spanner_outer:last-child {
+#qukxxkrwwo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rixcybqdlh .gt_column_spanner {
+#qukxxkrwwo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -423,11 +429,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#rixcybqdlh .gt_spanner_row {
+#qukxxkrwwo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rixcybqdlh .gt_group_heading {
+#qukxxkrwwo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -453,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#rixcybqdlh .gt_empty_group_heading {
+#qukxxkrwwo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -468,15 +474,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#rixcybqdlh .gt_from_md > :first-child {
+#qukxxkrwwo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rixcybqdlh .gt_from_md > :last-child {
+#qukxxkrwwo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rixcybqdlh .gt_row {
+#qukxxkrwwo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -495,7 +501,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rixcybqdlh .gt_stub {
+#qukxxkrwwo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -508,7 +514,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rixcybqdlh .gt_stub_row_group {
+#qukxxkrwwo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -522,15 +528,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#rixcybqdlh .gt_row_group_first td {
+#qukxxkrwwo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rixcybqdlh .gt_row_group_first th {
+#qukxxkrwwo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rixcybqdlh .gt_summary_row {
+#qukxxkrwwo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -540,16 +546,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rixcybqdlh .gt_first_summary_row {
+#qukxxkrwwo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_first_summary_row.thick {
+#qukxxkrwwo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rixcybqdlh .gt_last_summary_row {
+#qukxxkrwwo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -559,7 +565,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_grand_summary_row {
+#qukxxkrwwo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -569,7 +575,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rixcybqdlh .gt_first_grand_summary_row {
+#qukxxkrwwo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -579,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_last_grand_summary_row_top {
+#qukxxkrwwo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -589,11 +595,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_striped {
+#qukxxkrwwo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rixcybqdlh .gt_table_body {
+#qukxxkrwwo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -602,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_footnotes {
+#qukxxkrwwo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -616,7 +622,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_footnote {
+#qukxxkrwwo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -625,7 +631,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rixcybqdlh .gt_sourcenotes {
+#qukxxkrwwo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -639,7 +645,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rixcybqdlh .gt_sourcenote {
+#qukxxkrwwo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -647,72 +653,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rixcybqdlh .gt_left {
+#qukxxkrwwo .gt_left {
   text-align: left;
 }
 
-#rixcybqdlh .gt_center {
+#qukxxkrwwo .gt_center {
   text-align: center;
 }
 
-#rixcybqdlh .gt_right {
+#qukxxkrwwo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rixcybqdlh .gt_font_normal {
+#qukxxkrwwo .gt_font_normal {
   font-weight: normal;
 }
 
-#rixcybqdlh .gt_font_bold {
+#qukxxkrwwo .gt_font_bold {
   font-weight: bold;
 }
 
-#rixcybqdlh .gt_font_italic {
+#qukxxkrwwo .gt_font_italic {
   font-style: italic;
 }
 
-#rixcybqdlh .gt_super {
+#qukxxkrwwo .gt_super {
   font-size: 65%;
 }
 
-#rixcybqdlh .gt_footnote_marks {
+#qukxxkrwwo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rixcybqdlh .gt_asterisk {
+#qukxxkrwwo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rixcybqdlh .gt_indent_1 {
+#qukxxkrwwo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rixcybqdlh .gt_indent_2 {
+#qukxxkrwwo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rixcybqdlh .gt_indent_3 {
+#qukxxkrwwo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rixcybqdlh .gt_indent_4 {
+#qukxxkrwwo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rixcybqdlh .gt_indent_5 {
+#qukxxkrwwo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rixcybqdlh .katex-display {
+#qukxxkrwwo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rixcybqdlh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qukxxkrwwo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -752,9 +758,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
+<section id="course-completion-rates-across-rin-communties" class="level3">
+<h3 class="anchored" data-anchor-id="course-completion-rates-across-rin-communties">Course completion rates across RIN communties</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7c3afd1136966ea07922" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7c3afd1136966ea07922">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Ada","Chambers County","Cochise County","Eastern Kentucky","Greenfield","Independence","Indiana County","Kirksville","Nacogdoches","Portsmouth","Pryor Creek","Taos","The Berkshires","The Dalles","Traverse City","Wilkes County","Wilson"],[2,10,1,3,1,1,1,1,2,75,1,32,2,1,2,1,1],[2,3,0,1,0,0,1,0,0,21,1,15,1,1,0,1,1],["100.0%","30.0%","0.0%","33.3%","0.0%","0.0%","100.0%","0.0%","0.0%","28.0%","100.0%","46.9%","50.0%","100.0%","0.0%","100.0%","100.0%"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>RIN Community<\/th>\n      <th>Total Learners<\/th>\n      <th>Completed First Course<\/th>\n      <th>Completion Rate<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"RIN Community","targets":1},{"name":"Total Learners","targets":2},{"name":"Completed First Course","targets":3},{"name":"Completion Rate","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
 </section>
 <section id="application-timeline-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="application-timeline-analysis">Application Timeline Analysis</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda-2023-2024_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="application-to-enrollment-time-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -793,23 +820,23 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="learner-performance-by-course-completion-year">Learner Performance by Course Completion Year</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qllnzcjmdd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qllnzcjmdd table {
+<div id="azcsbkshgh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#azcsbkshgh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qllnzcjmdd thead, #qllnzcjmdd tbody, #qllnzcjmdd tfoot, #qllnzcjmdd tr, #qllnzcjmdd td, #qllnzcjmdd th {
+#azcsbkshgh thead, #azcsbkshgh tbody, #azcsbkshgh tfoot, #azcsbkshgh tr, #azcsbkshgh td, #azcsbkshgh th {
   border-style: none;
 }
 
-#qllnzcjmdd p {
+#azcsbkshgh p {
   margin: 0;
   padding: 0;
 }
 
-#qllnzcjmdd .gt_table {
+#azcsbkshgh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -835,12 +862,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_caption {
+#azcsbkshgh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qllnzcjmdd .gt_title {
+#azcsbkshgh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -852,7 +879,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#qllnzcjmdd .gt_subtitle {
+#azcsbkshgh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -864,7 +891,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#qllnzcjmdd .gt_heading {
+#azcsbkshgh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -876,13 +903,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_bottom_border {
+#azcsbkshgh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_col_headings {
+#azcsbkshgh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -897,7 +924,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_col_heading {
+#azcsbkshgh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -917,7 +944,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qllnzcjmdd .gt_column_spanner_outer {
+#azcsbkshgh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -929,15 +956,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#qllnzcjmdd .gt_column_spanner_outer:first-child {
+#azcsbkshgh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qllnzcjmdd .gt_column_spanner_outer:last-child {
+#azcsbkshgh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qllnzcjmdd .gt_column_spanner {
+#azcsbkshgh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -949,11 +976,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#qllnzcjmdd .gt_spanner_row {
+#azcsbkshgh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qllnzcjmdd .gt_group_heading {
+#azcsbkshgh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -979,7 +1006,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#qllnzcjmdd .gt_empty_group_heading {
+#azcsbkshgh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -994,15 +1021,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#qllnzcjmdd .gt_from_md > :first-child {
+#azcsbkshgh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qllnzcjmdd .gt_from_md > :last-child {
+#azcsbkshgh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qllnzcjmdd .gt_row {
+#azcsbkshgh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1021,7 +1048,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#qllnzcjmdd .gt_stub {
+#azcsbkshgh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1034,7 +1061,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qllnzcjmdd .gt_stub_row_group {
+#azcsbkshgh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1048,15 +1075,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#qllnzcjmdd .gt_row_group_first td {
+#azcsbkshgh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qllnzcjmdd .gt_row_group_first th {
+#azcsbkshgh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qllnzcjmdd .gt_summary_row {
+#azcsbkshgh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1066,16 +1093,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qllnzcjmdd .gt_first_summary_row {
+#azcsbkshgh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_first_summary_row.thick {
+#azcsbkshgh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qllnzcjmdd .gt_last_summary_row {
+#azcsbkshgh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1085,7 +1112,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_grand_summary_row {
+#azcsbkshgh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1095,7 +1122,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qllnzcjmdd .gt_first_grand_summary_row {
+#azcsbkshgh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1105,7 +1132,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_last_grand_summary_row_top {
+#azcsbkshgh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1115,11 +1142,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_striped {
+#azcsbkshgh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qllnzcjmdd .gt_table_body {
+#azcsbkshgh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1128,7 +1155,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_footnotes {
+#azcsbkshgh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1142,7 +1169,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_footnote {
+#azcsbkshgh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1151,7 +1178,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qllnzcjmdd .gt_sourcenotes {
+#azcsbkshgh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1165,7 +1192,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#qllnzcjmdd .gt_sourcenote {
+#azcsbkshgh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1173,72 +1200,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#qllnzcjmdd .gt_left {
+#azcsbkshgh .gt_left {
   text-align: left;
 }
 
-#qllnzcjmdd .gt_center {
+#azcsbkshgh .gt_center {
   text-align: center;
 }
 
-#qllnzcjmdd .gt_right {
+#azcsbkshgh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qllnzcjmdd .gt_font_normal {
+#azcsbkshgh .gt_font_normal {
   font-weight: normal;
 }
 
-#qllnzcjmdd .gt_font_bold {
+#azcsbkshgh .gt_font_bold {
   font-weight: bold;
 }
 
-#qllnzcjmdd .gt_font_italic {
+#azcsbkshgh .gt_font_italic {
   font-style: italic;
 }
 
-#qllnzcjmdd .gt_super {
+#azcsbkshgh .gt_super {
   font-size: 65%;
 }
 
-#qllnzcjmdd .gt_footnote_marks {
+#azcsbkshgh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qllnzcjmdd .gt_asterisk {
+#azcsbkshgh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qllnzcjmdd .gt_indent_1 {
+#azcsbkshgh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qllnzcjmdd .gt_indent_2 {
+#azcsbkshgh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qllnzcjmdd .gt_indent_3 {
+#azcsbkshgh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qllnzcjmdd .gt_indent_4 {
+#azcsbkshgh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qllnzcjmdd .gt_indent_5 {
+#azcsbkshgh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qllnzcjmdd .katex-display {
+#azcsbkshgh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qllnzcjmdd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#azcsbkshgh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1288,23 +1315,23 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="session-conversion-analysis">Session Conversion Analysis</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ycwirdvqdo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ycwirdvqdo table {
+<div id="nritlcfgrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nritlcfgrc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ycwirdvqdo thead, #ycwirdvqdo tbody, #ycwirdvqdo tfoot, #ycwirdvqdo tr, #ycwirdvqdo td, #ycwirdvqdo th {
+#nritlcfgrc thead, #nritlcfgrc tbody, #nritlcfgrc tfoot, #nritlcfgrc tr, #nritlcfgrc td, #nritlcfgrc th {
   border-style: none;
 }
 
-#ycwirdvqdo p {
+#nritlcfgrc p {
   margin: 0;
   padding: 0;
 }
 
-#ycwirdvqdo .gt_table {
+#nritlcfgrc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1330,12 +1357,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_caption {
+#nritlcfgrc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ycwirdvqdo .gt_title {
+#nritlcfgrc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1347,7 +1374,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#ycwirdvqdo .gt_subtitle {
+#nritlcfgrc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1359,7 +1386,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#ycwirdvqdo .gt_heading {
+#nritlcfgrc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1371,13 +1398,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_bottom_border {
+#nritlcfgrc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_col_headings {
+#nritlcfgrc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1392,7 +1419,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_col_heading {
+#nritlcfgrc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1412,7 +1439,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ycwirdvqdo .gt_column_spanner_outer {
+#nritlcfgrc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1424,15 +1451,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#ycwirdvqdo .gt_column_spanner_outer:first-child {
+#nritlcfgrc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ycwirdvqdo .gt_column_spanner_outer:last-child {
+#nritlcfgrc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ycwirdvqdo .gt_column_spanner {
+#nritlcfgrc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1444,11 +1471,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#ycwirdvqdo .gt_spanner_row {
+#nritlcfgrc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ycwirdvqdo .gt_group_heading {
+#nritlcfgrc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1474,7 +1501,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#ycwirdvqdo .gt_empty_group_heading {
+#nritlcfgrc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1489,15 +1516,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#ycwirdvqdo .gt_from_md > :first-child {
+#nritlcfgrc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ycwirdvqdo .gt_from_md > :last-child {
+#nritlcfgrc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ycwirdvqdo .gt_row {
+#nritlcfgrc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1516,7 +1543,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ycwirdvqdo .gt_stub {
+#nritlcfgrc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1529,7 +1556,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ycwirdvqdo .gt_stub_row_group {
+#nritlcfgrc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1543,15 +1570,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#ycwirdvqdo .gt_row_group_first td {
+#nritlcfgrc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ycwirdvqdo .gt_row_group_first th {
+#nritlcfgrc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ycwirdvqdo .gt_summary_row {
+#nritlcfgrc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1561,16 +1588,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ycwirdvqdo .gt_first_summary_row {
+#nritlcfgrc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_first_summary_row.thick {
+#nritlcfgrc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ycwirdvqdo .gt_last_summary_row {
+#nritlcfgrc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1580,7 +1607,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_grand_summary_row {
+#nritlcfgrc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1590,7 +1617,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ycwirdvqdo .gt_first_grand_summary_row {
+#nritlcfgrc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1600,7 +1627,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_last_grand_summary_row_top {
+#nritlcfgrc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1610,11 +1637,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_striped {
+#nritlcfgrc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ycwirdvqdo .gt_table_body {
+#nritlcfgrc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1623,7 +1650,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_footnotes {
+#nritlcfgrc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1637,7 +1664,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_footnote {
+#nritlcfgrc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1646,7 +1673,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ycwirdvqdo .gt_sourcenotes {
+#nritlcfgrc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1660,7 +1687,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ycwirdvqdo .gt_sourcenote {
+#nritlcfgrc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1668,72 +1695,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ycwirdvqdo .gt_left {
+#nritlcfgrc .gt_left {
   text-align: left;
 }
 
-#ycwirdvqdo .gt_center {
+#nritlcfgrc .gt_center {
   text-align: center;
 }
 
-#ycwirdvqdo .gt_right {
+#nritlcfgrc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ycwirdvqdo .gt_font_normal {
+#nritlcfgrc .gt_font_normal {
   font-weight: normal;
 }
 
-#ycwirdvqdo .gt_font_bold {
+#nritlcfgrc .gt_font_bold {
   font-weight: bold;
 }
 
-#ycwirdvqdo .gt_font_italic {
+#nritlcfgrc .gt_font_italic {
   font-style: italic;
 }
 
-#ycwirdvqdo .gt_super {
+#nritlcfgrc .gt_super {
   font-size: 65%;
 }
 
-#ycwirdvqdo .gt_footnote_marks {
+#nritlcfgrc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ycwirdvqdo .gt_asterisk {
+#nritlcfgrc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ycwirdvqdo .gt_indent_1 {
+#nritlcfgrc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ycwirdvqdo .gt_indent_2 {
+#nritlcfgrc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ycwirdvqdo .gt_indent_3 {
+#nritlcfgrc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ycwirdvqdo .gt_indent_4 {
+#nritlcfgrc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ycwirdvqdo .gt_indent_5 {
+#nritlcfgrc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ycwirdvqdo .katex-display {
+#nritlcfgrc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ycwirdvqdo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nritlcfgrc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1788,596 +1815,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="detailed-course-completion-year-profiles" class="level2">
-<h2 class="anchored" data-anchor-id="detailed-course-completion-year-profiles">Detailed Course Completion Year Profiles</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="wlwjmnjizh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wlwjmnjizh table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#wlwjmnjizh thead, #wlwjmnjizh tbody, #wlwjmnjizh tfoot, #wlwjmnjizh tr, #wlwjmnjizh td, #wlwjmnjizh th {
-  border-style: none;
-}
-
-#wlwjmnjizh p {
-  margin: 0;
-  padding: 0;
-}
-
-#wlwjmnjizh .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#wlwjmnjizh .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#wlwjmnjizh .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#wlwjmnjizh .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#wlwjmnjizh .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#wlwjmnjizh .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#wlwjmnjizh .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#wlwjmnjizh .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#wlwjmnjizh .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#wlwjmnjizh .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#wlwjmnjizh .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#wlwjmnjizh .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#wlwjmnjizh .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#wlwjmnjizh .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#wlwjmnjizh .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wlwjmnjizh .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#wlwjmnjizh .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#wlwjmnjizh .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#wlwjmnjizh .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wlwjmnjizh .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#wlwjmnjizh .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wlwjmnjizh .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#wlwjmnjizh .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wlwjmnjizh .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#wlwjmnjizh .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wlwjmnjizh .gt_left {
-  text-align: left;
-}
-
-#wlwjmnjizh .gt_center {
-  text-align: center;
-}
-
-#wlwjmnjizh .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#wlwjmnjizh .gt_font_normal {
-  font-weight: normal;
-}
-
-#wlwjmnjizh .gt_font_bold {
-  font-weight: bold;
-}
-
-#wlwjmnjizh .gt_font_italic {
-  font-style: italic;
-}
-
-#wlwjmnjizh .gt_super {
-  font-size: 65%;
-}
-
-#wlwjmnjizh .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#wlwjmnjizh .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#wlwjmnjizh .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#wlwjmnjizh .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#wlwjmnjizh .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#wlwjmnjizh .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#wlwjmnjizh .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#wlwjmnjizh .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#wlwjmnjizh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_heading">
-<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Sample 2024 Course Completion Year Learners</th>
-</tr>
-<tr class="odd gt_col_headings">
-<th id="full_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Name</th>
-<th id="email" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Email</th>
-<th id="join_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Join Date</th>
-<th id="cnt_enrollments" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Enrollments</th>
-<th id="cnt_completions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completions</th>
-<th id="engagement_level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Engagement Level</th>
-<th id="engagement_days" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Days Active</th>
-<th id="latest_activity_parsed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Latest Activity</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">jean linkhauer</td>
-<td class="gt_row gt_left" headers="email">jean.linkhauer@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-11 20:34:06.829</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">1</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">409.1613</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-24</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">delores hagans</td>
-<td class="gt_row gt_left" headers="email">deeh@futureplans.org</td>
-<td class="gt_row gt_right" headers="join_date">2023-08-02 18:19:24.627</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">385.1168</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-21</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">lauren horne</td>
-<td class="gt_row gt_left" headers="email">lhorne9644@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-10 18:03:57.256</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">5</td>
-<td class="gt_row gt_right" headers="cnt_completions">2</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">407.0511</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-20</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">katlin okamoto</td>
-<td class="gt_row gt_left" headers="email">katlin.okamoto@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-08-16 05:32:56.911</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">1</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">367.6128</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-17</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">padraig conces</td>
-<td class="gt_row gt_left" headers="email">padraigconces@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-12-04 17:01:47.067</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">252.9960</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-13</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">omar adame</td>
-<td class="gt_row gt_left" headers="email">adameomar5@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-25 16:14:15.655</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">383.3831</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-12</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">jason pfeifer</td>
-<td class="gt_row gt_left" headers="email">jasonpfeifer@hotmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-31 16:57:44.725</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">5</td>
-<td class="gt_row gt_right" headers="cnt_completions">3</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">371.9854</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-06</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">chelsea watkins</td>
-<td class="gt_row gt_left" headers="email">cwatkins@shawnee.edu</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-17 22:49:53.377</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">375.8420</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-27</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">laura valerio</td>
-<td class="gt_row gt_left" headers="email">lvalerio@kitcarson.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-27 22:39:07.66</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">1</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">356.8748</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-18</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">adelaida dominguez</td>
-<td class="gt_row gt_left" headers="email">dominguezadel@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-29 13:21:53.565</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">15</td>
-<td class="gt_row gt_right" headers="cnt_completions">13</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">353.1489</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-16</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="application-to-enrollment-time-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="eda-2023-2024_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="key-findings-and-strategic-insights" class="level2">
 <h2 class="anchored" data-anchor-id="key-findings-and-strategic-insights">Key Findings and Strategic Insights</h2>
 <section id="single-session-program-model-validation" class="level3">
@@ -2423,7 +1860,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Session Duration</strong>: 18-24 months for optimal completion rates</li>
 </ul>
 <hr>
-<p><em>Analysis completed on 2025-08-30 using data as of 2024_06_04</em></p>
+<p><em>Analysis completed on 2025-09-16 using data as of 2024_06_04</em></p>
 <p><strong>Data Sources:</strong> - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date</p>
 
 

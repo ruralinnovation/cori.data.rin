@@ -1,0 +1,18 @@
+"rin_community","number_of_eligible_applicants","number_of_enrolled_learners","number_of_learners_completed_1st","data_analytics_learners","data_analytics_completions","project_management_learners","project_management_completions","cybersecurity_learners","cybersecurity_completions","it_support_learners","it_support_completions","ux_design_learners","ux_design_completions","total_completions","overall_enrollment_rate","overall_completion_rate","data_analytics_completion_rate","project_management_completion_rate","cybersecurity_completion_rate","it_support_completion_rate","ux_design_completion_rate"
+"Ada",1,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,NA,NA,0,NA,NA
+"Chambers County",7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Eastern Kentucky",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Indiana County",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Manitowoc County",1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,NA,NA,NA,NA
+"Nacogdoches",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Paso Robles",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Portsmouth",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Randolph",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Shenandoah Valley",4,1,0,0,0,0,0,1,0,0,0,0,0,0,0.25,0,NA,NA,0,NA,NA
+"Taos",1,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,NA,0,NA,0,NA
+"The Berkshires",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"The Dalles",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Traverse City",56,21,7,13,3,17,7,7,1,4,0,0,0,11,0.375,0.333333333333333,0.230769230769231,0.411764705882353,0.142857142857143,0,NA
+"Wilson",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+"Windham County",1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,NA,NA,NA
+"Total",80,26,7,15,3,19,7,9,1,5,0,0,0,11,0.325,0.269230769230769,0.2,0.368421052631579,0.111111111111111,0,NA
