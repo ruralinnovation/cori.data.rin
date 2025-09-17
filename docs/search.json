@@ -91,11 +91,42 @@
     "text": "✅ DELIVERY SUMMARY - Single Session Analysis\nPrimary Deliverable: eda-2023-2024-simple.html - Comprehensive analysis treating 2023-2024 as a single continuous program session rather than separate cohorts.\nKey Reframing: Successfully updated analysis from “2023 vs 2024 comparison” to “single program session assessment” - providing much more accurate and actionable insights about program design effectiveness.\nStrategic Value: Validation of single session program model over annual cohort approach, with clear evidence supporting extended timeline and continuous support delivery for working adult learners.\nImplementation Success: Complete data processing and analysis framework that accurately reflects the continuous nature of the 2023-2024 Grow With Google program session.\nThe analysis now correctly interprets the data patterns as a successful program launch (Q3 2023) followed by ongoing learning and completion activities, rather than a failed year-over-year comparison."
   },
   {
+    "objectID": "coursera/CLAUDE.html#current-state-of-eda-2023-2024.qmd",
+    "href": "coursera/CLAUDE.html#current-state-of-eda-2023-2024.qmd",
+    "title": "Grow With Google Program Analysis: 2023-2024 Single Session",
+    "section": "Current State of eda-2023-2024.qmd",
+    "text": "Current State of eda-2023-2024.qmd\n\n✅ Successfully Implemented Features\n\n1. Comprehensive Matching System\n\nEmail-Based Primary Matching: Uses email as the primary matching key (lines 356-367)\nEnhanced Fuzzy Matching: Implements exact first+last name matching for name variations (lines 411-425)\nTotal Match Achievement: Successfully matches 143 out of 166 learners (86.1% match rate)\n\n\n\n2. Data Architecture Improvements\n\nSpatial Join Integration: Robust geographic mapping with fallback logic (lines 114-243)\nRIN Community Assignment: Proper spatial join with nearest feature fallback\nTargets Framework: Full integration with reproducible data pipeline\n\n\n\n3. Analysis Structure\n\nSingle Session Framework: Correctly treats 2023-2024 as continuous program session\nCourse Completion Year Tracking: Uses latest program activity date for temporal analysis\nComprehensive Visualizations: Timeline, conversion, and performance metrics\n\n\n\n\n⚠️ Current Issues Identified\n\n1. Data Flow Inconsistencies (Lines 356-435)\nThe matching logic has been modified from our tested implementation and now contains several issues:\nIssue A: Join Order Reversal\n# Current (problematic):\nexact_matches &lt;- clean_applicants |&gt;\n  dplyr::inner_join(gwg_learners_2023_2024, by = c('email' = 'email'))\n\n# Should be (as tested):\nexact_matches &lt;- gwg_learners_2023_2024 |&gt;\n  dplyr::inner_join(clean_applicants, by = c('email' = 'email'))\nIssue B: Incorrect Fuzzy Matching Key\n# Current (line 416):\nby = c('full_name')  # This will match identical full names, not first+last combinations\n\n# Should be:\nby = c('first_last' = 'applicant_first_last')  # Matches parsed first+last combinations\nIssue C: Column Reference Errors - Uses coursera_id.x renaming (line 434) but learners don’t have coursera_id - Missing proper column handling for the reversed join structure\n\n\n2. Logic Flow Problems (Lines 428-435)\n# Current problematic structure:\nlearners_with_application_data &lt;- rbind(\n  exact_matches,\n  all_matches |&gt; dplyr::select(names(exact_matches))\n) |&gt;\ndplyr::rename(coursera_id = coursera_id.x)  # This will fail\n\n\n\n🔧 Specific Technical Issues\n\n1. Missing Fuzzy Matching Logic\nThe comprehensive fuzzy matching we developed and tested is not properly implemented: - Line 399: References non-existent coursera_id for learners - Line 416: Uses full_name matching instead of parsed first_last matching - Lines 421-424: Incorrect column renaming and structure\n\n\n2. Data Combination Problems\n\nThe rbind operation (line 428) will fail due to column structure mismatches\nMissing proper handling of the different column structures from email vs. fuzzy matches\n\n\n\n3. Variable Reference Errors\n\nLine 434: Attempts to rename coursera_id.x which doesn’t exist in learner data\nLine 423: Renames email = email.x but this column may not exist due to join structure\n\n\n\n\n🎯 Working vs. Current Implementation Gap\nWhat We Successfully Tested: - 136 exact email matches + 7 exact first+last matches = 143 total (86.1% rate) - Proper column handling with learners as the primary dataset - Correct fuzzy matching using parsed first+last name combinations\nWhat’s Currently Implemented: - Reversed join order that changes column structure - Simplified full_name matching that won’t capture name variations - Column reference errors that will cause runtime failures\n\n\n📋 Required Corrections\nTo restore the working implementation:\n\nFix Join Order: Start with gwg_learners_2023_2024 as primary dataset\nRestore Fuzzy Matching Logic: Use parsed first_last combinations, not full names\nCorrect Column References: Handle email column properly (no .x suffix in same-column joins)\nFix Data Combination: Ensure compatible column structures for rbind\n\n\n\n🔍 Analysis Quality Assessment\nStrengths: - Complete analytical framework with excellent visualizations - Proper single session interpretation of the program - Comprehensive performance metrics and strategic insights - Professional Quarto document structure\nCritical Gap: - The core matching logic that enables the analysis has been modified from the tested, working implementation - Current implementation will likely fail during execution due to column reference errors - Match rate will be significantly lower than the achieved 86.1%\n\n\n💡 Recommended Next Steps\n\nRevert to Tested Implementation: Restore the matching logic we successfully tested and validated\nPreserve Current Analysis Structure: Keep all the excellent analytical components\nTest Full Pipeline: Run complete analysis to ensure data flows correctly\nValidate Match Rate: Confirm we maintain the 86.1% match rate achievement\n\nCurrent Status: The analytical framework is excellent, but the core data matching implementation needs correction to restore functionality and maintain the improved match rates we achieved."
+  },
+  {
     "objectID": "coursera/downloads.html",
     "href": "coursera/downloads.html",
     "title": "Data downloads",
     "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Grow With Google applicants\nDownload data about individual learners enrolled in Coursera coursework\nDownload certificate completion data by RIN community\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)"
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Grow With Google applicants\nDownload data about individual learners enrolled in Coursera coursework\n\n\n\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2025)",
+      "Data downloads"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Rural Innovation Network data",
+    "section": "",
+    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+  },
+  {
+    "objectID": "cisco/downloads.html",
+    "href": "cisco/downloads.html",
+    "title": "Data downloads",
+    "section": "",
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco Network Academy (2024)",
+      "Data downloads"
+    ]
   },
   {
     "objectID": "cisco/eda-2024.html#simple-eda",
@@ -122,23 +153,81 @@
     ]
   },
   {
-    "objectID": "cisco/downloads.html",
-    "href": "cisco/downloads.html",
-    "title": "Data downloads",
+    "objectID": "AGS_PRIME_TUTORIAL.html",
+    "href": "AGS_PRIME_TUTORIAL.html",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
     "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
-    "crumbs": [
-      "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
-      "Data downloads"
-    ]
+    "text": "In this tutorial, you will build a new AGS Prime Application named Coursera Learner Tracker, define a Data Set to store learner registration data, create a Form and View for data entry and display, package them into a custom Module, and finally add that Module to the Application Banner under Modules Displayed in Application Banner so end users can easily access it.\n\n\n\nIntroduction\nPrerequisites\nStep 1: Create the Application\nStep 2: Create the Learner Registrations Data Set\nStep 3: Add Data Elements to the Data Set\nStep 4: Create the Learner Registration Form\nStep 5: Create the All Learner Registrations View\nStep 6: Create the Coursera Tracking Module\nStep 7: Add the Module to the Application Banner\nConclusion\nNext Steps\n\n\n\n\nYou will end up with a fully functional AGS Prime Application that tracks learners registered on the Coursera banner. Users will be able to enter new learner records, view all registrations, and navigate via the top banner.\n\n\n\nDomain Administrator or Application Designer credentials Familiarity with Prime core components: Data Sets, Forms, Views, Modules An active Prime domain with no conflicting application names\n\n\n\n\nSign in and click [Go to Admin Console].\n\nClick [Create New Application].\n\nEnter Application Name: Coursera Learner Tracker.\n\nClick the Magic Wand to auto-generate Application ID.\n\nEnter Application Description: Tracks Coursera learner registrations.\n\nClick [Save].\n\n\n\n\n\nIn Components Editor, click the DATA SETS card.\n\nClick [Create New Data Set].\n\nEnter Data Set Name: Learner Registrations.\n\nClick the Magic Wand for Data Set ID and Primary Key – Data Element ID.\n\nClick [Save].\n\n\n\n\n\nClick the blue pencil next to Learner Registrations.\n\nClick [Create New Data Element], select Text, add:\n\nLearner Name (use Magic Wand for ID)\n\nEmail Address (use Magic Wand for ID)\n\nCourse Name (use Magic Wand for ID)\n\n\nClick [Save] after each.\n\nClick [Create New Data Element], select Date, add:\n\nRegistration Date (use Magic Wand for ID)\n\n\nClick [Save].\n\n\n\n\n\nIn Components Editor, click the FORMS card.\n\nClick [Create New Form].\n\nEnter Form Name: Learner Registration Form.\n\nSelect Associated Data Set: Learner Registrations.\n\nClick [Save].\n\nIn Form Layout, drag all data elements into the layout area.\n\nClick [Save].\n\n\n\n\n\nIn Components Editor, click the VIEWS card.\n\nClick [Create New View].\n\nEnter View Name: All Learner Registrations.\n\nSelect Associated Data Set: Learner Registrations.\n\nClick [Save].\n\nIn View Columns, add columns:\n\nLearner Name\n\nEmail Address\n\nCourse Name\n\nRegistration Date\n\n\nIn Buttons sub-tab, add Edit Record and Delete Record.\n\nClick [Save].\n\n\n\n\n\nIn Components Editor, click the MODULES card.\n\nClick [Create New Module].\n\nEnter Module Name: Coursera Tracking.\n\nClick Magic Wand for Module ID.\n\nSelect Default Presentation: All Learner Registrations.\n\nClick Menu Builder tab:\n\nUnder Forms, drag Learner Registration Form.\n\nUnder Views, drag All Learner Registrations.\n\n\nClick [Save].\n\n\n\n\n\nWith the module open, click Banner Layout tab.\n\nDrag Coursera Tracking into Modules Displayed in Application Banner.\n\nClick [Save]."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Rural Innovation Network data",
+    "objectID": "AGS_PRIME_TUTORIAL.html#table-of-contents",
+    "href": "AGS_PRIME_TUTORIAL.html#table-of-contents",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
     "section": "",
-    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+    "text": "Introduction\nPrerequisites\nStep 1: Create the Application\nStep 2: Create the Learner Registrations Data Set\nStep 3: Add Data Elements to the Data Set\nStep 4: Create the Learner Registration Form\nStep 5: Create the All Learner Registrations View\nStep 6: Create the Coursera Tracking Module\nStep 7: Add the Module to the Application Banner\nConclusion\nNext Steps"
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#introduction",
+    "href": "AGS_PRIME_TUTORIAL.html#introduction",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "You will end up with a fully functional AGS Prime Application that tracks learners registered on the Coursera banner. Users will be able to enter new learner records, view all registrations, and navigate via the top banner."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#prerequisites",
+    "href": "AGS_PRIME_TUTORIAL.html#prerequisites",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "Domain Administrator or Application Designer credentials Familiarity with Prime core components: Data Sets, Forms, Views, Modules An active Prime domain with no conflicting application names"
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#create-the-application",
+    "href": "AGS_PRIME_TUTORIAL.html#create-the-application",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "Sign in and click [Go to Admin Console].\n\nClick [Create New Application].\n\nEnter Application Name: Coursera Learner Tracker.\n\nClick the Magic Wand to auto-generate Application ID.\n\nEnter Application Description: Tracks Coursera learner registrations.\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#create-the-learner-registrations-data-set",
+    "href": "AGS_PRIME_TUTORIAL.html#create-the-learner-registrations-data-set",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "In Components Editor, click the DATA SETS card.\n\nClick [Create New Data Set].\n\nEnter Data Set Name: Learner Registrations.\n\nClick the Magic Wand for Data Set ID and Primary Key – Data Element ID.\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#add-data-elements-to-the-data-set",
+    "href": "AGS_PRIME_TUTORIAL.html#add-data-elements-to-the-data-set",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "Click the blue pencil next to Learner Registrations.\n\nClick [Create New Data Element], select Text, add:\n\nLearner Name (use Magic Wand for ID)\n\nEmail Address (use Magic Wand for ID)\n\nCourse Name (use Magic Wand for ID)\n\n\nClick [Save] after each.\n\nClick [Create New Data Element], select Date, add:\n\nRegistration Date (use Magic Wand for ID)\n\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#create-the-learner-registration-form",
+    "href": "AGS_PRIME_TUTORIAL.html#create-the-learner-registration-form",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "In Components Editor, click the FORMS card.\n\nClick [Create New Form].\n\nEnter Form Name: Learner Registration Form.\n\nSelect Associated Data Set: Learner Registrations.\n\nClick [Save].\n\nIn Form Layout, drag all data elements into the layout area.\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#create-the-all-learner-registrations-view",
+    "href": "AGS_PRIME_TUTORIAL.html#create-the-all-learner-registrations-view",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "In Components Editor, click the VIEWS card.\n\nClick [Create New View].\n\nEnter View Name: All Learner Registrations.\n\nSelect Associated Data Set: Learner Registrations.\n\nClick [Save].\n\nIn View Columns, add columns:\n\nLearner Name\n\nEmail Address\n\nCourse Name\n\nRegistration Date\n\n\nIn Buttons sub-tab, add Edit Record and Delete Record.\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#create-the-coursera-tracking-module",
+    "href": "AGS_PRIME_TUTORIAL.html#create-the-coursera-tracking-module",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "In Components Editor, click the MODULES card.\n\nClick [Create New Module].\n\nEnter Module Name: Coursera Tracking.\n\nClick Magic Wand for Module ID.\n\nSelect Default Presentation: All Learner Registrations.\n\nClick Menu Builder tab:\n\nUnder Forms, drag Learner Registration Form.\n\nUnder Views, drag All Learner Registrations.\n\n\nClick [Save]."
+  },
+  {
+    "objectID": "AGS_PRIME_TUTORIAL.html#add-the-module-to-the-application-banner",
+    "href": "AGS_PRIME_TUTORIAL.html#add-the-module-to-the-application-banner",
+    "title": "Tutorial: Creating a New Application with a Custom Module for Tracking Coursera Learners",
+    "section": "",
+    "text": "With the module open, click Banner Layout tab.\n\nDrag Coursera Tracking into Modules Displayed in Application Banner.\n\nClick [Save]."
   },
   {
     "objectID": "coursera/eda-2025.html#original-data-about-all-grow-with-google-learners",
@@ -153,11 +242,23 @@
     ]
   },
   {
-    "objectID": "coursera/eda-2023-2024.html#executive-summary-2023-2024-program-session",
-    "href": "coursera/eda-2023-2024.html#executive-summary-2023-2024-program-session",
+    "objectID": "coursera/eda-2023-2024.html",
+    "href": "coursera/eda-2023-2024.html",
     "title": "Grow With Google program analysis",
-    "section": "Executive Summary: 2023-2024 Program Session",
-    "text": "Executive Summary: 2023-2024 Program Session\n\nProgram Session Highlights\n\nTotal Applications: 319\nTotal Learners: 166\nOverall Conversion Rate: 42.3%\nProgram Design: Single continuous session spanning 2023-2024\nCourse Completion Years: Activity tracked by latest program engagement\n\n\n\n\n\n\n\n\n\nCourse Completion Year Performance\n\n\nCourse Completion Year\nActive Learners\nAvg Enrollments\nAvg Completions\nCompletion Rate (%)\n\n\n\n\n2023\n90\n1.88\n0.74\n17.8\n\n\n2024\n45\n3.87\n2.49\n62.2",
+    "section": "",
+    "text": "Total Applications: 319\nTotal Learners: 166\nOverall Conversion Rate: 42.3%\nProgram Design: Single continuous session spanning 2023-2024\nCourse Completion Years: Activity tracked by latest program engagement\n\n\n\n\n\n\n\n\n\nCourse Completion Year Performance\n\n\nCourse Completion Year\nActive Learners\nAvg Enrollments\nAvg Completions\nCompletion Rate (%)\n\n\n\n\n2023\n90\n1.88\n0.74\n17.8\n\n\n2024\n45\n3.87\n2.49\n62.2",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#exploratory-data-analysis-for-impact-evaluation-in-2023-2024",
+    "href": "coursera/eda-2023-2024.html#exploratory-data-analysis-for-impact-evaluation-in-2023-2024",
+    "title": "Grow With Google program analysis",
+    "section": "",
+    "text": "Total Applications: 319\nTotal Learners: 166\nOverall Conversion Rate: 42.3%\nProgram Design: Single continuous session spanning 2023-2024\nCourse Completion Years: Activity tracked by latest program engagement\n\n\n\n\n\n\n\n\n\nCourse Completion Year Performance\n\n\nCourse Completion Year\nActive Learners\nAvg Enrollments\nAvg Completions\nCompletion Rate (%)\n\n\n\n\n2023\n90\n1.88\n0.74\n17.8\n\n\n2024\n45\n3.87\n2.49\n62.2",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2023 - 2024)",
@@ -170,6 +271,18 @@
     "title": "Grow With Google program analysis",
     "section": "Application Timeline Analysis",
     "text": "Application Timeline Analysis",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Grow With Google (2023 - 2024)",
+      "EDA for impact evaluation"
+    ]
+  },
+  {
+    "objectID": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
+    "href": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
+    "title": "Grow With Google program analysis",
+    "section": "Application to Enrollment Time Analysis",
+    "text": "Application to Enrollment Time Analysis",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2023 - 2024)",
@@ -237,35 +350,11 @@
     ]
   },
   {
-    "objectID": "coursera/eda-2023-2024.html#detailed-course-completion-year-profiles",
-    "href": "coursera/eda-2023-2024.html#detailed-course-completion-year-profiles",
-    "title": "Grow With Google program analysis",
-    "section": "Detailed Course Completion Year Profiles",
-    "text": "Detailed Course Completion Year Profiles\n\n\n\n\n\n\n\n\nSample 2024 Course Completion Year Learners\n\n\nName\nEmail\nJoin Date\nEnrollments\nCompletions\nEngagement Level\nDays Active\nLatest Activity\n\n\n\n\njean linkhauer\njean.linkhauer@gmail.com\n2023-07-11 20:34:06.829\n1\n0\nActive Learner\n409.1613\n2024-08-24\n\n\ndelores hagans\ndeeh@futureplans.org\n2023-08-02 18:19:24.627\n2\n0\nActive Learner\n385.1168\n2024-08-21\n\n\nlauren horne\nlhorne9644@gmail.com\n2023-07-10 18:03:57.256\n5\n2\nCompleter\n407.0511\n2024-08-20\n\n\nkatlin okamoto\nkatlin.okamoto@gmail.com\n2023-08-16 05:32:56.911\n1\n0\nActive Learner\n367.6128\n2024-08-17\n\n\npadraig conces\npadraigconces@gmail.com\n2023-12-04 17:01:47.067\n2\n0\nActive Learner\n252.9960\n2024-08-13\n\n\nomar adame\nadameomar5@gmail.com\n2023-07-25 16:14:15.655\n2\n0\nActive Learner\n383.3831\n2024-08-12\n\n\njason pfeifer\njasonpfeifer@hotmail.com\n2023-07-31 16:57:44.725\n5\n3\nCompleter\n371.9854\n2024-08-06\n\n\nchelsea watkins\ncwatkins@shawnee.edu\n2023-07-17 22:49:53.377\n2\n0\nActive Learner\n375.8420\n2024-07-27\n\n\nlaura valerio\nlvalerio@kitcarson.com\n2023-07-27 22:39:07.66\n2\n1\nCompleter\n356.8748\n2024-07-18\n\n\nadelaida dominguez\ndominguezadel@gmail.com\n2023-07-29 13:21:53.565\n15\n13\nCompleter\n353.1489\n2024-07-16",
-    "crumbs": [
-      "Rural Innovation Network data",
-      "Grow With Google (2023 - 2024)",
-      "EDA for impact evaluation"
-    ]
-  },
-  {
-    "objectID": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
-    "href": "coursera/eda-2023-2024.html#application-to-enrollment-time-analysis",
-    "title": "Grow With Google program analysis",
-    "section": "Application to Enrollment Time Analysis",
-    "text": "Application to Enrollment Time Analysis",
-    "crumbs": [
-      "Rural Innovation Network data",
-      "Grow With Google (2023 - 2024)",
-      "EDA for impact evaluation"
-    ]
-  },
-  {
     "objectID": "coursera/eda-2023-2024.html#key-findings-and-strategic-insights",
     "href": "coursera/eda-2023-2024.html#key-findings-and-strategic-insights",
     "title": "Grow With Google program analysis",
     "section": "Key Findings and Strategic Insights",
-    "text": "Key Findings and Strategic Insights\n\nSingle Session Program Model Validation\n\nContinuous Learning: 136 learners successfully enrolled in single session design\nExtended Timeline: Learners active across both 2023 and 2024 completion years\nFlexible Progression: Some learners joined in 2023 but were most active in 2024\n\n\n\nCourse Completion Year Analysis\n\n2023 Completion Focus: 90 learners with primary activity in 2023\n2024 Completion Focus: 45 learners with primary activity in 2024\nExtended Engagement: Demonstrates value of extended timeline for working adults\n\n\n\nApplication Patterns\n\nPrimary Launch: 315 applications in 2023 (98.4% of total)\nExtended Access: 4 applications in 2024 (limited late interest)\nStrong Conversion: 43.2% overall application-to-enrollment rate\n\n\n\nStrategic Recommendations\n\nMaintain Single Session Design: Data validates continuous program model over annual cohorts\nPlan Extended Timeline: 18-24 month duration appropriate for course completion patterns\nFocus Launch Efforts: Concentrate marketing in Q3 for maximum application response\nSupport Extended Learning: Provide ongoing support for learners completing across multiple years\nTrack Completion Years: Use latest activity date to understand when learners are most engaged\n\n\n\nPerformance Benchmarks\n\nTarget Application Volume: 200+ annually (based on 2023 success)\nTarget Conversion Rate: 40%+ (maintain strong performance)\nTarget Completion Distribution: Balance between first-year and extended-year completions\nSession Duration: 18-24 months for optimal completion rates\n\n\nAnalysis completed on 2025-08-29 using data as of 2024_06_04\nData Sources: - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date",
+    "text": "Key Findings and Strategic Insights\n\nSingle Session Program Model Validation\n\nContinuous Learning: 136 learners successfully enrolled in single session design\nExtended Timeline: Learners active across both 2023 and 2024 completion years\nFlexible Progression: Some learners joined in 2023 but were most active in 2024\n\n\n\nCourse Completion Year Analysis\n\n2023 Completion Focus: 90 learners with primary activity in 2023\n2024 Completion Focus: 45 learners with primary activity in 2024\nExtended Engagement: Demonstrates value of extended timeline for working adults\n\n\n\nApplication Patterns\n\nPrimary Launch: 315 applications in 2023 (98.4% of total)\nExtended Access: 4 applications in 2024 (limited late interest)\nStrong Conversion: 43.2% overall application-to-enrollment rate\n\n\n\nStrategic Recommendations\n\nMaintain Single Session Design: Data validates continuous program model over annual cohorts\nPlan Extended Timeline: 18-24 month duration appropriate for course completion patterns\nFocus Launch Efforts: Concentrate marketing in Q3 for maximum application response\nSupport Extended Learning: Provide ongoing support for learners completing across multiple years\nTrack Completion Years: Use latest activity date to understand when learners are most engaged\n\n\n\nPerformance Benchmarks\n\nTarget Application Volume: 200+ annually (based on 2023 success)\nTarget Conversion Rate: 40%+ (maintain strong performance)\nTarget Completion Distribution: Balance between first-year and extended-year completions\nSession Duration: 18-24 months for optimal completion rates\n\n\nAnalysis completed on 2025-09-17 using data as of 2024_06_04\nData Sources: - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2023 - 2024)",

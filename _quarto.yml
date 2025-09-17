@@ -31,6 +31,8 @@ website:
         contents:
           - href: coursera/index.qmd
             text: Applicant & Learner progress
+          - href: coursera/downloads.qmd
+            text: Data downloads
           - href: coursera/eda-2025.qmd
             text: EDA for impact evaluation
 format:

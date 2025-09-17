@@ -52,6 +52,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="../assets/fonts.css">
@@ -177,6 +187,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../coursera/downloads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data downloads</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../coursera/eda-2025.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">EDA for impact evaluation</span></a>
   </div>
@@ -193,19 +209,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024" id="toc-exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="nav-link active" data-scroll-target="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</a></li>
-  <li><a href="#executive-summary-2023-2024-program-session" id="toc-executive-summary-2023-2024-program-session" class="nav-link" data-scroll-target="#executive-summary-2023-2024-program-session">Executive Summary: 2023-2024 Program Session</a>
+  <li><a href="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024" id="toc-exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="nav-link active" data-scroll-target="#exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</a>
   <ul class="collapse">
   <li><a href="#program-session-highlights" id="toc-program-session-highlights" class="nav-link" data-scroll-target="#program-session-highlights">Program Session Highlights</a></li>
+  <li><a href="#course-completion-rates-across-rin-communties" id="toc-course-completion-rates-across-rin-communties" class="nav-link" data-scroll-target="#course-completion-rates-across-rin-communties">Course completion rates across RIN communties</a></li>
   </ul></li>
   <li><a href="#application-timeline-analysis" id="toc-application-timeline-analysis" class="nav-link" data-scroll-target="#application-timeline-analysis">Application Timeline Analysis</a></li>
+  <li><a href="#application-to-enrollment-time-analysis" id="toc-application-to-enrollment-time-analysis" class="nav-link" data-scroll-target="#application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</a></li>
   <li><a href="#course-completion-year-analysis" id="toc-course-completion-year-analysis" class="nav-link" data-scroll-target="#course-completion-year-analysis">Course Completion Year Analysis</a></li>
   <li><a href="#certificate-interest-distribution" id="toc-certificate-interest-distribution" class="nav-link" data-scroll-target="#certificate-interest-distribution">Certificate Interest Distribution</a></li>
   <li><a href="#learner-performance-by-course-completion-year" id="toc-learner-performance-by-course-completion-year" class="nav-link" data-scroll-target="#learner-performance-by-course-completion-year">Learner Performance by Course Completion Year</a></li>
   <li><a href="#session-conversion-analysis" id="toc-session-conversion-analysis" class="nav-link" data-scroll-target="#session-conversion-analysis">Session Conversion Analysis</a></li>
   <li><a href="#course-completion-year-progression" id="toc-course-completion-year-progression" class="nav-link" data-scroll-target="#course-completion-year-progression">Course Completion Year Progression</a></li>
-  <li><a href="#detailed-course-completion-year-profiles" id="toc-detailed-course-completion-year-profiles" class="nav-link" data-scroll-target="#detailed-course-completion-year-profiles">Detailed Course Completion Year Profiles</a></li>
-  <li><a href="#application-to-enrollment-time-analysis" id="toc-application-to-enrollment-time-analysis" class="nav-link" data-scroll-target="#application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</a></li>
   <li><a href="#key-findings-and-strategic-insights" id="toc-key-findings-and-strategic-insights" class="nav-link" data-scroll-target="#key-findings-and-strategic-insights">Key Findings and Strategic Insights</a>
   <ul class="collapse">
   <li><a href="#single-session-program-model-validation" id="toc-single-session-program-model-validation" class="nav-link" data-scroll-target="#single-session-program-model-validation">Single Session Program Model Validation</a></li>
@@ -247,9 +262,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="exploratory-data-analysis-for-impact-evaluation-in-2023-2024" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis-for-impact-evaluation-in-2023-2024">Exploratory data analysis for impact evaluation in 2023-2024</h2>
-</section>
-<section id="executive-summary-2023-2024-program-session" class="level2">
-<h2 class="anchored" data-anchor-id="executive-summary-2023-2024-program-session">Executive Summary: 2023-2024 Program Session</h2>
 <section id="program-session-highlights" class="level3">
 <h3 class="anchored" data-anchor-id="program-session-highlights">Program Session Highlights</h3>
 <ul>
@@ -261,23 +273,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rwglidspwn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rwglidspwn table {
+<div id="wrdgjjvkiu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wrdgjjvkiu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rwglidspwn thead, #rwglidspwn tbody, #rwglidspwn tfoot, #rwglidspwn tr, #rwglidspwn td, #rwglidspwn th {
+#wrdgjjvkiu thead, #wrdgjjvkiu tbody, #wrdgjjvkiu tfoot, #wrdgjjvkiu tr, #wrdgjjvkiu td, #wrdgjjvkiu th {
   border-style: none;
 }
 
-#rwglidspwn p {
+#wrdgjjvkiu p {
   margin: 0;
   padding: 0;
 }
 
-#rwglidspwn .gt_table {
+#wrdgjjvkiu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -303,12 +315,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_caption {
+#wrdgjjvkiu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rwglidspwn .gt_title {
+#wrdgjjvkiu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -320,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#rwglidspwn .gt_subtitle {
+#wrdgjjvkiu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -332,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#rwglidspwn .gt_heading {
+#wrdgjjvkiu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -344,13 +356,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_bottom_border {
+#wrdgjjvkiu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_col_headings {
+#wrdgjjvkiu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -365,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_col_heading {
+#wrdgjjvkiu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rwglidspwn .gt_column_spanner_outer {
+#wrdgjjvkiu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -397,15 +409,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#rwglidspwn .gt_column_spanner_outer:first-child {
+#wrdgjjvkiu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rwglidspwn .gt_column_spanner_outer:last-child {
+#wrdgjjvkiu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rwglidspwn .gt_column_spanner {
+#wrdgjjvkiu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -417,11 +429,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#rwglidspwn .gt_spanner_row {
+#wrdgjjvkiu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rwglidspwn .gt_group_heading {
+#wrdgjjvkiu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -447,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#rwglidspwn .gt_empty_group_heading {
+#wrdgjjvkiu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -462,15 +474,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#rwglidspwn .gt_from_md > :first-child {
+#wrdgjjvkiu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rwglidspwn .gt_from_md > :last-child {
+#wrdgjjvkiu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rwglidspwn .gt_row {
+#wrdgjjvkiu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +501,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rwglidspwn .gt_stub {
+#wrdgjjvkiu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,7 +514,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rwglidspwn .gt_stub_row_group {
+#wrdgjjvkiu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -516,15 +528,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#rwglidspwn .gt_row_group_first td {
+#wrdgjjvkiu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rwglidspwn .gt_row_group_first th {
+#wrdgjjvkiu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rwglidspwn .gt_summary_row {
+#wrdgjjvkiu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -534,16 +546,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rwglidspwn .gt_first_summary_row {
+#wrdgjjvkiu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_first_summary_row.thick {
+#wrdgjjvkiu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rwglidspwn .gt_last_summary_row {
+#wrdgjjvkiu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +565,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_grand_summary_row {
+#wrdgjjvkiu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -563,7 +575,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rwglidspwn .gt_first_grand_summary_row {
+#wrdgjjvkiu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_last_grand_summary_row_top {
+#wrdgjjvkiu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -583,11 +595,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_striped {
+#wrdgjjvkiu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rwglidspwn .gt_table_body {
+#wrdgjjvkiu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -596,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_footnotes {
+#wrdgjjvkiu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -610,7 +622,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_footnote {
+#wrdgjjvkiu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -619,7 +631,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rwglidspwn .gt_sourcenotes {
+#wrdgjjvkiu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -633,7 +645,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rwglidspwn .gt_sourcenote {
+#wrdgjjvkiu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -641,72 +653,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rwglidspwn .gt_left {
+#wrdgjjvkiu .gt_left {
   text-align: left;
 }
 
-#rwglidspwn .gt_center {
+#wrdgjjvkiu .gt_center {
   text-align: center;
 }
 
-#rwglidspwn .gt_right {
+#wrdgjjvkiu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rwglidspwn .gt_font_normal {
+#wrdgjjvkiu .gt_font_normal {
   font-weight: normal;
 }
 
-#rwglidspwn .gt_font_bold {
+#wrdgjjvkiu .gt_font_bold {
   font-weight: bold;
 }
 
-#rwglidspwn .gt_font_italic {
+#wrdgjjvkiu .gt_font_italic {
   font-style: italic;
 }
 
-#rwglidspwn .gt_super {
+#wrdgjjvkiu .gt_super {
   font-size: 65%;
 }
 
-#rwglidspwn .gt_footnote_marks {
+#wrdgjjvkiu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rwglidspwn .gt_asterisk {
+#wrdgjjvkiu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rwglidspwn .gt_indent_1 {
+#wrdgjjvkiu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rwglidspwn .gt_indent_2 {
+#wrdgjjvkiu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rwglidspwn .gt_indent_3 {
+#wrdgjjvkiu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rwglidspwn .gt_indent_4 {
+#wrdgjjvkiu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rwglidspwn .gt_indent_5 {
+#wrdgjjvkiu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rwglidspwn .katex-display {
+#wrdgjjvkiu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rwglidspwn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wrdgjjvkiu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -746,9 +758,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
+<section id="course-completion-rates-across-rin-communties" class="level3">
+<h3 class="anchored" data-anchor-id="course-completion-rates-across-rin-communties">Course completion rates across RIN communties</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-14d5037b0269fb8168b7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-14d5037b0269fb8168b7">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Ada","Chambers County","Cochise County","Eastern Kentucky","Greenfield","Independence","Indiana County","Kirksville","Nacogdoches","Portsmouth","Pryor Creek","Taos","The Berkshires","The Dalles","Traverse City","Wilkes County","Wilson"],[2,10,1,3,1,1,1,1,2,75,1,32,2,1,2,1,1],[2,3,0,1,0,0,1,0,0,21,1,15,1,1,0,1,1],["100.0%","30.0%","0.0%","33.3%","0.0%","0.0%","100.0%","0.0%","0.0%","28.0%","100.0%","46.9%","50.0%","100.0%","0.0%","100.0%","100.0%"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>RIN Community<\/th>\n      <th>Total Learners<\/th>\n      <th>Completed First Course<\/th>\n      <th>Completion Rate<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bLengthChange":0,"bFilter":0,"bInfo":0,"pageLength":-1,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"RIN Community","targets":1},{"name":"Total Learners","targets":2},{"name":"Completed First Course","targets":3},{"name":"Completion Rate","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[-1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
 </section>
 <section id="application-timeline-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="application-timeline-analysis">Application Timeline Analysis</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda-2023-2024_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="application-to-enrollment-time-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -787,23 +820,23 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="learner-performance-by-course-completion-year">Learner Performance by Course Completion Year</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="virkbdohnc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#virkbdohnc table {
+<div id="vdcjbixcfg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vdcjbixcfg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#virkbdohnc thead, #virkbdohnc tbody, #virkbdohnc tfoot, #virkbdohnc tr, #virkbdohnc td, #virkbdohnc th {
+#vdcjbixcfg thead, #vdcjbixcfg tbody, #vdcjbixcfg tfoot, #vdcjbixcfg tr, #vdcjbixcfg td, #vdcjbixcfg th {
   border-style: none;
 }
 
-#virkbdohnc p {
+#vdcjbixcfg p {
   margin: 0;
   padding: 0;
 }
 
-#virkbdohnc .gt_table {
+#vdcjbixcfg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -829,12 +862,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_caption {
+#vdcjbixcfg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#virkbdohnc .gt_title {
+#vdcjbixcfg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -846,7 +879,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#virkbdohnc .gt_subtitle {
+#vdcjbixcfg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -858,7 +891,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#virkbdohnc .gt_heading {
+#vdcjbixcfg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -870,13 +903,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_bottom_border {
+#vdcjbixcfg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_col_headings {
+#vdcjbixcfg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -891,7 +924,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_col_heading {
+#vdcjbixcfg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -911,7 +944,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#virkbdohnc .gt_column_spanner_outer {
+#vdcjbixcfg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -923,15 +956,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#virkbdohnc .gt_column_spanner_outer:first-child {
+#vdcjbixcfg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#virkbdohnc .gt_column_spanner_outer:last-child {
+#vdcjbixcfg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#virkbdohnc .gt_column_spanner {
+#vdcjbixcfg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -943,11 +976,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#virkbdohnc .gt_spanner_row {
+#vdcjbixcfg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#virkbdohnc .gt_group_heading {
+#vdcjbixcfg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,7 +1006,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#virkbdohnc .gt_empty_group_heading {
+#vdcjbixcfg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -988,15 +1021,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#virkbdohnc .gt_from_md > :first-child {
+#vdcjbixcfg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#virkbdohnc .gt_from_md > :last-child {
+#vdcjbixcfg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#virkbdohnc .gt_row {
+#vdcjbixcfg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1015,7 +1048,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#virkbdohnc .gt_stub {
+#vdcjbixcfg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1028,7 +1061,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#virkbdohnc .gt_stub_row_group {
+#vdcjbixcfg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1042,15 +1075,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#virkbdohnc .gt_row_group_first td {
+#vdcjbixcfg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#virkbdohnc .gt_row_group_first th {
+#vdcjbixcfg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#virkbdohnc .gt_summary_row {
+#vdcjbixcfg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1060,16 +1093,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#virkbdohnc .gt_first_summary_row {
+#vdcjbixcfg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_first_summary_row.thick {
+#vdcjbixcfg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#virkbdohnc .gt_last_summary_row {
+#vdcjbixcfg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1079,7 +1112,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_grand_summary_row {
+#vdcjbixcfg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1089,7 +1122,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#virkbdohnc .gt_first_grand_summary_row {
+#vdcjbixcfg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1099,7 +1132,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_last_grand_summary_row_top {
+#vdcjbixcfg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1109,11 +1142,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_striped {
+#vdcjbixcfg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#virkbdohnc .gt_table_body {
+#vdcjbixcfg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1122,7 +1155,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_footnotes {
+#vdcjbixcfg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1136,7 +1169,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_footnote {
+#vdcjbixcfg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1145,7 +1178,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#virkbdohnc .gt_sourcenotes {
+#vdcjbixcfg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1159,7 +1192,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#virkbdohnc .gt_sourcenote {
+#vdcjbixcfg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1167,72 +1200,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#virkbdohnc .gt_left {
+#vdcjbixcfg .gt_left {
   text-align: left;
 }
 
-#virkbdohnc .gt_center {
+#vdcjbixcfg .gt_center {
   text-align: center;
 }
 
-#virkbdohnc .gt_right {
+#vdcjbixcfg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#virkbdohnc .gt_font_normal {
+#vdcjbixcfg .gt_font_normal {
   font-weight: normal;
 }
 
-#virkbdohnc .gt_font_bold {
+#vdcjbixcfg .gt_font_bold {
   font-weight: bold;
 }
 
-#virkbdohnc .gt_font_italic {
+#vdcjbixcfg .gt_font_italic {
   font-style: italic;
 }
 
-#virkbdohnc .gt_super {
+#vdcjbixcfg .gt_super {
   font-size: 65%;
 }
 
-#virkbdohnc .gt_footnote_marks {
+#vdcjbixcfg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#virkbdohnc .gt_asterisk {
+#vdcjbixcfg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#virkbdohnc .gt_indent_1 {
+#vdcjbixcfg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#virkbdohnc .gt_indent_2 {
+#vdcjbixcfg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#virkbdohnc .gt_indent_3 {
+#vdcjbixcfg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#virkbdohnc .gt_indent_4 {
+#vdcjbixcfg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#virkbdohnc .gt_indent_5 {
+#vdcjbixcfg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#virkbdohnc .katex-display {
+#vdcjbixcfg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#virkbdohnc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vdcjbixcfg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1282,23 +1315,23 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="session-conversion-analysis">Session Conversion Analysis</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rrjwbbrdqz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rrjwbbrdqz table {
+<div id="lfggeictdn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lfggeictdn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rrjwbbrdqz thead, #rrjwbbrdqz tbody, #rrjwbbrdqz tfoot, #rrjwbbrdqz tr, #rrjwbbrdqz td, #rrjwbbrdqz th {
+#lfggeictdn thead, #lfggeictdn tbody, #lfggeictdn tfoot, #lfggeictdn tr, #lfggeictdn td, #lfggeictdn th {
   border-style: none;
 }
 
-#rrjwbbrdqz p {
+#lfggeictdn p {
   margin: 0;
   padding: 0;
 }
 
-#rrjwbbrdqz .gt_table {
+#lfggeictdn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1324,12 +1357,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_caption {
+#lfggeictdn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rrjwbbrdqz .gt_title {
+#lfggeictdn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1341,7 +1374,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#rrjwbbrdqz .gt_subtitle {
+#lfggeictdn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1353,7 +1386,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#rrjwbbrdqz .gt_heading {
+#lfggeictdn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1365,13 +1398,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_bottom_border {
+#lfggeictdn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_col_headings {
+#lfggeictdn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1386,7 +1419,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_col_heading {
+#lfggeictdn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1406,7 +1439,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rrjwbbrdqz .gt_column_spanner_outer {
+#lfggeictdn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1418,15 +1451,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#rrjwbbrdqz .gt_column_spanner_outer:first-child {
+#lfggeictdn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rrjwbbrdqz .gt_column_spanner_outer:last-child {
+#lfggeictdn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rrjwbbrdqz .gt_column_spanner {
+#lfggeictdn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1438,11 +1471,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#rrjwbbrdqz .gt_spanner_row {
+#lfggeictdn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rrjwbbrdqz .gt_group_heading {
+#lfggeictdn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1468,7 +1501,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#rrjwbbrdqz .gt_empty_group_heading {
+#lfggeictdn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1483,15 +1516,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#rrjwbbrdqz .gt_from_md > :first-child {
+#lfggeictdn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rrjwbbrdqz .gt_from_md > :last-child {
+#lfggeictdn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rrjwbbrdqz .gt_row {
+#lfggeictdn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1510,7 +1543,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#rrjwbbrdqz .gt_stub {
+#lfggeictdn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1523,7 +1556,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rrjwbbrdqz .gt_stub_row_group {
+#lfggeictdn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1537,15 +1570,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#rrjwbbrdqz .gt_row_group_first td {
+#lfggeictdn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rrjwbbrdqz .gt_row_group_first th {
+#lfggeictdn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rrjwbbrdqz .gt_summary_row {
+#lfggeictdn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1555,16 +1588,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rrjwbbrdqz .gt_first_summary_row {
+#lfggeictdn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_first_summary_row.thick {
+#lfggeictdn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rrjwbbrdqz .gt_last_summary_row {
+#lfggeictdn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1574,7 +1607,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_grand_summary_row {
+#lfggeictdn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1584,7 +1617,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rrjwbbrdqz .gt_first_grand_summary_row {
+#lfggeictdn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1594,7 +1627,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_last_grand_summary_row_top {
+#lfggeictdn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1604,11 +1637,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_striped {
+#lfggeictdn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rrjwbbrdqz .gt_table_body {
+#lfggeictdn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1617,7 +1650,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_footnotes {
+#lfggeictdn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1631,7 +1664,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_footnote {
+#lfggeictdn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1640,7 +1673,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rrjwbbrdqz .gt_sourcenotes {
+#lfggeictdn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1654,7 +1687,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#rrjwbbrdqz .gt_sourcenote {
+#lfggeictdn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1662,72 +1695,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#rrjwbbrdqz .gt_left {
+#lfggeictdn .gt_left {
   text-align: left;
 }
 
-#rrjwbbrdqz .gt_center {
+#lfggeictdn .gt_center {
   text-align: center;
 }
 
-#rrjwbbrdqz .gt_right {
+#lfggeictdn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rrjwbbrdqz .gt_font_normal {
+#lfggeictdn .gt_font_normal {
   font-weight: normal;
 }
 
-#rrjwbbrdqz .gt_font_bold {
+#lfggeictdn .gt_font_bold {
   font-weight: bold;
 }
 
-#rrjwbbrdqz .gt_font_italic {
+#lfggeictdn .gt_font_italic {
   font-style: italic;
 }
 
-#rrjwbbrdqz .gt_super {
+#lfggeictdn .gt_super {
   font-size: 65%;
 }
 
-#rrjwbbrdqz .gt_footnote_marks {
+#lfggeictdn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rrjwbbrdqz .gt_asterisk {
+#lfggeictdn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rrjwbbrdqz .gt_indent_1 {
+#lfggeictdn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rrjwbbrdqz .gt_indent_2 {
+#lfggeictdn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rrjwbbrdqz .gt_indent_3 {
+#lfggeictdn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rrjwbbrdqz .gt_indent_4 {
+#lfggeictdn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rrjwbbrdqz .gt_indent_5 {
+#lfggeictdn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rrjwbbrdqz .katex-display {
+#lfggeictdn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rrjwbbrdqz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lfggeictdn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1782,596 +1815,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="detailed-course-completion-year-profiles" class="level2">
-<h2 class="anchored" data-anchor-id="detailed-course-completion-year-profiles">Detailed Course Completion Year Profiles</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="yenjnuxsxd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yenjnuxsxd table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#yenjnuxsxd thead, #yenjnuxsxd tbody, #yenjnuxsxd tfoot, #yenjnuxsxd tr, #yenjnuxsxd td, #yenjnuxsxd th {
-  border-style: none;
-}
-
-#yenjnuxsxd p {
-  margin: 0;
-  padding: 0;
-}
-
-#yenjnuxsxd .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#yenjnuxsxd .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#yenjnuxsxd .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#yenjnuxsxd .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#yenjnuxsxd .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#yenjnuxsxd .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#yenjnuxsxd .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#yenjnuxsxd .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#yenjnuxsxd .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#yenjnuxsxd .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#yenjnuxsxd .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#yenjnuxsxd .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#yenjnuxsxd .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#yenjnuxsxd .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#yenjnuxsxd .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yenjnuxsxd .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#yenjnuxsxd .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#yenjnuxsxd .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#yenjnuxsxd .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yenjnuxsxd .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#yenjnuxsxd .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yenjnuxsxd .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#yenjnuxsxd .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yenjnuxsxd .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yenjnuxsxd .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yenjnuxsxd .gt_left {
-  text-align: left;
-}
-
-#yenjnuxsxd .gt_center {
-  text-align: center;
-}
-
-#yenjnuxsxd .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#yenjnuxsxd .gt_font_normal {
-  font-weight: normal;
-}
-
-#yenjnuxsxd .gt_font_bold {
-  font-weight: bold;
-}
-
-#yenjnuxsxd .gt_font_italic {
-  font-style: italic;
-}
-
-#yenjnuxsxd .gt_super {
-  font-size: 65%;
-}
-
-#yenjnuxsxd .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#yenjnuxsxd .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#yenjnuxsxd .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#yenjnuxsxd .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#yenjnuxsxd .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#yenjnuxsxd .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#yenjnuxsxd .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#yenjnuxsxd .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#yenjnuxsxd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_heading">
-<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Sample 2024 Course Completion Year Learners</th>
-</tr>
-<tr class="odd gt_col_headings">
-<th id="full_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Name</th>
-<th id="email" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Email</th>
-<th id="join_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Join Date</th>
-<th id="cnt_enrollments" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Enrollments</th>
-<th id="cnt_completions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completions</th>
-<th id="engagement_level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Engagement Level</th>
-<th id="engagement_days" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Days Active</th>
-<th id="latest_activity_parsed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Latest Activity</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">jean linkhauer</td>
-<td class="gt_row gt_left" headers="email">jean.linkhauer@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-11 20:34:06.829</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">1</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">409.1613</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-24</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">delores hagans</td>
-<td class="gt_row gt_left" headers="email">deeh@futureplans.org</td>
-<td class="gt_row gt_right" headers="join_date">2023-08-02 18:19:24.627</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">385.1168</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-21</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">lauren horne</td>
-<td class="gt_row gt_left" headers="email">lhorne9644@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-10 18:03:57.256</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">5</td>
-<td class="gt_row gt_right" headers="cnt_completions">2</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">407.0511</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-20</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">katlin okamoto</td>
-<td class="gt_row gt_left" headers="email">katlin.okamoto@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-08-16 05:32:56.911</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">1</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">367.6128</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-17</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">padraig conces</td>
-<td class="gt_row gt_left" headers="email">padraigconces@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-12-04 17:01:47.067</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">252.9960</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-13</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">omar adame</td>
-<td class="gt_row gt_left" headers="email">adameomar5@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-25 16:14:15.655</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">383.3831</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-12</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">jason pfeifer</td>
-<td class="gt_row gt_left" headers="email">jasonpfeifer@hotmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-31 16:57:44.725</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">5</td>
-<td class="gt_row gt_right" headers="cnt_completions">3</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">371.9854</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-08-06</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">chelsea watkins</td>
-<td class="gt_row gt_left" headers="email">cwatkins@shawnee.edu</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-17 22:49:53.377</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">0</td>
-<td class="gt_row gt_left" headers="engagement_level">Active Learner</td>
-<td class="gt_row gt_right" headers="engagement_days">375.8420</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-27</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="full_name">laura valerio</td>
-<td class="gt_row gt_left" headers="email">lvalerio@kitcarson.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-27 22:39:07.66</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">2</td>
-<td class="gt_row gt_right" headers="cnt_completions">1</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">356.8748</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-18</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="full_name">adelaida dominguez</td>
-<td class="gt_row gt_left" headers="email">dominguezadel@gmail.com</td>
-<td class="gt_row gt_right" headers="join_date">2023-07-29 13:21:53.565</td>
-<td class="gt_row gt_right" headers="cnt_enrollments">15</td>
-<td class="gt_row gt_right" headers="cnt_completions">13</td>
-<td class="gt_row gt_left" headers="engagement_level">Completer</td>
-<td class="gt_row gt_right" headers="engagement_days">353.1489</td>
-<td class="gt_row gt_right" headers="latest_activity_parsed">2024-07-16</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="application-to-enrollment-time-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="application-to-enrollment-time-analysis">Application to Enrollment Time Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="eda-2023-2024_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="key-findings-and-strategic-insights" class="level2">
 <h2 class="anchored" data-anchor-id="key-findings-and-strategic-insights">Key Findings and Strategic Insights</h2>
 <section id="single-session-program-model-validation" class="level3">
@@ -2417,7 +1860,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Session Duration</strong>: 18-24 months for optimal completion rates</li>
 </ul>
 <hr>
-<p><em>Analysis completed on 2025-08-29 using data as of 2024_06_04</em></p>
+<p><em>Analysis completed on 2025-09-17 using data as of 2024_06_04</em></p>
 <p><strong>Data Sources:</strong> - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date</p>
 
 
