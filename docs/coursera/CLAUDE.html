@@ -296,6 +296,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#analysis-quality-assessment" id="toc-analysis-quality-assessment" class="nav-link" data-scroll-target="#analysis-quality-assessment">🔍 Analysis Quality Assessment</a></li>
   <li><a href="#recommended-next-steps" id="toc-recommended-next-steps" class="nav-link" data-scroll-target="#recommended-next-steps">💡 Recommended Next Steps</a></li>
   </ul></li>
+  <li><a href="#addendum-coursera-api-exploration-for-data-reproduction" id="toc-addendum-coursera-api-exploration-for-data-reproduction" class="nav-link" data-scroll-target="#addendum-coursera-api-exploration-for-data-reproduction">ADDENDUM: Coursera API Exploration for Data Reproduction</a>
+  <ul class="collapse">
+  <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#current-target-definition" id="toc-current-target-definition" class="nav-link" data-scroll-target="#current-target-definition">Current Target Definition</a></li>
+  <li><a href="#key-data-elements-to-reproduce-via-api" id="toc-key-data-elements-to-reproduce-via-api" class="nav-link" data-scroll-target="#key-data-elements-to-reproduce-via-api">Key Data Elements to Reproduce via API</a></li>
+  <li><a href="#api-exploration-plan" id="toc-api-exploration-plan" class="nav-link" data-scroll-target="#api-exploration-plan">API Exploration Plan</a></li>
+  <li><a href="#success-criteria" id="toc-success-criteria" class="nav-link" data-scroll-target="#success-criteria">Success Criteria</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -949,6 +957,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Validate Match Rate</strong>: Confirm we maintain the 86.1% match rate achievement</li>
 </ol>
 <p><strong>Current Status</strong>: The analytical framework is excellent, but the core data matching implementation needs correction to restore functionality and maintain the improved match rates we achieved.</p>
+<hr>
+</section>
+</section>
+<section id="addendum-coursera-api-exploration-for-data-reproduction" class="level2">
+<h2 class="anchored" data-anchor-id="addendum-coursera-api-exploration-for-data-reproduction">ADDENDUM: Coursera API Exploration for Data Reproduction</h2>
+<section id="objective" class="level3">
+<h3 class="anchored" data-anchor-id="objective">Objective</h3>
+<p>Explore the Coursera API documentation accessible at https://dev.coursera.com/apis to understand how to reproduce the data currently represented by the <code>gwg_learners_2023_2024</code> target in the _targets.R file.</p>
+</section>
+<section id="current-target-definition" class="level3">
+<h3 class="anchored" data-anchor-id="current-target-definition">Current Target Definition</h3>
+<p>The <code>gwg_learners_2023_2024</code> target is defined as:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(gwg_learners_2023_2024, <span class="fu">get_gwg_learners_2023_2024_filtered</span>(params<span class="sc">$</span>cohorts[[<span class="dv">2</span>]]<span class="sc">$</span>learner_export_file))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This target: 1. <strong>Source Data</strong>: Loads from <code>inst/ext_data/user-filtering-exports_center-on-rural-innovation_LearnersExport_2024-06-04.csv</code> 2. <strong>Processing</strong>: Applies the <code>get_gwg_learners_2023_2024_filtered()</code> function which: - Converts column names to snake_case - Parses dates (join_date, invitation_date, latest_program_activity_date) - Filters for learners with valid activity in 2023-2024 - Adds derived metrics (completion rates, engagement levels, temporal features) - Standardizes identifiers (email, full_name) for matching</p>
+</section>
+<section id="key-data-elements-to-reproduce-via-api" class="level3">
+<h3 class="anchored" data-anchor-id="key-data-elements-to-reproduce-via-api">Key Data Elements to Reproduce via API</h3>
+<p>Based on the current CSV structure and processing, the API should provide:</p>
+<p><strong>Core User Data</strong>: - email - full_name<br>
+- join_date - invitation_date - latest_program_activity_date</p>
+<p><strong>Enrollment &amp; Completion Metrics</strong>: - cnt_enrollments (# Enrollments) - cnt_completions (# Completions)</p>
+<p><strong>Derived Fields</strong> (calculated from API data): - Temporal features (join_year, join_month, join_quarter) - Performance metrics (completion_rate, engagement_days, engagement_level) - Activity year classification (2023, 2024)</p>
+</section>
+<section id="api-exploration-plan" class="level3">
+<h3 class="anchored" data-anchor-id="api-exploration-plan">API Exploration Plan</h3>
+<ol type="1">
+<li><strong>Authentication</strong>: Investigate OAuth Credentials API for access token requirements</li>
+<li><strong>User Data Access</strong>: Explore Coursera For Business API for learner data endpoints</li>
+<li><strong>Data Mapping</strong>: Map CSV columns to available API fields</li>
+<li><strong>Testing Script</strong>: Create separate R script to test API data retrieval and processing</li>
+<li><strong>Validation</strong>: Compare API-sourced data structure with current CSV-based target</li>
+</ol>
+</section>
+<section id="success-criteria" class="level3">
+<h3 class="anchored" data-anchor-id="success-criteria">Success Criteria</h3>
+<ul>
+<li>API can provide equivalent data to the current CSV export</li>
+<li>Data processing pipeline can be replicated using API responses</li>
+<li>Match rate and data quality remain consistent with current implementation (86.1% match rate)</li>
+</ul>
+<p><strong>Status</strong>: Ready to begin API exploration using browser tab at https://dev.coursera.com/apis</p>
 
 
 </section>
