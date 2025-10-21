@@ -15,7 +15,8 @@ tar_option_set(
     "rlang",
     "tidyr",
     "stringr",
-    "sf"  
+    "sf",
+    "sfarrow"
   )
 )
 
@@ -47,12 +48,32 @@ list(
     else return(NULL)
   })("rin", "rin_service_areas", rin_service_areas_sf)),
 
-  # TODO: replace lat/lon/centroid with cori.data::county_pop_centroids
-
   ## This is handled in impact_metrics project (ruralinnovation/proj_cori_impact_metrics)
   # tar_target(rin_service_areas_tableau_db, save_data_to_db_instance("tableau", "rin", "rin_service_areas", rin_service_areas_db)),
 
+  # Write rin_service_areas_sf out to .parquet file using arrow::write_parquet
+  tar_target(
+    rin_service_areas_parquet,
+    (function (df, file_path) {
+    
+      # Write sf object directly to GeoParquet
+      st_write_parquet(
+        obj = rin_service_areas_sf,
+        dsn = file_path
+      )
+      
+      return(file_path)
+
+    })(rin_service_areas_sf, "data/rin_service_areas.parquet")
+  ),
+  tar_target(rin_service_areas_parquet_file, command = rin_service_areas_parquet, format = "file"),
+
+  # # Read ex.
+  # library(sfarrow)
+  # rin_service_areas_sf <- st_read_parquet("data/rin_service_areas.parquet")
+
   tar_target(rin_service_areas_geojson, write_data_to_geojson(rin_service_areas_sf, here::here("data/rin_service_areas.geojson"))),
-  tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file"),
-  tar_target(rin_service_areas_s3, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file))
+  tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file")
+
+  # tar_target(rin_service_areas_s3, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file))
 )
