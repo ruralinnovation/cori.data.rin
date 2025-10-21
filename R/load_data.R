@@ -294,8 +294,24 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
 
   counties <- cori.data::tiger_line_counties(2024)
 
+  county_pop_centers <- cori.data::county_pop_centroids(2020) |>
+    sf::st_as_sf(
+      coords = c("lon", "lat"),
+      crs = 4326
+    )
+
   rin_service_areas_sf <- rin_service_areas |>
-    dplyr::left_join(counties |> dplyr::mutate(geom = geometry) |> sf::st_drop_geometry(), by = c("geoid_co"="GEOID")) |>
+    dplyr::arrange(`rin_community`, desc(`primary_county_flag`)) |>
+    dplyr::left_join(counties |>
+        # dplyr::mutate(geom = geometry) |>
+        sf::st_drop_geometry(), 
+      by = c("geoid_co"="GEOID")
+    ) |>
+    dplyr::left_join(county_pop_centers |>
+        dplyr::mutate(geom = geometry) |>
+        sf::st_drop_geometry(), 
+      by = c("geoid_co"="geoid")
+    ) |>
     dplyr::mutate(
       centroid = sf::st_centroid(geom),
       lon = sf::st_coordinates(centroid)[, 1],
@@ -400,7 +416,8 @@ write_data_to_geojson <- function (df, file_path) {
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4269) |>
     sf::st_write(
       file_path,
-      append = FALSE
+      append = FALSE,
+      delete_dsn = TRUE
     )
 
   return(file_path)

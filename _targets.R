@@ -47,6 +47,8 @@ list(
     else return(NULL)
   })("rin", "rin_service_areas", rin_service_areas_sf)),
 
+  # TODO: replace lat/lon/centroid with cori.data::county_pop_centroids
+
   ## This is handled in impact_metrics project (ruralinnovation/proj_cori_impact_metrics)
   # tar_target(rin_service_areas_tableau_db, save_data_to_db_instance("tableau", "rin", "rin_service_areas", rin_service_areas_db)),
 

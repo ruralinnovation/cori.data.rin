@@ -1,6 +1,7 @@
 ---
 title: "Rural Innovation Network"
 favicon: "./assets/favicon.ico"
+format: html
 resources:
   - "./assets"
   - "./favicon.ico"
@@ -15,12 +16,18 @@ include-after-body:
 #   text: |
 #     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 #     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+# server: shiny
+# ERROR: index.qmd uses server: shiny so cannot be included in a website project (shiny documents require a backend server and so can't be published as static web content).
+
 ---
+
+<div class="embedded-content side-bar">
 
 <!--
   -- And here's some more stuff to say about the network.
   -- Should we drop a micro dashboard here?
   -->
+
 ```{r}
 #| eval: true
 #| echo: false
@@ -34,19 +41,36 @@ tableau_secret_value <- Sys.getenv("TABLEAU_SECRET_VALUE")
 tableau_user <- Sys.getenv("TABLEAU_USER")
 
 cat(paste0('
-<div class="embedded-content side-bar">
-<tableau-viz
-  src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
-  device="desktop"
-  width="640px"
-  height="calc(100vh - 190px)"
-  style="margin: 0 -2px; background-color: transparent !important;"
-  toolbar="bottom"
-  tableau_client_id="', tableau_client_id, '"
-  tableau_secret_id="', tableau_secret_id, '"
-  tableau_secret_value="', tableau_secret_value, '"
-  tableau_user="', tableau_user, '">
-</tableau-viz>
-</div>
-'))
+  <tableau-viz
+    src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+    device="desktop"
+    width="640px"
+    height="calc(100vh - 190px)"
+    style="margin: 0 -2px; background-color: transparent !important;"
+    toolbar="bottom"
+    tableau_client_id="', tableau_client_id, '"
+    tableau_secret_id="', tableau_secret_id, '"
+    tableau_secret_value="', tableau_secret_value, '"
+    tableau_user="', tableau_user, '">
+  </tableau-viz>'
+))
 ```
+
+```{r}
+#| eval: false
+sliderInput("bins", "Number of bins:", 
+            min = 1, max = 50, value = 30)
+plotOutput("distPlot")
+```
+
+```{r}
+#| context: server
+#| eval: false
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, col = 'darkgray', border = 'white')
+})
+```
+
+</div>
