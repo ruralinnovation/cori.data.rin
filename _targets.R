@@ -68,9 +68,41 @@ list(
   ),
   tar_target(rin_service_areas_parquet_file, command = rin_service_areas_parquet, format = "file"),
 
-  # # Read ex.
+  # # Read GeoParquet Ex.
+  # library(arrow)
+  # library(sf)
+  # library(targets)
+
+  # geoparquet_file <- tar_read(rin_service_areas_parquet_file)
+
+  # dta <- arrow::read_parquet(geoparquet_file)
+
+  # class(dta)
+  # # [1] "tbl_df"     "tbl"        "data.frame"
+
+  # class(dta$geometry)
+  # # [1] "arrow_binary"  "blob"          "vctrs_list_of" "vctrs_vctr"    "list"
+
+  # library(geoarrow)  # <- This registers new S3 methods
+  # class(dta$geometry)  
+  # # [1] "arrow_binary"  "blob"          "vctrs_list_of" "vctrs_vctr"    "list" 
+
+  # dta_sf <- sf::st_as_sf(dta)
+  # # ^^ Calls: st_as_sf.geoarrow_vctr() method (from geoarrow) on dta$geometry
+  # class(dta_sf)
+  # # [1] "sf"         "tbl_df"     "tbl"        "data.frame"
+
+  # class(dta_sf$geometry)
+  # # [1] "sfc_MULTIPOLYGON" "sfc" 
+
   # library(sfarrow)
-  # rin_service_areas_sf <- st_read_parquet("data/rin_service_areas.parquet")
+  # dta_sf <- st_read_parquet(geoparquet_file)
+
+  # class(dta_sf)
+  # # [1] "sf"         "data.frame"
+
+  # class(dta_sf$geometry)
+  # # [1] "sfc_MULTIPOLYGON" "sfc" 
 
   tar_target(rin_service_areas_geojson, write_data_to_geojson(rin_service_areas_sf, here::here("data/rin_service_areas.geojson"))),
   tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file")
