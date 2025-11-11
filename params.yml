@@ -1,6 +1,6 @@
 default:
   global: &global_params
-    current_year: 2024
+    current_year: 2025
     monday_network_communities_url: https://ruralinnovation-group.monday.com/boards/6951894369
     monday_network_communities_tab_name: Current
     monday_network_communities_file_name: Network_Communities_Current_1749008415.xlsx

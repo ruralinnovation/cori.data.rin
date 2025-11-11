@@ -51,6 +51,11 @@ list(
   ## This is handled in impact_metrics project (ruralinnovation/proj_cori_impact_metrics)
   # tar_target(rin_service_areas_tableau_db, save_data_to_db_instance("tableau", "rin", "rin_service_areas", rin_service_areas_db)),
 
+  tar_target(rin_service_areas_geojson, write_data_to_geojson(rin_service_areas_sf, here::here("data/rin_service_areas.geojson"))),
+  tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file"),
+
+  # tar_target(rin_service_areas_s3, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file)),
+
   # Write rin_service_areas_sf out to .parquet file using arrow::write_parquet
   tar_target(
     rin_service_areas_parquet,
@@ -66,7 +71,7 @@ list(
 
     })(rin_service_areas_sf, "data/rin_service_areas.parquet")
   ),
-  tar_target(rin_service_areas_parquet_file, command = rin_service_areas_parquet, format = "file"),
+  tar_target(rin_service_areas_parquet_file, command = rin_service_areas_parquet, format = "file")
 
   # # Read GeoParquet Ex.
   # library(arrow)
@@ -103,9 +108,4 @@ list(
 
   # class(dta_sf$geometry)
   # # [1] "sfc_MULTIPOLYGON" "sfc" 
-
-  tar_target(rin_service_areas_geojson, write_data_to_geojson(rin_service_areas_sf, here::here("data/rin_service_areas.geojson"))),
-  tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file")
-
-  # tar_target(rin_service_areas_s3, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file))
 )
