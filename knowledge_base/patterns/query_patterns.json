@@ -1,0 +1,29 @@
+[
+  {
+    "user_query": "What is the approximate location of the RIN community known as the Dalles?",
+    "query_type": "rin_community_lookup",
+    "response_structure": "county_profile",
+    "parquet_filter": "rin_community ILIKE '%Dalles%'",
+    "preprocessing": "strip_leading_articles",
+    "notes": "Remove 'the/a/an' from user input before matching. Use case-insensitive partial match."
+  },
+  {
+    "user_query": "What data do you have for Hood River County?",
+    "query_type": "county_lookup",
+    "fips_needed": "41027",
+    "response_structure": "county_profile",
+    "parquet_filter": "geoid_co = '41027'"
+  },
+  {
+    "user_query": "Show me RIN communities in Arizona",
+    "query_type": "state_filter",
+    "response_structure": "county_list",
+    "parquet_filter": "statefp = '04' AND rin_community IS NOT NULL"
+  },
+  {
+    "user_query": "What are the largest counties by land area?",
+    "query_type": "ranking",
+    "response_structure": "ranked_list",
+    "parquet_sort": "aland DESC"
+  }
+]
