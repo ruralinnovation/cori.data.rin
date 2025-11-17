@@ -15,4 +15,5 @@ devtools::install()
 
 ```bash
 npm run build
+npm run preview
 ```

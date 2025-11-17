@@ -131,7 +131,7 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   }
 
   # Load a county geoid_co name_co lookup
-  county_geoid_name_lookup <- get_county_geoid_name_lookup(params$current_year)
+  county_geoid_name_lookup <- get_county_geoid_name_lookup()
 
   ## read in
   rin <- readxl::read_excel(paste0(data_dir, "/", params$monday_network_communities_file_name), skip = 2)
@@ -202,7 +202,6 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   #   dplyr::mutate(
   #       `year` = params$current_year
   #   )
-  
   ## ... so, we're going to hand code the list for each year, based on data gathered during
   ## the compilation of the Impact dashboard dataset; see https://docs.google.com/spreadsheets/d/1R_UccunBsg6TiKD_lAsj37wI5_1H4TKCCd25q914p9U/edit?gid=1698657911#gid=1698657911
   ###
@@ -279,6 +278,34 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     areas[r, ]$primary_county_flag <- check_primary_county(county, name, rin_primary_co)
   }
 
+  # Duplicate records for current year (i.e. 2025)
+
+  # Define communities to EXCLUDE from duplication into 2025 cohort
+  excluded_communities <- c(
+    "Paso Robles",
+    "Cedar City",
+    "Central Wisconsin",
+    "Platteville",
+    "Wilkes County"
+  )
+
+  # Filter to get rows to duplicate (NOT in excluded list)
+  rows_to_duplicate <- areas[!areas$rin_community %in% excluded_communities, ] |>
+    # Skip the 2025 **new** community entries (like "Helena-West Helena, AR", etc.)
+    dplyr::filter(`year` != 2025)
+
+  # Create duplicated rows with year set to 2025
+  areas_current_year <- rows_to_duplicate
+  areas_current_year$year <- params$current_year
+
+  # Combine original data with duplicated rows
+  areas_updated <- rbind(
+    areas,
+    areas_current_year
+  ) |> 
+    dplyr::distinct() |>
+    dplyr::arrange(`year`)
+
   # } else {
   #   message("Manually download CSV...")
   #   message(paste0("From : ", data_uri))
@@ -286,7 +313,7 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   #   message("... then rerun tar_make()")
   # }
 
-  return(areas |> as.data.frame())
+  return(areas_updated |> as.data.frame())
 }
 
 
@@ -325,7 +352,7 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
   names(rin_service_areas_sf) <- snakecase::to_snake_case(names(rin_service_areas_sf))
 
   # Make sure to use "geometry" as the st_geometry column
-  st_geometry(rin_service_areas_sf) <- "geometry"
+  sf::st_geometry(rin_service_areas_sf) <- "geometry"
 
   # message(paste(class(rin_service_areas_sf), collapse = " "))
   # message(paste(names(rin_service_areas_sf), collapse = " "))

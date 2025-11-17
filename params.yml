@@ -1,6 +1,6 @@
 default:
   global: &global_params
-    current_year: 2024
+    current_year: 2025
     monday_network_communities_url: https://ruralinnovation-group.monday.com/boards/6951894369
     monday_network_communities_tab_name: Current
     monday_network_communities_file_name: Network_Communities_Current_1749008415.xlsx
@@ -8,3 +8,5 @@ default:
     ## TODO: Make sure to share this sheet with mda-554@center-on-rural--1493677791841.iam.gserviceaccount.com
     sheet_url: 'https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw/edit?gid=0#gid=0'
     sheet_name: 'RIN Community Lookup (DO NOT EDIT)'
+    # rural_tech_collective_ga: G-62B3JFKRM1
+    rural_tech_collective_ga: G-D91NZRTDJR
