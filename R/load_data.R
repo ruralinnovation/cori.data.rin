@@ -303,6 +303,7 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     areas,
     areas_current_year
   ) |> 
+    dplyr::distinct() |>
     dplyr::arrange(`year`)
 
   # } else {
@@ -351,7 +352,7 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
   names(rin_service_areas_sf) <- snakecase::to_snake_case(names(rin_service_areas_sf))
 
   # Make sure to use "geometry" as the st_geometry column
-  st_geometry(rin_service_areas_sf) <- "geometry"
+  sf::st_geometry(rin_service_areas_sf) <- "geometry"
 
   # message(paste(class(rin_service_areas_sf), collapse = " "))
   # message(paste(names(rin_service_areas_sf), collapse = " "))
