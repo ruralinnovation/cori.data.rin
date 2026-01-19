@@ -117,23 +117,18 @@
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Rural Innovation Network data",
+    "objectID": "knowledge_base/docs/geographic_descriptions.html",
+    "href": "knowledge_base/docs/geographic_descriptions.html",
+    "title": "FIPS Codes (geoid)",
     "section": "",
-    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
+    "text": "Federal Information Processing Standards (FIPS) codes are standardized identifiers for geographic entities in the United States. The geoid_co field contains 5-digit county FIPS codes.\nIdentification: geoid_co field contains 5-digit FIPS codes Format: First 2 digits = state code, Last 3 digits = county code Example: 04005 = Arizona (04) + Coconino County (005) Usage: Primary key for geographic lookups and data joins"
   },
   {
-    "objectID": "cisco/downloads.html",
-    "href": "cisco/downloads.html",
-    "title": "Data downloads",
-    "section": "",
-    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
-    "crumbs": [
-      "Rural Innovation Network data",
-      "Cisco Network Academy (2024)",
-      "Data downloads"
-    ]
+    "objectID": "knowledge_base/docs/geographic_descriptions.html#querying-rin-communities-by-name",
+    "href": "knowledge_base/docs/geographic_descriptions.html#querying-rin-communities-by-name",
+    "title": "FIPS Codes (geoid)",
+    "section": "Querying RIN Communities by Name",
+    "text": "Querying RIN Communities by Name\nWhen users ask about RIN communities by name (e.g., “What data do you have for the Dalles?”), the system needs to handle:\n\nCase-insensitive matching: “The Dalles”, “the dalles”, “THE DALLES” should all match\nPartial/fuzzy matching: Users may omit articles like “the” or use variations\nLeading article removal: Strip common articles (“the”, “a”, “an”) before matching\n\nQuery Pattern: Use ILIKE (PostgreSQL) or LIKE (case-insensitive) with wildcards Example: rin_community ILIKE '%Dalles%' matches “The Dalles” Best Practice: Strip leading “the/a/an” from user input, then use %keyword% pattern\nCommon RIN Community Name Queries: - “The Dalles” → Search for “Dalles” → rin_community ILIKE '%Dalles%' - “Hood River” → rin_community ILIKE '%Hood River%' - “Cochise County” → rin_community ILIKE '%Cochise%'"
   },
   {
     "objectID": "cisco/eda-2024.html#simple-eda",
@@ -160,11 +155,23 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rural Innovation Network",
+    "objectID": "cisco/downloads.html",
+    "href": "cisco/downloads.html",
+    "title": "Data downloads",
     "section": "",
-    "text": "sliderInput(\"bins\", \"Number of bins:\", \n            min = 1, max = 50, value = 30)\nplotOutput(\"distPlot\")\n\n\noutput$distPlot &lt;- renderPlot({\n  x &lt;- faithful[, 2]  # Old Faithful Geyser data\n  bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)\n  hist(x, breaks = bins, col = 'darkgray', border = 'white')\n})"
+    "text": "Download summary data about enrollment rate and learner progress by RIN community\nDownload data about individual Cisco applicants\nDownload data about individual learners enrolled in Cisco coursess\nDownload expansion of individual impact variables (i.e., demographic categories as boolean flags)",
+    "crumbs": [
+      "Rural Innovation Network data",
+      "Cisco Network Academy (2024)",
+      "Data downloads"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Rural Innovation Network data",
+    "section": "",
+    "text": "The Center on Rural Innovation (CORI) is a 501(c)(3) nonprofit organization that partners with rural leaders across industries, across sectors and across the country to build tech economies that support scalable entrepreneurship and lead to more tech jobs in rural America.\nThese repositories are maintained by the Mapping and Data Analytics (MDA) team at CORI/RISI. Our team provides data, analytics and visualizations to support rural participation in the digital economy through scalable entrepreneurship and tech job growth in rural America. We aim to provide a better understanding of the forces and trends affecting rural America as we help communities chart a path to opportunity and prosperity through the tech economy.\nWe strive towards serving as the primary center of excellence advancing sustainable, economic opportunity and equity in rural America. We do this by providing expert spatial and statistical analysis, modernized visualization and tool development, credible technical subject matter expertise, and transparent documentation.\nFollow our work by reading our blog and reviewing the following list of past projects:\n\n\n\n\n\nBroadband - Broadband Equity Access and Deployment (BEAD) tool - Climate Risk Mapping\n\n\nResearch - Rural Aperture Project (RWJF) - Defining rural America - Who lives in rural America? Part 1 Part 2 - The equity of economic opportunity in rural America\n\n\n\n\nRural Innovation Network - Ascendium reports and data viz - Economic Development (ERC) tool\n\n\nRural Innovation Initiative - Tech Economy Diagnostic (TED)  (i.e., community assessment → ERC tool)\n\n\n\n\nTech Entrepreneurship  - Feasibility studies - Tech Talent Tracker → ERC tool\n\n\nAdditional work - Economic Development Administration (EDA) reports - Economic impact analysis - Multistate Workforce Analysis - example - Who Is Missing Analysis\n\n\n\nLearn more about the MDA approach to Knowledge here: Research, mapping, and data analytics"
   },
   {
     "objectID": "AGS_PRIME_TUTORIAL.html",
@@ -368,7 +375,7 @@
     "href": "coursera/eda-2023-2024.html#key-findings-and-strategic-insights",
     "title": "Grow With Google program analysis",
     "section": "Key Findings and Strategic Insights",
-    "text": "Key Findings and Strategic Insights\n\nSingle Session Program Model Validation\n\nContinuous Learning: 136 learners successfully enrolled in single session design\nExtended Timeline: Learners active across both 2023 and 2024 completion years\nFlexible Progression: Some learners joined in 2023 but were most active in 2024\n\n\n\nCourse Completion Year Analysis\n\n2023 Completion Focus: 90 learners with primary activity in 2023\n2024 Completion Focus: 45 learners with primary activity in 2024\nExtended Engagement: Demonstrates value of extended timeline for working adults\n\n\n\nApplication Patterns\n\nPrimary Launch: 315 applications in 2023 (98.4% of total)\nExtended Access: 4 applications in 2024 (limited late interest)\nStrong Conversion: 43.2% overall application-to-enrollment rate\n\n\n\nStrategic Recommendations\n\nMaintain Single Session Design: Data validates continuous program model over annual cohorts\nPlan Extended Timeline: 18-24 month duration appropriate for course completion patterns\nFocus Launch Efforts: Concentrate marketing in Q3 for maximum application response\nSupport Extended Learning: Provide ongoing support for learners completing across multiple years\nTrack Completion Years: Use latest activity date to understand when learners are most engaged\n\n\n\nPerformance Benchmarks\n\nTarget Application Volume: 200+ annually (based on 2023 success)\nTarget Conversion Rate: 40%+ (maintain strong performance)\nTarget Completion Distribution: Balance between first-year and extended-year completions\nSession Duration: 18-24 months for optimal completion rates\n\n\nAnalysis completed on 2025-10-21 using data as of 2024_06_04\nData Sources: - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date",
+    "text": "Key Findings and Strategic Insights\n\nSingle Session Program Model Validation\n\nContinuous Learning: 136 learners successfully enrolled in single session design\nExtended Timeline: Learners active across both 2023 and 2024 completion years\nFlexible Progression: Some learners joined in 2023 but were most active in 2024\n\n\n\nCourse Completion Year Analysis\n\n2023 Completion Focus: 90 learners with primary activity in 2023\n2024 Completion Focus: 45 learners with primary activity in 2024\nExtended Engagement: Demonstrates value of extended timeline for working adults\n\n\n\nApplication Patterns\n\nPrimary Launch: 315 applications in 2023 (98.4% of total)\nExtended Access: 4 applications in 2024 (limited late interest)\nStrong Conversion: 43.2% overall application-to-enrollment rate\n\n\n\nStrategic Recommendations\n\nMaintain Single Session Design: Data validates continuous program model over annual cohorts\nPlan Extended Timeline: 18-24 month duration appropriate for course completion patterns\nFocus Launch Efforts: Concentrate marketing in Q3 for maximum application response\nSupport Extended Learning: Provide ongoing support for learners completing across multiple years\nTrack Completion Years: Use latest activity date to understand when learners are most engaged\n\n\n\nPerformance Benchmarks\n\nTarget Application Volume: 200+ annually (based on 2023 success)\nTarget Conversion Rate: 40%+ (maintain strong performance)\nTarget Completion Distribution: Balance between first-year and extended-year completions\nSession Duration: 18-24 months for optimal completion rates\n\n\nAnalysis completed on 2026-01-19 using data as of 2024_06_04\nData Sources: - Applications: 319 records from 2023-2024 session - Learners: 166 records with course completion year tracking - Matches: 135 successful application-to-learner matches - Course Completion Years: Based on Latest Program Activity Date",
     "crumbs": [
       "Rural Innovation Network data",
       "Grow With Google (2023 - 2024)",
