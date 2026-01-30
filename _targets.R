@@ -110,5 +110,7 @@ list(
   # class(dta_sf$geometry)
   # # [1] "sfc_MULTIPOLYGON" "sfc" 
 
-  tar_target(rin_service_areas_parquet_s3, write_data_to_s3("cori.agent.kb", "rin_service_areas.parquet", rin_service_areas_parquet_file))
+  tar_target(rin_service_areas_parquet_s3, write_data_to_s3("cori.agent.kb", "rin_service_areas.parquet", rin_service_areas_parquet_file)),
+
+  tar_target(rin_service_areas_parquet_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.parquet", rin_service_areas_parquet_file, s3_prefix = "test/data/"))
 )
