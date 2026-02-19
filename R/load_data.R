@@ -183,9 +183,11 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     ) |> 
     tidyr::separate_rows(`county`, sep = "(?<=,\\s[A-Z]{2}),\\s*") |> 
     dplyr::bind_rows(`rin_primary_co`) |> 
-    dplyr::left_join(county_geoid_name_lookup, by = c('county' = 'name_co')) |> 
+    dplyr::left_join(county_geoid_name_lookup, by = c('county' = 'name_co')) |>
     dplyr::mutate(
-      `geoid_co` = ifelse(`county` == 'Harrisonburg County, VA', '51660', `geoid_co`)
+      `geoid_co` = ifelse(`county` == 'Harrisonburg County, VA', '51660', `geoid_co`),
+      `geoid_co` = ifelse(`county` == 'Independent City', '51590', `geoid_co`),  # Danville city, VA
+      `geoid_co` = ifelse(`county` == 'Natchitoches County, LA', '22069', `geoid_co`)  # Natchitoches Parish, LA
     ) |> 
     dplyr::mutate(
       primary_county_flag = "No",
