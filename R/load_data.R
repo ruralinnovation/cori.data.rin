@@ -341,10 +341,10 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     dplyr::mutate(has_current_year = TRUE)
 
   # Get rows that should be duplicated to current_year
-  # (not excluded, not already current_year, and don't already have a current_year record)
+  # ONLY duplicate records from the previous year (current_year - 1)
   rows_to_duplicate <- areas |>
     dplyr::filter(!rin_community %in% excluded_communities) |>
-    dplyr::filter(year != params$current_year) |>
+    dplyr::filter(year == params$current_year - 1) |>  # ONLY previous year
     dplyr::left_join(existing_current_year, by = c("rin_community", "county")) |>
     dplyr::filter(is.na(has_current_year)) |>  # Only rows without existing current_year records
     dplyr::select(-has_current_year)
