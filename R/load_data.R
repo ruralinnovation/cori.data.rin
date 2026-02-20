@@ -88,14 +88,19 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   # Remove these ghost communities that were never in Monday exports; keep 2023 entries from Google sheet: RIN Community Service Areas (Updated July 2023)
   ghost_communities <- c("Grinnell", "Montgomery County", "North Iowa", "Pittsburg")
 
-  old_rin_data <- old_rin_service_areas |>
+  # Create mapping of community+county → years from package data
+  # Keep ALL records to preserve year assignments for all counties
+  old_rin_data_with_years <- old_rin_service_areas |>
     sf::st_drop_geometry() |>
     dplyr::filter(
-      `primary_county_flag` == "Yes"
-    ) |>
-    # Exclude ghost community records from 2024/2025
-    dplyr::filter(
       !(rin_community %in% ghost_communities & year %in% c(2024, 2025))
+    ) |>
+    dplyr::select(geoid_co, rin_community, county, year, primary_county_flag)
+
+  # Extract just primary counties for recovery loop (existing logic)
+  old_rin_data <- old_rin_data_with_years |>
+    dplyr::filter(
+      `primary_county_flag` == "Yes"
     ) |>
     dplyr::mutate(
       `primary_county` = `county`
@@ -104,7 +109,8 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
       `geoid_co`,
       `rin_community`,
       `primary_county`
-    )
+    ) |>
+    dplyr::distinct()
 
   stopifnot(file.exists("data"))
 
@@ -214,61 +220,79 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   ## ... so, we're going to hand code the list for each year, based on data gathered during
   ## the compilation of the Impact dashboard dataset; see https://docs.google.com/spreadsheets/d/1R_UccunBsg6TiKD_lAsj37wI5_1H4TKCCd25q914p9U/edit?gid=1698657911#gid=1698657911
   ###
+    )
+
+  # Build year mapping from preserved package data to preserve existing year assignments
+  year_mapping <- old_rin_data_with_years |>
+    dplyr::select(rin_community, county, year_preserved = year) |>
+    dplyr::distinct()
+
+  # Join with year_mapping to preserve years, then apply hardcoded assignments only for NEW communities
+  areas <- areas |>
+    dplyr::left_join(
+      year_mapping,
+      by = c("rin_community", "county")
     ) |>
     dplyr::mutate(
-      `year` = ifelse(
-         # 2026 list...
-         # ... remaining network communities will need to move up to 2025 list at end-of-year
-        `rin_community` %in% c( # 2025 list...
-          "Helena-West Helena, AR",
-          "Newport, AR"
-        ),
-        2025,
+      # Use preserved year if available, otherwise apply hardcoded assignment
+      year = ifelse(
+        !is.na(year_preserved),
+        year_preserved,  # Keep existing year from package
         ifelse(
-          `rin_community` %in% c( # 2024 list...
-            "Ada",
-            "Aberdeen",
-            "The Berkshires",
-            "Cape Girardeau",
-            "Central Wisconsin",
-            "Chambers County",
-            "Cochise County",
-            "The Dalles",
-            "Durango",
-            "Eastern Kentucky",
-            "Emporia",
-            "Greenfield",
-            "Independence",
-            "Indiana County",
-            "Kirksville",
-            "Manitowoc County",
-            "Marquette",
-            "Nacogdoches",
-            "NEK",
-            "Norfolk",
-            "Paducah",
-            "Pine Bluff",
-            "Platteville",
-            "Portsmouth",
-            "Pryor Creek",
-            "Randolph",
-            "Red Wing",
-            "Rutland",
-            "Seward County, NE",
-            "Shenandoah Valley",
-            "Springfield",
-            "Taos",
-            "Traverse City",
-            "Waterville",
-            "Wilkes County",
-            "Wilson",
-            "Windham County"
+          # 2026 list...
+          # ... remaining network communities will need to move up to 2025 list at end-of-year
+          `rin_community` %in% c( # 2025 list...
+            "Helena-West Helena, AR",
+            "Newport, AR"
           ),
-          2024,
-          2023 # Fall back to 2023 for non-recent communities
+          2025,
+          ifelse(
+            `rin_community` %in% c( # 2024 list...
+              "Ada",
+              "Aberdeen",
+              "The Berkshires",
+              "Cape Girardeau",
+              "Central Wisconsin",
+              "Chambers County",
+              "Cochise County",
+              "The Dalles",
+              "Durango",
+              "Eastern Kentucky",
+              "Emporia",
+              "Greenfield",
+              "Independence",
+              "Indiana County",
+              "Kirksville",
+              "Manitowoc County",
+              "Marquette",
+              "Nacogdoches",
+              "NEK",
+              "Norfolk",
+              "Paducah",
+              "Pine Bluff",
+              "Platteville",
+              "Portsmouth",
+              "Pryor Creek",
+              "Randolph",
+              "Red Wing",
+              "Rutland",
+              "Seward County, NE",
+              "Shenandoah Valley",
+              "Springfield",
+              "Taos",
+              "Traverse City",
+              "Waterville",
+              "Wilkes County",
+              "Wilson",
+              "Windham County"
+            ),
+            2024,
+            2023 # Fall back to 2023 for non-recent communities
+          )
         )
       )
-    )
+    ) |>
+    dplyr::select(-year_preserved)  # Remove temp column
   
   check_primary_county <- function (county, rin_community_name, rin_primary_counties) {
     
@@ -309,10 +333,21 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     "Pittsburg"
   )
 
-  # Filter to get rows to duplicate (NOT in excluded list)
-  rows_to_duplicate <- areas[!areas$rin_community %in% excluded_communities, ] |>
-    # Skip the current_year **new** community entries (like "Helena-West Helena, AR", etc.)
-    dplyr::filter(`year` != params$current_year)
+  # Identify which community+county combinations already have year=current_year records
+  existing_current_year <- areas |>
+    dplyr::filter(year == params$current_year) |>
+    dplyr::select(rin_community, county) |>
+    dplyr::distinct() |>
+    dplyr::mutate(has_current_year = TRUE)
+
+  # Get rows that should be duplicated to current_year
+  # (not excluded, not already current_year, and don't already have a current_year record)
+  rows_to_duplicate <- areas |>
+    dplyr::filter(!rin_community %in% excluded_communities) |>
+    dplyr::filter(year != params$current_year) |>
+    dplyr::left_join(existing_current_year, by = c("rin_community", "county")) |>
+    dplyr::filter(is.na(has_current_year)) |>  # Only rows without existing current_year records
+    dplyr::select(-has_current_year)
 
   # Create duplicated rows with year set to current_year
   areas_current_year <- rows_to_duplicate
@@ -322,7 +357,7 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   areas_updated <- rbind(
     areas,
     areas_current_year
-  ) |> 
+  ) |>
     dplyr::distinct() |>
     dplyr::arrange(`year`)
 
