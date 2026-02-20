@@ -85,14 +85,21 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
   #### When downloading new data, run:
   # usethis::use_build_ignore(params$monday_network_communities_file_name, escape = TRUE)
 
+  # Remove these ghost communities that were never in Monday exports; keep 2023 entries from Google sheet: RIN Community Service Areas (Updated July 2023)
+  ghost_communities <- c("Grinnell", "Montgomery County", "North Iowa", "Pittsburg")
+
   old_rin_data <- old_rin_service_areas |>
     sf::st_drop_geometry() |>
     dplyr::filter(
       `primary_county_flag` == "Yes"
     ) |>
+    # Exclude ghost community records from 2024/2025
+    dplyr::filter(
+      !(rin_community %in% ghost_communities & year %in% c(2024, 2025))
+    ) |>
     dplyr::mutate(
       `primary_county` = `county`
-    ) |> 
+    ) |>
     dplyr::select(
       `geoid_co`,
       `rin_community`,
@@ -210,13 +217,15 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     ) |>
     dplyr::mutate(
       `year` = ifelse(
+         # 2026 list...
+         # ... remaining network communities will need to move up to 2025 list at end-of-year
         `rin_community` %in% c( # 2025 list...
           "Helena-West Helena, AR",
           "Newport, AR"
         ),
         2025,
         ifelse(
-          `rin_community` %in% c( # 2024 list ... remaining network communities will need to move up to 2025 list at end-of-year
+          `rin_community` %in% c( # 2024 list...
             "Ada",
             "Aberdeen",
             "The Berkshires",
@@ -280,23 +289,32 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     areas[r, ]$primary_county_flag <- check_primary_county(county, name, rin_primary_co)
   }
 
-  # Duplicate records for current year (i.e. 2025)
+  # Duplicate records for current_year
 
-  # Define communities to EXCLUDE from duplication into 2025 cohort
+  # Define communities to EXCLUDE from duplication into current_year cohort
   excluded_communities <- c(
     "Paso Robles",
     "Cedar City",
     "Central Wisconsin",
     "Platteville",
-    "Wilkes County"
+    "Wilkes County",
+    # Dropped for 2026
+    "Randolph",         
+    "Liberal",
+    # Never in network?
+    # ... from: https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw
+    "Grinnell",      
+    "Montgomery County",
+    "North Iowa",
+    "Pittsburg"
   )
 
   # Filter to get rows to duplicate (NOT in excluded list)
   rows_to_duplicate <- areas[!areas$rin_community %in% excluded_communities, ] |>
-    # Skip the 2025 **new** community entries (like "Helena-West Helena, AR", etc.)
-    dplyr::filter(`year` != 2025)
+    # Skip the current_year **new** community entries (like "Helena-West Helena, AR", etc.)
+    dplyr::filter(`year` != params$current_year)
 
-  # Create duplicated rows with year set to 2025
+  # Create duplicated rows with year set to current_year
   areas_current_year <- rows_to_duplicate
   areas_current_year$year <- params$current_year
 

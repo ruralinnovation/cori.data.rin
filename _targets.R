@@ -2,7 +2,9 @@ library(targets)
 
 tar_option_set(
   packages = c(
+    "cori.data.rin",
     "cori.data.cisco",
+    "cori.data.coursera",
     "coriverse",
     "cori.db",
     "cori.data",
@@ -56,6 +58,8 @@ list(
   tar_target(rin_service_areas_geojson_file, command = rin_service_areas_geojson, format = "file"),
 
   tar_target(rin_service_areas_geojson_s3, write_data_to_s3("cori.agent.kb", "rin_service_areas.geojson", rin_service_areas_geojson_file)),
+
+  tar_target(rin_service_areas_geojson_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.geojson", rin_service_areas_geojson_file, s3_prefix = "test/data/")),
 
   # Write rin_service_areas_sf out to .parquet file using arrow::write_parquet
   tar_target(
