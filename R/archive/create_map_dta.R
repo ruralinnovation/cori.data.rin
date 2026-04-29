@@ -6,7 +6,7 @@ library(tidygeocoder)
 
 i_am("R/create_map_dta.R")
 
-# Commns tracks RIN communitu updates in the Google sheet [RIN Communties on Website](https://docs.google.com/spreadsheets/d/1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU)
+# Commns tracks RIN community updates in the Google sheet [RIN Communties on Website](https://docs.google.com/spreadsheets/d/1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU)
 comms_sheet_id <- "1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU"
 comms_csv_path <- here("data/[RIN Communties on Website - Current_Communities.csv")
 readr::write_csv(googlesheets4::read_sheet(comms_sheet_id, sheet = "Current_Communities"), comms_csv_path)
