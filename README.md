@@ -14,7 +14,7 @@ The [RIN map](https://github.com/ruralinnovation/rin-map) displays community loc
    - Geocodes addresses using OpenStreetMap
    - Generates `data/rin_map.json`
    - Uploads to S3 buckets
-3. **Frontend (dev)**: Immediate the map deployed to **[development](https://development.d3u96j8olq0rzp.amplifyapp.com)** application fetches `rin_map.json` from the [`dev/cori.data.rin`](https://us-east-1.console.aws.amazon.com/s3/buckets/cori-risi-apps?region=us-east-1&prefix=dev/cori.data.rin/&showversions=false) prefix on S3.
+3. **Frontend (dev)**: Immediately after running the pipeling, the map deployed to **[development](https://development.d3u96j8olq0rzp.amplifyapp.com)** application fetches `rin_map.json` from the [`dev/cori.data.rin`](https://us-east-1.console.aws.amazon.com/s3/buckets/cori-risi-apps?region=us-east-1&prefix=dev/cori.data.rin/&showversions=false) prefix on S3.
 4. **Frontend (prod)**: Once the map update is verified on the map deployed to **[development](https://development.d3u96j8olq0rzp.amplifyapp.com)**, MDA needs to manually copy the `cori.data.rin` folder in `dev/` on S3 to the [`prod/`](https://us-east-1.console.aws.amazon.com/s3/buckets/cori-risi-apps?region=us-east-1&prefix=prod/&showversions=false) prefix. Then verfiy that the map deployed to [production](https://main.d3u96j8olq0rzp.amplifyapp.com/) is showing the updated RIN data.
 
 
@@ -48,12 +48,11 @@ The frontend automatically fetches from S3 on page load - no frontend redeployme
 
 The pipeline uploads `rin_map.json` to four locations:
 
-| Bucket | Path | Purpose |
-|--------|------|---------|
-| `cori.agent.kb` | `dev/data/rin_map.json` | Agent knowledge base (dev) |
-| `cori.agent.kb-test` | `test/data/rin_map.json` | Agent knowledge base (test) |
-| `cori-risi-apps` | `dev/cori.data.rin/rin_map.json` | Frontend map (dev) |
-| `cori-risi-apps` | `test/cori.data.rin/rin_map.json` | Frontend map (test) |
+| Bucket | Target (environemnt) |
+|--------|---------|
+| `cori.agent.kb` | Agent knowledge base (dev) |
+| `cori.agent.kb-test` | Agent knowledge base (test) |
+| `cori-risi-apps` | RIN map (dev) |
 
 ## Setup for Development
 
