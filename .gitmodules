@@ -7,3 +7,6 @@
 [submodule "coursera"]
 	path = coursera
 	url = git@github.com:ruralinnovation/cori.data.coursera.git
+[submodule "map"]
+	path = map
+	url = git@github.com:ruralinnovation/rin-map.git

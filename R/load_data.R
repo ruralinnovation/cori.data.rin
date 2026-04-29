@@ -520,3 +520,66 @@ write_data_to_s3 <- function (bucket_name, file_name, file_path, s3_prefix = "de
   s3_key_path <- paste0(s3_prefix, file_name)
   return(cori.db::put_s3_object(bucket_name, s3_key_path, file_path))
 }
+
+
+#' Load RIN communities from Comms Google Sheet
+#'
+#' @param params Parameters containing comms_sheet_id and comms_sheet_name
+#' @return Transformed tibble with rin_community, community_name, geocode_column, url
+load_comms_communities <- function(params = cori.utils::get_params("global")) {
+
+  comms_data <- googlesheets4::read_sheet(
+    params$comms_sheet_id,
+    sheet = params$comms_sheet_name
+  )
+
+  transformed <- comms_data |>
+    dplyr::transmute(
+      rin_community = `rin_community`,
+      community_name = `Community`,
+      geocode_column = `Primary Place`,
+      url = `Link to RIN page on site`
+    ) |>
+    dplyr::filter(!is.na(rin_community))
+
+  return(transformed)
+}
+
+
+#' Geocode RIN map data using OpenStreetMap
+#'
+#' @param communities_data Tibble from load_comms_communities()
+#' @return Tibble with lat and long columns added
+geocode_rin_map_data <- function(communities_data) {
+
+  geocoded <- communities_data |>
+    tidygeocoder::geocode(
+      address = geocode_column,
+      method = "osm",
+      full_results = TRUE
+    )
+
+  return(geocoded)
+}
+
+
+#' Write RIN map data to JSON format
+#'
+#' @param geocoded_data Geocoded tibble from geocode_rin_map_data()
+#' @param file_path Output path for JSON file
+#' @return File path (for targets file tracking)
+write_rin_map_json <- function(geocoded_data, file_path) {
+
+  map_json <- geocoded_data |>
+    dplyr::transmute(
+      rin_community = rin_community,
+      name = community_name,
+      coordinates = Map(c, long, lat),
+      url = dplyr::if_else(is.na(url) | url == "", "null", url)
+    ) |>
+    jsonlite::toJSON(pretty = TRUE, auto_unbox = TRUE)
+
+  write(map_json, file_path)
+
+  return(file_path)
+}

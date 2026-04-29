@@ -12,3 +12,5 @@ default:
     sheet_name: 'RIN Community Lookup (DO NOT EDIT)'
     # rural_tech_collective_ga: G-62B3JFKRM1
     rural_tech_collective_ga: G-D91NZRTDJR
+    comms_sheet_id: '1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU'
+    comms_sheet_name: 'Current_Communities'

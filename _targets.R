@@ -12,9 +12,11 @@ tar_option_set(
     "DBI",
     "dplyr",
     "googlesheets4",
+    "jsonlite",
     "purrr",
     "readxl",
     "rlang",
+    "tidygeocoder",
     "tidyr",
     "stringr",
     "sf",
@@ -116,5 +118,24 @@ list(
 
   tar_target(rin_service_areas_parquet_s3, write_data_to_s3("cori.agent.kb", "rin_service_areas.parquet", rin_service_areas_parquet_file)),
 
-  tar_target(rin_service_areas_parquet_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.parquet", rin_service_areas_parquet_file, s3_prefix = "test/data/"))
+  tar_target(rin_service_areas_parquet_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.parquet", rin_service_areas_parquet_file, s3_prefix = "test/data/")),
+
+  # RIN Map Data Pipeline (sourced from Comms Google Sheet)
+  tar_target(comms_communities, load_comms_communities(global_params)),
+
+  tar_target(rin_map_geocoded, geocode_rin_map_data(comms_communities)),
+
+  tar_target(rin_map_json, write_rin_map_json(rin_map_geocoded, here::here("data/rin_map.json"))),
+
+  tar_target(rin_map_json_file, command = rin_map_json, format = "file"),
+
+  # S3 uploads - cori.agent.kb buckets
+  tar_target(rin_map_json_s3, write_data_to_s3("cori.agent.kb", "rin_map.json", rin_map_json_file)),
+
+  tar_target(rin_map_json_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_map.json", rin_map_json_file, s3_prefix = "test/data/")),
+
+  # S3 uploads - cori-risi-apps bucket
+  tar_target(rin_map_json_apps_dev, write_data_to_s3("cori-risi-apps", "rin_map.json", rin_map_json_file, s3_prefix = "dev/cori.data.rin/")),
+
+  tar_target(rin_map_json_apps_test, write_data_to_s3("cori-risi-apps", "rin_map.json", rin_map_json_file, s3_prefix = "test/cori.data.rin/"))
 )
