@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -193,8 +227,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data Structure</a>
+  <ul class="collapse">
+  <li><a href="#rin_service_areas" id="toc-rin_service_areas" class="nav-link" data-scroll-target="#rin_service_areas"><code>rin_service_areas</code></a></li>
+  </ul></li>
+  <li><a href="#data-coverage" id="toc-data-coverage" class="nav-link" data-scroll-target="#data-coverage">Data Coverage</a></li>
+  <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases">Use Cases</a></li>
+  <li><a href="#data-refresh-admin" id="toc-data-refresh-admin" class="nav-link" data-scroll-target="#data-refresh-admin">Data Refresh (Admin)</a></li>
+  <li><a href="#related-resources" id="toc-related-resources" class="nav-link" data-scroll-target="#related-resources">Related Resources</a>
+  <ul class="collapse">
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#external-links" id="toc-external-links" class="nav-link" data-scroll-target="#external-links">External Links</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -202,7 +256,12 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Rural Innovation Network</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">R Package</div>
+    <div class="quarto-category">Network Data</div>
+    <div class="quarto-category">Rural Development</div>
+  </div>
+  </div>
 
 
 
@@ -223,7 +282,10 @@ ul.task-list li input[type="checkbox"] {
   -- And here's some more stuff to say about the network.
   -- Should we drop a micro dashboard here?
   -->
-<p><tableau-viz src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&amp;:embed=n4?:origin=card_share_link" device="desktop" width="640px" height="calc(100vh - 190px)" style="margin: 0 -2px; background-color: transparent !important;" toolbar="bottom" tableau_client_id="5c7e0010-3b90-4672-802f-a10004548dc9" tableau_secret_id="d3bb0025-96aa-4a4c-b990-07ae4aa412c2" tableau_secret_value="fWnbUbpr+AoIwXhJgUAeetfaBO2fTxge9XSPu3w94i4=" tableau_user="tech-team@ruralinnovation.us"> </tableau-viz></p>
+<tableau-viz src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&amp;:embed=n4?:origin=card_share_link" device="desktop" width="640px" height="calc(100vh - 190px)" style="margin: 0 -2px; background-color: transparent !important;" toolbar="bottom" tableau_client_id="5c7e0010-3b90-4672-802f-a10004548dc9" tableau_secret_id="d3bb0025-96aa-4a4c-b990-07ae4aa412c2" tableau_secret_value="fWnbUbpr+AoIwXhJgUAeetfaBO2fTxge9XSPu3w94i4=" tableau_user="tech-team@ruralinnovation.us"> </tableau-viz>
+<script type="application/javascript">
+  setTimeout(() => { document.querySelector("main#quarto-document-content").style.overflow = "hidden" }, 533)
+  </script>
 <!--
 ```r
 #| eval: false
@@ -243,8 +305,193 @@ output$distPlot <- renderPlot({
 ```
 -->
 </div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The <code>cori.data.rin</code> package exports <code>rin_service_areas</code> — the canonical mapping from Rural Innovation Network (RIN) community names to their associated U.S. counties, keyed by 5-digit FIPS code. This is the authoritative county crosswalk used across CORI tools whenever RIN geography needs to be joined to county-level data.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Use This Package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Canonical RIN geography</strong> — single source of truth for which counties belong to each RIN community</li>
+<li><strong>FIPS-ready</strong> — <code>geoid_co</code> is a standard 5-digit county FIPS code for direct joins to ACS, BDS, COG, or any other county-level dataset</li>
+<li><strong>Primary county flag</strong> — distinguishes a community’s primary county from secondary service area counties</li>
+<li><strong>Always current</strong> — MDA refreshes the dataset from the Comms-maintained Google Sheet whenever community boundaries change</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ruralinnovation/cori.data.rin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="quick-start" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cori.data.rin)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the county-level service area crosswalk</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rin_service_areas</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># How many counties does each RIN community serve?</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>rin_service_areas <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(rin_community, <span class="at">name =</span> <span class="st">"n_counties"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_counties))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Primary counties only</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>rin_service_areas <span class="sc">|&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(primary_county_flag <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Join RIN community membership onto another county dataset</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>county_data <span class="sc">|&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(rin_service_areas, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"geoid"</span> <span class="ot">=</span> <span class="st">"geoid_co"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<section id="rin_service_areas" class="level3">
+<h3 class="anchored" data-anchor-id="rin_service_areas"><code>rin_service_areas</code></h3>
+<p>A data frame with one row per community–county pair:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>geoid_co</code></td>
+<td>character</td>
+<td>County FIPS (5-digit: STATEFP + COUNTYFP)</td>
+</tr>
+<tr class="even">
+<td><code>rin_community</code></td>
+<td>character</td>
+<td>CORI name for the RIN community</td>
+</tr>
+<tr class="odd">
+<td><code>county</code></td>
+<td>character</td>
+<td>County name</td>
+</tr>
+<tr class="even">
+<td><code>primary_county_flag</code></td>
+<td>character</td>
+<td><code>"Yes"</code> / <code>"No"</code> — primary county for this community</td>
+</tr>
+<tr class="odd">
+<td><code>data_run_date</code></td>
+<td>Date</td>
+<td>Date the dataset was last refreshed from the source sheet</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="data-coverage" class="level2">
+<h2 class="anchored" data-anchor-id="data-coverage">Data Coverage</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Geography</strong></td>
+<td>County (5-digit FIPS)</td>
+</tr>
+<tr class="even">
+<td><strong>Unit</strong></td>
+<td>One row per RIN community × county pair</td>
+</tr>
+<tr class="odd">
+<td><strong>Source</strong></td>
+<td>Comms-maintained Google Sheet, updated as communities join or expand</td>
+</tr>
+<tr class="even">
+<td><strong>Update Frequency</strong></td>
+<td>On demand — MDA runs <code>targets::tar_make()</code> after Comms updates the sheet</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases">Use Cases</h2>
+<ul>
+<li><strong>County-level joins</strong> — Attach ACS, BDS, COG, or any other county-level dataset to RIN communities via <code>geoid_co</code></li>
+<li><strong>Network coverage analysis</strong> — Identify which counties are served by one or more RIN communities, and which communities share counties</li>
+<li><strong>Reporting and mapping</strong> — Provide the spatial layer for RIN community dashboards and the <a href="https://github.com/ruralinnovation/rin-map">RIN map frontend</a></li>
+<li><strong>Agent knowledge base</strong> — Supplies the geographic context layer for CORI’s AI agent to answer questions about RIN community locations</li>
+</ul>
+</section>
+<section id="data-refresh-admin" class="level2">
+<h2 class="anchored" data-anchor-id="data-refresh-admin">Data Refresh (Admin)</h2>
+<p>The dataset is generated by a <code>targets</code> pipeline maintained by MDA. After Comms updates the <a href="https://docs.google.com/spreadsheets/d/1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU">source Google Sheet</a>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From the cori.data.rin project root</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>targets<span class="sc">::</span><span class="fu">tar_make</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This rebuilds <code>rin_service_areas</code>, writes <code>data/rin_map.json</code>, and uploads outputs to S3 (<code>cori-risi-apps</code> for the RIN map frontend, <code>cori.agent.kb</code> for the agent knowledge base). Once verified on dev, the updated files are copied to the production S3 prefix.</p>
+</section>
+<section id="related-resources" class="level2">
+<h2 class="anchored" data-anchor-id="related-resources">Related Resources</h2>
+<section id="datasets" class="level3">
+<h3 class="anchored" data-anchor-id="datasets">Datasets</h3>
+<ul>
+<li>RIN Communities <em>(slug: <code>rin-communities</code> — node pending)</em> — Community and service area data maintained by Comms in Monday.com and Google Sheets</li>
+</ul>
+</section>
+<section id="external-links" class="level3">
+<h3 class="anchored" data-anchor-id="external-links">External Links</h3>
+<ul>
+<li><a href="https://github.com/ruralinnovation/rin-map">RIN Map Repository</a></li>
+<li><a href="https://ruralinnovation-group.monday.com/boards/6951894369">Monday.com Board</a></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dangling references
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following slugs are referenced by this package but do not yet have nodes in Dataverse. They are intentionally preserved as future content needs:</p>
+<ul>
+<li><code>dataset/rin-communities</code></li>
+</ul>
+</div>
+</div>
+<hr>
+<p><strong>Contact:</strong> John Hall (john.hall@ruralinnovation.us)</p>
+<p>For bug reports or feature requests, please open an issue on <a href="https://github.com/ruralinnovation/cori.data.rin/issues">GitHub</a>.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -199,6 +199,11 @@ div#quarto-content {
   //  display: none;
   //}
 
+  &.page-columns #quarto-margin-sidebar, 
+  &.page-columns #quarto-sidebar {
+      z-index: 0;
+  }
+
   main#quarto-document-content {
       max-height: calc(100vh - 90px);
       margin-top: 0;
@@ -208,8 +213,17 @@ div#quarto-content {
       z-index: 2;
     }
 
-    div.quarto-title .title, div.quarto-title .title {
+    .quarto-title { 
+
       color: #59666a;
+
+      .title {
+        color: #59666a;
+      }
+      
+      .quarto-categories .quarto-category {
+        background: #fff;
+      }
     }
 
     code {
