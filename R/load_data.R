@@ -395,11 +395,11 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
       by = c("geoid_co"="geoid")
     ) |>
     dplyr::mutate(
-      centroid = sf::st_centroid(geom),
-      lon = sf::st_coordinates(centroid)[, 1],
-      lat = sf::st_coordinates(centroid)[, 2]
+      temp_centroid = sf::st_centroid(geom),
+      lon = sf::st_coordinates(temp_centroid)[, 1],
+      lat = sf::st_coordinates(temp_centroid)[, 2]
     ) |>
-    dplyr::select(-geom) |>
+    dplyr::select(-geom, -temp_centroid) |>
     dplyr::left_join(counties |> dplyr::select(GEOID, geometry), by = c("geoid_co"="GEOID")) |>
     sf::st_as_sf() |>
     sf::st_as_sf(crs = 4269)
@@ -487,14 +487,10 @@ write_data_to_geojson <- function (df, file_path) {
       `primary_county_flag` == "Yes"
     )
   
-  # Use the centroid as the geometry for json
-
-  sf::st_geometry(rin_service_areas) <- "centroid"
-
   message(class(rin_service_areas))
 
   rin_service_areas |>
-    dplyr::select(-c(geometry, centroid)) |>
+    sf::st_drop_geometry() |>
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4269) |>
     sf::st_write(
       file_path,
