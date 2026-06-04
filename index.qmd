@@ -63,11 +63,12 @@ include-after-body:
 tableau_client_id <- Sys.getenv("TABLEAU_CLIENT_ID")
 tableau_secret_id <- Sys.getenv("TABLEAU_SECRET_ID")
 tableau_secret_value <- Sys.getenv("TABLEAU_SECRET_VALUE")
+tableau_url <- Sys.getenv("TABLEAU_URL")
 tableau_user <- Sys.getenv("TABLEAU_USER")
 
 cat(paste0('
   <tableau-viz
-    src="https://us-east-1.online.tableau.com/t/ruralinnovationdashboards/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+    src="', tableau_url, '/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
     device="desktop"
     width="640px"
     height="calc(100vh - 190px)"
