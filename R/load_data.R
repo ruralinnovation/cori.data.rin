@@ -26,91 +26,9 @@ library(purrr)
 #' @importFrom dplyr select
 #' @importFrom stats filter
 #' @importFrom tidyr separate_rows
-#'
-#' @export
-load_rin_service_areas <- function (params = cori.utils::get_params("global"), old_rin_service_areas) {
+load_rin_service_areas <- function (params, old_rin_service_areas) {
 
-  # ### OLD ----
-  
-  # data_file <- "data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT).csv"
-
-  # if (data_uri == "https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw" && file.exists(data_file)) {
-    
-  #   message(paste0("Loading ", data_file))
-
-  #   rin_service_areas_csv <- readr::read_csv(data_file, col_names = TRUE)
-
-  # ### TODO: Invert this process so that we always start with Newest data and then fill gaps (missing communities) using previous
-  
-  # sheet_url <- params$sheet_url
-  # sheet_name <- params$sheet_name
-
-  # # Set up authentication with a service account
-  # # 1. Create a Google Cloud project
-  # # 2. Enable the Google Sheets API
-  # # 3. Create a service account and download JSON key
-  # # 4. Place the JSON key file in a secure location
-
-  # credentials <- Sys.getenv("GOOGLE_API_CREDENTIALS")
-
-  # # Point to your service account key file
-  # googlesheets4::gs4_auth(path = credentials)
-
-  # sheet_id <- googlesheets4::as_sheets_id(sheet_url)
-
-  # # # Get the sheet names
-  # all_sheet_names <- googlesheets4::sheet_names(sheet_id)
-
-  # stopifnot(sheet_name %in% all_sheet_names)
-
-  # sheet_data <- googlesheets4::read_sheet(sheet_url, sheet_name)
-
-  # old_rin_data <- sheet_data |>
-  #   dplyr::mutate(
-  #     # `geoid_co` = `geoid_co`,
-  #     # `rin_community` = `rin_community`,
-  #     `primary_county` = paste0(`primary_county_name`, " County, ", state_abbr)
-  #   ) |>
-  #   dplyr::select(
-  #     `geoid_co`,
-  #     `rin_community`,
-  #     `primary_county`
-  #   )
-  
-  ### NEW ----
-
-  ### RIN data downloaded as of 2025-05-06
-  #### Monday board: https://ruralinnovation-group.monday.com/boards/6951894369
-  #### Monday group: Current
-  #### When downloading new data, run:
-  # usethis::use_build_ignore(params$monday_network_communities_file_name, escape = TRUE)
-
-  # Remove these ghost communities that were never in Monday exports; keep 2023 entries from Google sheet: RIN Community Service Areas (Updated July 2023)
   ghost_communities <- c("Grinnell", "Montgomery County", "North Iowa", "Pittsburg")
-
-  # Create mapping of community+county → years from package data
-  # Keep ALL records to preserve year assignments for all counties
-  old_rin_data_with_years <- old_rin_service_areas |>
-    sf::st_drop_geometry() |>
-    dplyr::filter(
-      !(rin_community %in% ghost_communities & year %in% c(2024, 2025))
-    ) |>
-    dplyr::select(geoid_co, rin_community, county, year, primary_county_flag)
-
-  # Extract just primary counties for recovery loop (existing logic)
-  old_rin_data <- old_rin_data_with_years |>
-    dplyr::filter(
-      `primary_county_flag` == "Yes"
-    ) |>
-    dplyr::mutate(
-      `primary_county` = `county`
-    ) |>
-    dplyr::select(
-      `geoid_co`,
-      `rin_community`,
-      `primary_county`
-    ) |>
-    dplyr::distinct()
 
   stopifnot(file.exists("data"))
 
@@ -155,31 +73,6 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     dplyr::filter(!is.na(`name`)) |> 
     dplyr::filter(`name` != "Subitems")
 
-  ## Check previous data set for additional records not contained in latest Monday extract
-  for (r in c(1:nrow(old_rin_data))) {
-    community <- old_rin_data[r, ]
-
-    if (community$rin_community %in% rin_only$name) {
-      print(paste0(r, ": found ", community$rin_community))
-    } else {
-      print(paste0(r, ": add ", community$rin_community))
-      
-      rin_only[(nrow(rin_only) + 1), ] <- data.frame(
-        matrix(
-          rep(NA, ncol(rin_only)), 
-          nrow = 1,
-          dimnames = list(NULL, names(rin_only))
-        )
-      ) |>
-        dplyr::mutate(
-          `name` = community$rin_community,
-          `primary_county` = community$primary_county
-        )
-
-      print(rin_only[(nrow(rin_only)), ])
-    }
-  }
-
   rin_primary_co <- rin_only |>
     dplyr::select(
       `name`,
@@ -204,95 +97,15 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     ) |> 
     dplyr::mutate(
       primary_county_flag = "No",
-      data_run_date = Sys.Date()
-    ) |> 
+      year = params$current_year
+    ) |>
     dplyr::select(
       `geoid_co`,
       `rin_community` = `name`,
       `county`,
       `primary_county_flag`,
-      `data_run_date`
-  ### THIS IS A BUG! Not all RIN communities in this set are valid for the specified year...
-  #   ) |>
-  #   dplyr::mutate(
-  #       `year` = params$current_year
-  #   )
-  ## ... so, we're going to hand code the list for each year, based on data gathered during
-  ## the compilation of the Impact dashboard dataset; see https://docs.google.com/spreadsheets/d/1R_UccunBsg6TiKD_lAsj37wI5_1H4TKCCd25q914p9U/edit?gid=1698657911#gid=1698657911
-  ###
+      `year`
     )
-
-  # Build year mapping from preserved package data to preserve existing year assignments
-  year_mapping <- old_rin_data_with_years |>
-    dplyr::select(rin_community, county, year_preserved = year) |>
-    dplyr::distinct()
-
-  # Join with year_mapping to preserve years, then apply hardcoded assignments only for NEW communities
-  areas <- areas |>
-    dplyr::left_join(
-      year_mapping,
-      by = c("rin_community", "county")
-    ) |>
-    dplyr::mutate(
-      # Use preserved year if available, otherwise apply hardcoded assignment
-      year = ifelse(
-        !is.na(year_preserved),
-        year_preserved,  # Keep existing year from package
-        ifelse(
-          # 2026 list...
-          # ... remaining network communities will need to move up to 2025 list at end-of-year
-          `rin_community` %in% c( # 2025 list...
-            "Helena-West Helena, AR",
-            "Newport, AR"
-          ),
-          2025,
-          ifelse(
-            `rin_community` %in% c( # 2024 list...
-              "Ada",
-              "Aberdeen",
-              "The Berkshires",
-              "Cape Girardeau",
-              "Central Wisconsin",
-              "Chambers County",
-              "Cochise County",
-              "The Dalles",
-              "Durango",
-              "Eastern Kentucky",
-              "Emporia",
-              "Greenfield",
-              "Independence",
-              "Indiana County",
-              "Kirksville",
-              "Manitowoc County",
-              "Marquette",
-              "Nacogdoches",
-              "NEK",
-              "Norfolk",
-              "Paducah",
-              "Pine Bluff",
-              "Platteville",
-              "Portsmouth",
-              "Pryor Creek",
-              "Randolph",
-              "Red Wing",
-              "Rutland",
-              "Seward County, NE",
-              "Shenandoah Valley",
-              "Springfield",
-              "Taos",
-              "Traverse City",
-              "Waterville",
-              "Wilkes County",
-              "Wilson",
-              "Windham County"
-            ),
-            2024,
-            2023 # Fall back to 2023 for non-recent communities
-          )
-        )
-      )
-    ) |>
-    dplyr::select(-year_preserved)  # Remove temp column
   
   check_primary_county <- function (county, rin_community_name, rin_primary_counties) {
     
@@ -313,62 +126,56 @@ load_rin_service_areas <- function (params = cori.utils::get_params("global"), o
     areas[r, ]$primary_county_flag <- check_primary_county(county, name, rin_primary_co)
   }
 
-  # Duplicate records for current_year
+  # STEP 1: Today's snapshot (from Monday XLSX) is simply `areas`
+  todays_snapshot <- dplyr::distinct(areas)
 
-  # Define communities to EXCLUDE from duplication into current_year cohort
-  excluded_communities <- c(
-    "Paso Robles",
-    "Cedar City",
-    "Central Wisconsin",
-    "Platteville",
-    "Wilkes County",
-    # Dropped for 2026
-    "Randolph",         
-    "Liberal",
-    # Never in network?
-    # ... from: https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw
-    "Grinnell",      
-    "Montgomery County",
-    "North Iowa",
-    "Pittsburg"
-  )
+  # STEP 2: Preserve existing records from package data (directly from old_rin_service_areas)
+  has_latest_version_col <- "latest_version" %in% names(old_rin_service_areas)
 
-  # Identify which community+county combinations already have year=current_year records
-  existing_current_year <- areas |>
-    dplyr::filter(year == params$current_year) |>
-    dplyr::select(rin_community, county) |>
+  base_cols <- c("geoid_co", "rin_community", "county", "primary_county_flag", "data_run_date", "year")
+  if (has_latest_version_col) base_cols <- c(base_cols, "latest_version")
+
+  preserved_old <- old_rin_service_areas |>
+    sf::st_drop_geometry() |>
+    dplyr::filter(
+      !(rin_community %in% ghost_communities & year %in% c(2024, 2025))
+    ) |>
+    dplyr::select(dplyr::all_of(base_cols))
+
+  if (!has_latest_version_col) {
+    preserved_old <- preserved_old |>
+      dplyr::mutate(latest_version = "No")
+  }
+
+  # STEP 3: Check if params.yml has uncommitted changes to monday_network_communities_file_name
+  git_diff_output <- system("git diff HEAD params.yml", intern = TRUE)
+  has_uncommitted_filename_change <- any(grepl("monday_network_communities_file_name", git_diff_output))
+
+  if (has_uncommitted_filename_change) {
+    new_only <- todays_snapshot |>
+      dplyr::mutate(data_run_date = Sys.Date()) |>
+      dplyr::anti_join(preserved_old, by = c("rin_community", "county", "year", "data_run_date"))
+    has_new_records <- nrow(new_only) > 0
+  } else {
+    has_new_records <- FALSE
+    new_only <- dplyr::slice(todays_snapshot, 0) |>
+      dplyr::mutate(data_run_date = as.Date(NA))
+  }
+
+  # STEP 4: Only if there are new records, update latest_version flags
+  if (has_new_records) {
+    preserved_old <- preserved_old |>
+      dplyr::mutate(latest_version = "No")
+    new_only <- new_only |>
+      dplyr::mutate(latest_version = "Yes")
+  }
+
+  # STEP 5: Final combination
+  final_result <- dplyr::bind_rows(preserved_old, new_only) |>
     dplyr::distinct() |>
-    dplyr::mutate(has_current_year = TRUE)
+    dplyr::arrange(year, rin_community, county, data_run_date)
 
-  # Get rows that should be duplicated to current_year
-  # ONLY duplicate records from the previous year (current_year - 1)
-  rows_to_duplicate <- areas |>
-    dplyr::filter(!rin_community %in% excluded_communities) |>
-    dplyr::filter(year == params$current_year - 1) |>  # ONLY previous year
-    dplyr::left_join(existing_current_year, by = c("rin_community", "county")) |>
-    dplyr::filter(is.na(has_current_year)) |>  # Only rows without existing current_year records
-    dplyr::select(-has_current_year)
-
-  # Create duplicated rows with year set to current_year
-  areas_current_year <- rows_to_duplicate
-  areas_current_year$year <- params$current_year
-
-  # Combine original data with duplicated rows
-  areas_updated <- rbind(
-    areas,
-    areas_current_year
-  ) |>
-    dplyr::distinct() |>
-    dplyr::arrange(`year`)
-
-  # } else {
-  #   message("Manually download CSV...")
-  #   message(paste0("From : ", data_uri))
-  #   message(paste0("To : ", data_file))
-  #   message("... then rerun tar_make()")
-  # }
-
-  return(areas_updated |> as.data.frame())
+  return(final_result |> as.data.frame())
 }
 
 
@@ -441,11 +248,6 @@ load_zips_to_counties <- function () {
   }
 }
 
-save_data_to_package <- function (df) {
-  rin_service_areas <- df
-  usethis::use_data(rin_service_areas, overwrite = TRUE)
-}
-
 save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) {
 
   dest <- paste0('"', schema_name, '"."', table_name, '"')
@@ -477,6 +279,11 @@ save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) 
   }
 
   return(df)
+}
+
+save_data_to_package <- function (df) {
+  rin_service_areas <- df
+  usethis::use_data(rin_service_areas, overwrite = TRUE)
 }
 
 
