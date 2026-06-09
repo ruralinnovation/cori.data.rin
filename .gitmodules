@@ -1,12 +1,12 @@
 [submodule "cisco"]
 	path = cisco
-	url = git@github.com:ruralinnovation/cori.data.cisco.git
+	url = https://github.com/ruralinnovation/cori.data.cisco.git
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:ruralinnovation/cori.data.rin.frontend.git
+	url = https://github.com/ruralinnovation/cori.data.rin.frontend.git
 [submodule "coursera"]
 	path = coursera
-	url = git@github.com:ruralinnovation/cori.data.coursera.git
+	url = https://github.com/ruralinnovation/cori.data.coursera.git
 [submodule "map"]
 	path = map
-	url = git@github.com:ruralinnovation/rin-map.git
+	url = https://github.com/ruralinnovation/rin-map.git
