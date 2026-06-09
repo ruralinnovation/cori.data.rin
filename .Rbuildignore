@@ -70,3 +70,4 @@
 ^states\.rds$
 ^tiger$
 ^zip_code_centroids\.rds$
+^map$
