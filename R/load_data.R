@@ -69,9 +69,22 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   
   names(rin) <- snakecase::to_snake_case(names(rin))
 
-  rin_only <- rin |> 
-    dplyr::filter(!is.na(`name`)) |> 
+  rin_only <- rin |>
+    dplyr::filter(!is.na(`name`)) |>
     dplyr::filter(`name` != "Subitems")
+
+  # Apply primary county overrides from params for communities missing primary_county
+  if (!is.null(params$primary_county_overrides)) {
+    overrides <- do.call(rbind, lapply(params$primary_county_overrides, as.data.frame))
+    for (i in seq_len(nrow(overrides))) {
+      community_name <- overrides$community[i]
+      override_county <- overrides$county[i]
+      idx <- which(rin_only$name == community_name & is.na(rin_only$primary_county))
+      if (length(idx) > 0) {
+        rin_only$primary_county[idx] <- override_county
+      }
+    }
+  }
 
   rin_primary_co <- rin_only |>
     dplyr::select(
@@ -291,12 +304,11 @@ write_data_to_geojson <- function (df, file_path) {
 
   rin_service_areas <- df |>
     dplyr::filter(
-      `primary_county_flag` == "Yes"
-    )
-  
-  message(class(rin_service_areas))
-
-  rin_service_areas |>
+      `latest_version` == "Yes"
+    ) |>
+    # dplyr::filter(
+    #   `primary_county_flag` == "Yes"
+    # ) |>
     sf::st_drop_geometry() |>
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4269) |>
     sf::st_write(
@@ -304,6 +316,8 @@ write_data_to_geojson <- function (df, file_path) {
       append = FALSE,
       delete_dsn = TRUE
     )
+  
+  message(class(rin_service_areas))
 
   return(file_path)
 }
