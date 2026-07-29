@@ -6,7 +6,8 @@ default:
     # monday_network_communities_file_name: Network_Communities_Current_1749008415.xlsx
     # monday_network_communities_file_name: Network_Communities_Current_1768832103.xlsx  # 2026-01-19
     # monday_network_communities_file_name: Network_Communities_Current_1771534560.xlsx  # 2026-02-19
-    monday_network_communities_file_name: Network_Communities_Current_1780494562.xlsx # 2026-06-03
+    # monday_network_communities_file_name: Network_Communities_Current_1780494562.xlsx # 2026-06-03
+    monday_network_communities_file_name: Network_Communities_Current_1785161494.xlsx # 2026-07-27
     schema_name: 'rin'
     ## TODO: Make sure to share this sheet with mda-554@center-on-rural--1493677791841.iam.gserviceaccount.com
     sheet_url: 'https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw/edit?gid=0#gid=0'
@@ -15,3 +16,13 @@ default:
     rural_tech_collective_ga: G-D91NZRTDJR
     comms_sheet_id: '1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU'
     comms_sheet_name: 'Current_Communities'
+    primary_county_overrides:
+      - community: 'Great Bend, KS'
+        county: 'Barton County, KS'
+        geoid_co: '20009'
+      - community: 'Rolla, MO'
+        county: 'Phelps County, MO'
+        geoid_co: '29161'
+      - community: 'Tahlequah, OK'
+        county: 'Cherokee County, OK'
+        geoid_co: '40021'
