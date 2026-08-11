@@ -27,7 +27,7 @@
     "package": "R CMD build --no-manual",
     "package:cisco":  "npm run package -w cori.data.cisco",
     "package:coursera":  "npm run package -w cori.data.coursera",
-    "preview": "quarto render index.qmd --output-dir docs && python -m http.server -d docs 3000"
+    "preview": "quarto render index.qmd --output-dir docs && python -m http.server -d docs 3001"
   },
   "workspaces": [
     "cisco",

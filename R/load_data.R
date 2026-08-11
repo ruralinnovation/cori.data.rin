@@ -335,7 +335,7 @@ write_data_to_geojson <- function (df, file_path) {
 
 write_data_to_s3 <- function (bucket_name, file_name, file_path, s3_prefix = "dev/data/") {
   s3_key_path <- paste0(s3_prefix, file_name)
-  return(cori.db::put_s3_object(bucket_name, s3_key_path, file_path))
+  return(cori.data::put_s3_object(bucket_name, s3_key_path, file_path))
 }
 
 
