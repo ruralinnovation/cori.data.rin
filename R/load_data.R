@@ -37,10 +37,10 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   ### functions ------
   get_county_geoid_name_lookup <- function(year = 2024) {
     
-    counties <- cori.data::tiger_line_counties(year) |>
+    counties <- cori.utils::tiger_line_counties(year) |>
       sf::st_drop_geometry()
-    
-    states <- cori.data::tiger_line_states(year) |> 
+
+    states <- cori.utils::tiger_line_states(year) |>
       sf::st_drop_geometry()
     
     # state_names <- states %>%
@@ -140,7 +140,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   }
 
   # STEP 1: Today's snapshot (from Monday XLSX) is simply `areas`
-  todays_snapshot <- dplyr::distinct(areas)
+  # Filter out communities with missing geoid_co (not in overrides and no valid county lookup)
+  todays_snapshot <- dplyr::distinct(areas) |>
+    dplyr::filter(!is.na(geoid_co))
 
   # STEP 2: Preserve existing records from package data (directly from old_rin_service_areas)
   has_latest_version_col <- "latest_version" %in% names(old_rin_service_areas)
@@ -194,9 +196,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
 
 load_rin_service_areas_sf <- function (rin_service_areas) {
 
-  counties <- cori.data::tiger_line_counties(2024)
+  counties <- cori.utils::tiger_line_counties(2024)
 
-  county_pop_centers <- cori.data::county_pop_centroids(2020) |>
+  county_pop_centers <- cori.utils::county_pop_centroids(2020) |>
     sf::st_as_sf(
       coords = c("lon", "lat"),
       crs = 4326
@@ -366,10 +368,17 @@ load_comms_communities <- function(params = cori.utils::get_params("global")) {
 #' Geocode RIN map data using OpenStreetMap
 #'
 #' @param communities_data Tibble from load_comms_communities()
+#' @param rin_service_areas Tibble from load_rin_service_areas() - used to filter to valid communities
 #' @return Tibble with lat and long columns added
-geocode_rin_map_data <- function(communities_data) {
+geocode_rin_map_data <- function(communities_data, rin_service_areas) {
 
-  geocoded <- communities_data |>
+  valid_communities <- communities_data |>
+    dplyr::semi_join(
+      rin_service_areas |> dplyr::filter(latest_version == "Yes"),
+      by = "rin_community"
+    )
+
+  geocoded <- valid_communities |>
     tidygeocoder::geocode(
       address = geocode_column,
       method = "osm",

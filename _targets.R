@@ -120,9 +120,9 @@ list(
   tar_target(rin_service_areas_parquet_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.parquet", rin_service_areas_parquet_file, s3_prefix = "test/data/")),
 
   # RIN Map Data Pipeline (sourced from Comms Google Sheet)
-  tar_target(comms_communities, load_comms_communities(global_params)),
+  tar_target(comms_communities, load_comms_communities(global_params), cue = tar_cue(mode = "always")),
 
-  tar_target(rin_map_geocoded, geocode_rin_map_data(comms_communities)),
+  tar_target(rin_map_geocoded, geocode_rin_map_data(comms_communities, rin_service_areas)),
 
   tar_target(rin_map_json, write_rin_map_json(rin_map_geocoded, here::here("data/rin_map.json"))),
 
