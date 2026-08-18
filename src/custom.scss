@@ -209,9 +209,14 @@ div#quarto-content {
       margin-top: 0;
       overflow: scroll;
 
-    &>*{
+    &>header {
+      display: block;
       z-index: 2;
     }
+
+    // &>section{
+    //   display: none;
+    // }
 
     .quarto-title { 
 

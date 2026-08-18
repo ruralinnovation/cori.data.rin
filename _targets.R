@@ -8,6 +8,7 @@ tar_option_set(
     "coriverse",
     "cori.db",
     "cori.data",
+    "cori.data.s3",
     "cori.utils", # <= functions imported automatically by coriverse
     "DBI",
     "dplyr",
@@ -136,5 +137,10 @@ list(
   # S3 uploads - cori-risi-apps bucket
   tar_target(rin_map_json_apps_dev, write_data_to_s3("cori-risi-apps", "rin_map.json", rin_map_json_file, s3_prefix = "dev/cori.data.rin/")),
 
-  tar_target(rin_map_json_apps_test, write_data_to_s3("cori-risi-apps", "rin_map.json", rin_map_json_file, s3_prefix = "test/cori.data.rin/"))
+  tar_target(rin_map_json_apps_test, write_data_to_s3("cori-risi-apps", "rin_map.json", rin_map_json_file, s3_prefix = "test/cori.data.rin/")),
+
+  # S3 uploads - cori-risi-apps bucket
+  tar_target(rin_service_areas_apps_dev, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file, s3_prefix = "dev/cori.data.rin/")),
+
+  tar_target(rin_service_areas_apps_test, write_data_to_s3("cori-risi-apps", "rin_service_areas.geojson", rin_service_areas_geojson_file, s3_prefix = "test/cori.data.rin/"))
 )

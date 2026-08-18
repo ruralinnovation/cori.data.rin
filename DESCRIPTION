@@ -11,6 +11,7 @@ Encoding: UTF-8
 Imports:
     DBI,
     cori.data,
+    cori.data.s3,
     cori.db,
     cori.utils,
     dplyr,

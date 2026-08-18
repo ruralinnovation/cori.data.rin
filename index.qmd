@@ -37,10 +37,13 @@ include-after-body:
 #     <script>
 #       alert('This is triggered by a custom script tag inserted after </body>');
 #     </script>
-# include-before-body:
-#   text: |
-#     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-#     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+include-before-body:
+  text: |
+    <style>
+    div#quarto-content main#quarto-document-content>section {
+        display: none;
+    }
+    </style>
 # server: shiny
 # ERROR: index.qmd uses server: shiny so cannot be included in a website project (shiny documents require a backend server and so can't be published as static web content).
 
@@ -66,24 +69,24 @@ tableau_secret_value <- Sys.getenv("TABLEAU_SECRET_VALUE")
 tableau_url <- Sys.getenv("TABLEAU_URL")
 tableau_user <- Sys.getenv("TABLEAU_USER")
 
-cat(paste0('
-  <tableau-viz
-    src="', tableau_url, '/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
-    device="desktop"
-    width="640px"
-    height="calc(100vh - 190px)"
-    style="margin: 0 -2px; background-color: transparent !important;"
-    toolbar="bottom"
-    tableau_client_id="', tableau_client_id, '"
-    tableau_secret_id="', tableau_secret_id, '"
-    tableau_secret_value="', tableau_secret_value, '"
-    tableau_user="', tableau_user, '">
-  </tableau-viz>
-  <script type="application/javascript">
-  setTimeout(() => { document.querySelector("main#quarto-document-content").style.overflow = "hidden" }, 533)
-  </script>
-'
-))
+# cat(paste0('
+#   <tableau-viz
+#     src="', tableau_url, '/views/impact-dashboard/NetworkMaturity2?:origin=card_share_link&:embed=n4?:origin=card_share_link"
+#     device="desktop"
+#     width="640px"
+#     height="calc(100vh - 190px)"
+#     style="margin: 0 -2px; background-color: transparent !important;"
+#     toolbar="bottom"
+#     tableau_client_id="', tableau_client_id, '"
+#     tableau_secret_id="', tableau_secret_id, '"
+#     tableau_secret_value="', tableau_secret_value, '"
+#     tableau_user="', tableau_user, '">
+#   </tableau-viz>
+#   <script type="application/javascript">
+#   setTimeout(() => { document.querySelector("main#quarto-document-content").style.overflow = "hidden" }, 533)
+#   </script>
+# '
+# ))
 ```
 
 <!--

@@ -312,7 +312,7 @@ write_data_to_geojson <- function (df, file_path) {
     #   `primary_county_flag` == "Yes"
     # ) |>
     sf::st_drop_geometry() |>
-    sf::st_as_sf(coords = c("lon", "lat"), crs = 4269) |>
+    sf::st_as_sf(coords = c("lon", "lat"), crs = 4269, remove = FALSE) |>
     sf::st_write(
       file_path,
       append = FALSE,
@@ -337,7 +337,7 @@ write_data_to_geojson <- function (df, file_path) {
 
 write_data_to_s3 <- function (bucket_name, file_name, file_path, s3_prefix = "dev/data/") {
   s3_key_path <- paste0(s3_prefix, file_name)
-  return(cori.db::put_s3_object(bucket_name, s3_key_path, file_path))
+  return(cori.data.s3::put_s3_object(bucket_name, s3_key_path, file_path))
 }
 
 
@@ -355,7 +355,7 @@ load_comms_communities <- function(params = cori.utils::get_params("global")) {
   transformed <- comms_data |>
     dplyr::transmute(
       rin_community = `rin_community`,
-      community_name = `Community`,
+      community_name = `Community (NAME ON RIN MAP)`, # `Community`,
       geocode_column = `Primary Place`,
       url = `Link to RIN page on site`
     ) |>
