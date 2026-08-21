@@ -299,6 +299,7 @@ save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) 
 save_data_to_package <- function (df) {
   rin_service_areas <- df
   usethis::use_data(rin_service_areas, overwrite = TRUE)
+  here::here("data/rin_service_areas.rda")
 }
 
 

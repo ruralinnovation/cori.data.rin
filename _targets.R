@@ -43,7 +43,7 @@ list(
 
   tar_target(rin_service_areas, load_rin_service_areas(global_params, cori.data.rin::rin_service_areas)),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
-  tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf)),
+  tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf), format = "file"),
 
   tar_target(rin_service_areas_db, (function (schema_name, table_name, dta) {
     con <- cori.db::connect_to_db(schema_name)
