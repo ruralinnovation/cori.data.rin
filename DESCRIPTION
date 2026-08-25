@@ -10,14 +10,18 @@ Maintainer: John Hall <john.hall@ruralinnovation.us>
 Encoding: UTF-8
 Imports:
     DBI,
-    cori.data,
     cori.data.s3,
     cori.db,
     cori.utils,
     dplyr,
+    googlesheets4,
+    here,
+    httr2,
+    jsonlite,
     readxl,
     sf,
     snakecase,
+    tidygeocoder,
     tidyr,
     usethis
 Roxygen: list(markdown = TRUE)
@@ -25,3 +29,4 @@ RoxygenNote: 7.3.3
 Depends: 
     R (>= 3.5)
 LazyData: true
+LazyDataCompression: xz

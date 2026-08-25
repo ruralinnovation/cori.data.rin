@@ -30,10 +30,20 @@
 ^cisco\/cisco\ flowchart\.drawio\.xml$
 ^cisco\/node_modules$
 ^cisco\/node_modules\/
-^data\/[.]csv$
-^data\/[.]xlsx$
-^data/Network_Communities_Current_1746543710\.xlsx$
-^data/RIN Community Service Areas (Updated July 2023) [COPY] - RIN Community Lookup (DO NOT EDIT)\.csv$
+# Keep only rin_service_areas.rda in data/ - everything else is targets pipeline scratch/cache
+^data/.*\.xlsx$
+^data/.*\.rds$
+^data/.*\.csv$
+^data/.*\.json$
+^data/.*\.geojson$
+^data/.*\.parquet$
+^data/.*\.twbx$
+^data/.*\.twbr$
+^data/\..*$
+^data/cenpop2020$
+^data/cenpop2020/
+^data/tiger$
+^data/tiger/
 ^data-raw$
 ^frontend$
 ^frontend\/$
@@ -60,14 +70,19 @@
 ^\.*\\.bak$$
 ^coursera$
 ^\.claude$
-^counties_2024\.rds$
-^counties\.rds$
-^county_state_fips\.rds$
-^Network_Communities_Current_1749008415\.xlsx$
-^places\.rds$
-^rin_service_areas\.geojson$
-^states_2024\.rds$
-^states\.rds$
-^tiger$
-^zip_code_centroids\.rds$
 ^map$
+
+# Stray dev artifacts (not part of the package)
+^\.venv$
+^\.venv/
+^lovable$
+^lovable/
+^knowledge_base$
+^knowledge_base/
+^_environment\.local$
+^AGS_PRIME_TUTORIAL\.md$
+^MONDAY_API_INTEGRATION_PLAN\.md$
+^CLAUDE\.md$
+^RIN Communties on Website - Current_Communities\.csv$
+^rin-data-infrastructure\.svg$
+^ttd_flowchart\.svg$

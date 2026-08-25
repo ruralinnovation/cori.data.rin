@@ -4,10 +4,12 @@
 \alias{geocode_rin_map_data}
 \title{Geocode RIN map data using OpenStreetMap}
 \usage{
-geocode_rin_map_data(communities_data)
+geocode_rin_map_data(communities_data, rin_service_areas)
 }
 \arguments{
 \item{communities_data}{Tibble from load_comms_communities()}
+
+\item{rin_service_areas}{Tibble from load_rin_service_areas() - used to filter to valid communities}
 }
 \value{
 Tibble with lat and long columns added

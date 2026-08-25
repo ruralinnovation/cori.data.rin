@@ -56,6 +56,21 @@ The pipeline uploads `rin_map.json` to four locations:
 
 ## Setup for Development
 
+### Monday API Token
+
+The `rin_service_areas` pipeline fetches RIN community and county data directly from the Monday.com board (ID `6951894369`) via GraphQL API. This requires a personal or admin API token, set as `MONDAY_API_TOKEN` in a project-root `.Renviron` file. This file is gitignored — never commit your token.
+
+To set it up:
+
+1. In Monday.com, go to your avatar → Admin → API (or your profile → Developers, if you don't have admin access) and generate a personal API token
+2. Add it to `.Renviron` in this project's root directory:
+   ```
+   MONDAY_API_TOKEN="<your_token>"
+   ```
+3. Restart your R session (or run `readRenviron(".Renviron")`) so the variable is picked up
+
+If `MONDAY_API_TOKEN` is not set, `load_rin_service_areas()` falls back to reading the XLSX file named in `monday_network_communities_file_name` (in `params.yml`) from the `data/` directory — the pipeline's original manual-export workflow.
+
 Once you have all the dependencies installed, to build and install this
 package from the local project directory, run:
 
@@ -120,3 +135,18 @@ The original ETL is preserved at [R/archive/old_load_data.R](R/archive/old_load_
 - The `excluded_communities` list controlling year-duplication carry-forward
 
 Refer to that file when reviewing how historical `year` values were assigned in records still present in the installed package.
+
+## Addendum: Monday API Integration (2026-08-25)
+
+The pipeline no longer depends on a manually downloaded XLSX export from Monday as its primary data source. `R/monday_api.R` adds `fetch_monday_board()`, which pulls all columns — including system fields like `item_id`, `created_at`, and `updated_at` — directly from the Monday board via GraphQL.
+
+### What Changed
+
+- `load_rin_service_areas()` in [R/load_data.R](R/load_data.R) checks for `MONDAY_API_TOKEN` first; if present, it fetches live data from Monday instead of reading `data/Network_Communities_Current_*.xlsx`
+- Monday's `item_id` for each community record becomes the `monday_id` column, prepended to `rin_service_areas`
+- A one-time migration target, `rin_service_areas_with_monday_id`, backfilled `monday_id` onto the previously-installed `cori.data.rin::rin_service_areas` package data using a `rin_community_alias_to_item_id` lookup table in `params.yml`. That mapping covers historical community name aliases (e.g. `Aberdeen` → `Aberdeen, SD`) as well as renames on the Monday board itself (e.g. `Tahlequah, OK` → `Tahlequah, OK | Cherokee Nation`)
+- The XLSX path remains as a fallback for anyone without a Monday API token, and uses the same `rin_community_alias_to_item_id` mapping to populate `monday_id`
+
+### Setup Required
+
+Anyone running this pipeline needs their own `MONDAY_API_TOKEN` in a local `.Renviron` file — see "Monday API Token" under Setup for Development, above.

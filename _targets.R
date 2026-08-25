@@ -13,6 +13,7 @@ tar_option_set(
     "DBI",
     "dplyr",
     "googlesheets4",
+    "httr2",
     "jsonlite",
     "purrr",
     "readxl",
@@ -25,7 +26,7 @@ tar_option_set(
   )
 )
 
-tar_source(files = "R/load_data.R")
+tar_source(files = c("R/monday_api.R", "R/load_data.R"))
 
 # setup_dir()
 if (! file.exists("data/")) dir.create("data/")
@@ -41,9 +42,15 @@ list(
   tar_target(sheet_id, googlesheets4::as_sheets_id(global_params$sheet_url)),
   tar_target(all_sheet_names, googlesheets4::sheet_names(sheet_id)),
 
-  tar_target(rin_service_areas, load_rin_service_areas(global_params, cori.data.rin::rin_service_areas)),
+  # One-time migration: augment existing package data with monday_id
+  tar_target(
+    rin_service_areas_with_monday_id,
+    augment_with_monday_id(global_params, cori.data.rin::rin_service_areas)
+  ),
+
+  tar_target(rin_service_areas, load_rin_service_areas(global_params, rin_service_areas_with_monday_id)),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
-  tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf), format = "file"),
+  tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf |> sf::st_drop_geometry()), format = "file"),
 
   tar_target(rin_service_areas_db, (function (schema_name, table_name, dta) {
     con <- cori.db::connect_to_db(schema_name)

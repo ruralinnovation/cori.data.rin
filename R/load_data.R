@@ -12,6 +12,67 @@ library(purrr)
 # # This allows the script to run without user intervention
 # gs4_auth_configure(path = credentials) # <= THIS DOES NOT WORK... fow now
 
+#' Look up monday_id for each name using the rin_community_alias_to_item_id mapping
+#'
+#' @param names_vec character vector of rin_community names to look up
+#' @param alias_list named list from params$rin_community_alias_to_item_id
+#'
+#' @return character vector of monday_id values, same length as names_vec
+lookup_monday_id <- function(names_vec, alias_list) {
+
+  if (is.null(alias_list)) {
+    stop("rin_community_alias_to_item_id not found in params")
+  }
+
+  monday_id <- rep(NA_character_, length(names_vec))
+
+  for (community_name in names(alias_list)) {
+    item_id <- as.character(alias_list[[community_name]])
+    matching_rows <- which(names_vec == community_name)
+    if (length(matching_rows) > 0) {
+      monday_id[matching_rows] <- item_id
+    }
+  }
+
+  return(monday_id)
+}
+
+#' Augment rin_service_areas with monday_id column (one-time migration)
+#'
+#' Takes the existing package data and adds a monday_id column by looking up
+#' each rin_community in the rin_community_alias_to_item_id mapping from params.
+#'
+#' @param params An object containing the rin_community_alias_to_item_id mapping
+#' @param old_rin_service_areas data.frame from cori.data.rin::rin_service_areas
+#'
+#' @return data.frame with monday_id prepended as first column
+augment_with_monday_id <- function(params, old_rin_service_areas) {
+
+  alias_list <- params$rin_community_alias_to_item_id
+
+  df <- old_rin_service_areas |>
+    sf::st_drop_geometry()
+
+  df$monday_id <- lookup_monday_id(df$rin_community, alias_list)
+
+  # Move monday_id to first column
+  df <- df[, c("monday_id", setdiff(names(df), "monday_id"))]
+
+  # Report mapping coverage
+  mapped_count <- sum(!is.na(df$monday_id))
+  total_count <- nrow(df)
+  unique_unmapped <- unique(df$rin_community[is.na(df$monday_id)])
+
+  message(sprintf("monday_id mapping: %d/%d rows mapped (%.1f%%)",
+                  mapped_count, total_count, 100 * mapped_count / total_count))
+
+  if (length(unique_unmapped) > 0) {
+    message("Unmapped rin_community values: ", paste(unique_unmapped, collapse = ", "))
+  }
+
+  return(df)
+}
+
 #' A function to generate RIN service areas (county level) from an XLSX extract from Monday (see params.yml)
 #'
 #' @param params An object containing values for the $current_year and $monday_network_communities_file_name parameters
@@ -64,14 +125,31 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   # Load a county geoid_co name_co lookup
   county_geoid_name_lookup <- get_county_geoid_name_lookup()
 
-  ## read in
-  rin <- readxl::read_excel(paste0(data_dir, "/", params$monday_network_communities_file_name), skip = 2)
-  
-  names(rin) <- snakecase::to_snake_case(names(rin))
+  ## read in - prefer Monday API, fall back to XLSX
+  monday_token <- Sys.getenv("MONDAY_API_TOKEN")
 
-  rin_only <- rin |>
-    dplyr::filter(!is.na(`name`)) |>
-    dplyr::filter(`name` != "Subitems")
+  if (nchar(monday_token) > 0) {
+    message("Fetching from Monday API...")
+    rin_raw <- fetch_monday_board(
+      board_id = 6951894369,
+      group_title = params$monday_network_communities_tab_name
+    )
+    rin_only <- rin_raw |>
+      dplyr::rename(
+        monday_id = item_id,
+        primary_county = connect_boards2__1,
+        other_counties = connect_boards24__1
+      ) |>
+      dplyr::filter(!is.na(name), name != "Subitems")
+  } else {
+    message("No MONDAY_API_TOKEN - reading XLSX fallback: ", params$monday_network_communities_file_name)
+    rin <- readxl::read_excel(paste0(data_dir, "/", params$monday_network_communities_file_name), skip = 2)
+    names(rin) <- snakecase::to_snake_case(names(rin))
+    rin_only <- rin |>
+      dplyr::filter(!is.na(`name`)) |>
+      dplyr::filter(`name` != "Subitems")
+    rin_only$monday_id <- lookup_monday_id(rin_only$name, params$rin_community_alias_to_item_id)
+  }
 
   # Apply primary county overrides from params for communities missing primary_county
   if (!is.null(params$primary_county_overrides)) {
@@ -88,15 +166,17 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
 
   rin_primary_co <- rin_only |>
     dplyr::select(
+      `monday_id`,
       `name`,
       `county` = `primary_county`
     )
 
-  areas <- rin_only |> 
+  areas <- rin_only |>
     dplyr::select(
+      `monday_id`,
       `name`,
       `county` = `other_counties`
-    ) |> 
+    ) |>
     dplyr::filter(
       !is.na(`county`)
     ) |> 
@@ -113,6 +193,7 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
       year = params$current_year
     ) |>
     dplyr::select(
+      `monday_id`,
       `geoid_co`,
       `rin_community` = `name`,
       `county`,
@@ -147,7 +228,7 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   # STEP 2: Preserve existing records from package data (directly from old_rin_service_areas)
   has_latest_version_col <- "latest_version" %in% names(old_rin_service_areas)
 
-  base_cols <- c("geoid_co", "rin_community", "county", "primary_county_flag", "data_run_date", "year")
+  base_cols <- c("monday_id", "geoid_co", "rin_community", "county", "primary_county_flag", "data_run_date", "year")
   if (has_latest_version_col) base_cols <- c(base_cols, "latest_version")
 
   preserved_old <- old_rin_service_areas |>
@@ -205,7 +286,7 @@ load_rin_service_areas_sf <- function (rin_service_areas) {
     )
 
   rin_service_areas_sf <- rin_service_areas |>
-    dplyr::arrange(`rin_community`, desc(`primary_county_flag`)) |>
+    dplyr::arrange(`rin_community`, dplyr::desc(`primary_county_flag`)) |>
     dplyr::left_join(counties |>
         # dplyr::mutate(geom = geometry) |>
         sf::st_drop_geometry(), 
