@@ -5,11 +5,9 @@ tar_option_set(
     "cori.data.rin",
     "cori.data.cisco",
     "cori.data.coursera",
-    "coriverse",
     "cori.db",
-    "cori.data",
     "cori.data.s3",
-    "cori.utils", # <= functions imported automatically by coriverse
+    "cori.utils",
     "DBI",
     "dplyr",
     "googlesheets4",
@@ -43,12 +41,12 @@ list(
   tar_target(all_sheet_names, googlesheets4::sheet_names(sheet_id)),
 
   # One-time migration: augment existing package data with monday_id
-  tar_target(
-    rin_service_areas_with_monday_id,
-    augment_with_monday_id(global_params, cori.data.rin::rin_service_areas)
-  ),
+  # tar_target(
+  #   rin_service_areas_with_monday_id,
+  #   augment_with_monday_id(global_params, cori.data.rin::rin_service_areas)
+  # ),
 
-  tar_target(rin_service_areas, load_rin_service_areas(global_params, rin_service_areas_with_monday_id)),
+  tar_target(rin_service_areas, load_rin_service_areas(global_params, cori.data.rin::rin_service_areas)),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
   tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf |> sf::st_drop_geometry()), format = "file"),
 
