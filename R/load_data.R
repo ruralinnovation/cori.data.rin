@@ -243,31 +243,33 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
       dplyr::mutate(latest_version = "No")
   }
 
-  # STEP 3: Check if params.yml has uncommitted changes to monday_network_communities_file_name
-  git_diff_output <- system("git diff HEAD params.yml", intern = TRUE)
-  has_uncommitted_filename_change <- any(grepl("monday_network_communities_file_name", git_diff_output))
+  # STEP 3: Detect changes by comparing on monday_id + geoid_co + year
+  # A record needs updating if rin_community changed OR monday_id is new
+  comparison <- todays_snapshot |>
+    dplyr::left_join(
+      preserved_old |> dplyr::select(monday_id, geoid_co, year, rin_community_old = rin_community),
+      by = c("monday_id", "geoid_co", "year")
+    )
 
-  if (has_uncommitted_filename_change) {
-    new_only <- todays_snapshot |>
-      dplyr::mutate(data_run_date = Sys.Date()) |>
-      dplyr::anti_join(preserved_old, by = c("rin_community", "county", "year", "data_run_date"))
-    has_new_records <- nrow(new_only) > 0
-  } else {
-    has_new_records <- FALSE
-    new_only <- dplyr::slice(todays_snapshot, 0) |>
-      dplyr::mutate(data_run_date = as.Date(NA))
-  }
+  # Records where rin_community changed OR monday_id is entirely new
+  updates_and_new <- comparison |>
+    dplyr::filter(is.na(rin_community_old) | rin_community != rin_community_old) |>
+    dplyr::mutate(data_run_date = Sys.Date(), latest_version = "Yes") |>
+    dplyr::select(-rin_community_old)
 
-  # STEP 4: Only if there are new records, update latest_version flags
+  has_new_records <- nrow(updates_and_new) > 0
+
+  # STEP 4: Mark old versions of changed records as not latest
   if (has_new_records) {
+    changed_monday_ids <- unique(updates_and_new$monday_id)
     preserved_old <- preserved_old |>
-      dplyr::mutate(latest_version = "No")
-    new_only <- new_only |>
-      dplyr::mutate(latest_version = "Yes")
+      dplyr::mutate(
+        latest_version = dplyr::if_else(monday_id %in% changed_monday_ids, "No", latest_version)
+      )
   }
 
   # STEP 5: Final combination
-  final_result <- dplyr::bind_rows(preserved_old, new_only) |>
+  final_result <- dplyr::bind_rows(preserved_old, updates_and_new) |>
     dplyr::distinct() |>
     dplyr::arrange(year, rin_community, county, data_run_date)
 
@@ -455,6 +457,7 @@ load_comms_communities <- function(params = cori.utils::get_params("global")) {
 geocode_rin_map_data <- function(communities_data, rin_service_areas) {
 
   valid_communities <- communities_data |>
+    dplyr::filter(!is.na(geocode_column) & geocode_column != "") |>
     dplyr::semi_join(
       rin_service_areas |> dplyr::filter(latest_version == "Yes"),
       by = "rin_community"

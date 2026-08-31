@@ -142,7 +142,7 @@
     "href": "index.html#installation",
     "title": "Rural Innovation Network",
     "section": "Installation",
-    "text": "Installation\n\ndevtools::install_github(\"ruralinnovation/cori.data.rin\")"
+    "text": "Installation\n\nremotes::install_github(\"ruralinnovation/cori.data.rin\")"
   },
   {
     "objectID": "index.html#quick-start",

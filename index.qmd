@@ -9,7 +9,7 @@ categories:
 package:
   name: cori.data.rin
   githubUrl: https://github.com/ruralinnovation/cori.data.rin
-  installCommand: 'devtools::install_github("ruralinnovation/cori.data.rin")'
+  installCommand: 'remotes::install_github("ruralinnovation/cori.data.rin")'
   status: stable
   version: 1.0.1
   maintainer: John Hall
@@ -136,7 +136,7 @@ geography needs to be joined to county-level data.
 ```{r}
 #| eval: false
  
-devtools::install_github("ruralinnovation/cori.data.rin")
+remotes::install_github("ruralinnovation/cori.data.rin")
 ```
  
 ## Quick Start
