@@ -46,7 +46,10 @@ list(
   #   augment_with_monday_id(global_params, cori.data.rin::rin_service_areas)
   # ),
 
-  tar_target(rin_service_areas, load_rin_service_areas(global_params, cori.data.rin::rin_service_areas)),
+  tar_target(rin_service_areas, 
+    load_rin_service_areas(global_params, cori.data.rin::rin_service_areas),
+    cue = tar_cue(mode = "always")
+  ),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
   tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf |> sf::st_drop_geometry()), format = "file"),
 
