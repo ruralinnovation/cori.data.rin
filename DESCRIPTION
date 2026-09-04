@@ -9,21 +9,31 @@ License: file LICENSE
 Maintainer: John Hall <john.hall@ruralinnovation.us>
 Encoding: UTF-8
 Imports:
-    DBI,
+    cori.data.pep,
+    cori.data.qcew,
     cori.data.s3,
     cori.db,
     cori.utils,
+    DBI,
     dplyr,
     googlesheets4,
     here,
     httr2,
     jsonlite,
     readxl,
+    ruraldefinitions,
     sf,
     snakecase,
     tidygeocoder,
     tidyr,
     usethis
+Remotes:
+  ruralinnovation/cori.data.pep,
+  ruralinnovation/cori.data.qcew,
+  ruralinnovation/cori.data.s3,
+  ruralinnovation/cori.db,
+  ruralinnovation/cori.utils,
+  ruralinnovation/ruraldefinitions
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Depends: 
