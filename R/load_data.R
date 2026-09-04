@@ -268,6 +268,18 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
       )
   }
 
+  removed_monday_ids <- setdiff(
+    unique(preserved_old$monday_id),
+    unique(todays_snapshot$monday_id)
+  )
+  
+  if (length(removed_monday_ids) > 0) {
+    preserved_old <- preserved_old |>
+      dplyr::mutate(
+        latest_version = dplyr::if_else(monday_id %in% removed_monday_ids, "No", latest_version)
+      )
+  }
+
   # STEP 5: Final combination
   final_result <- dplyr::bind_rows(preserved_old, updates_and_new) |>
     dplyr::distinct() |>
