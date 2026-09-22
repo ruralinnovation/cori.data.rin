@@ -1,5 +1,9 @@
 project:
   type: website
+  render:
+    - "**"
+    - "!mcgovern-cognizant/"
+    - "!node_modules/"
 
 website:
   title: "Rural Innovation Network data"
