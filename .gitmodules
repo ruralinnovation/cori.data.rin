@@ -10,3 +10,6 @@
 [submodule "map"]
 	path = map
 	url = https://github.com/ruralinnovation/rin-map.git
+[submodule "mcgovern-cognizant"]
+	path = mcgovern-cognizant
+	url = git@github.com:ruralinnovation/proj_mcgovern_cognizant.git
