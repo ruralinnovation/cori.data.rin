@@ -94,6 +94,7 @@ calculate_rural_rin_metrics <- function(
     n_counties = nrow(rin_counties),
     primary_only = primary_only,
     rural_only = rural_only,
+    n_rin = length(unique(rin_counties$rin_community)),
     value = result$value
   )
 }
