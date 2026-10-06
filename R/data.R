@@ -10,6 +10,7 @@
 #'   \item{county}{County name}
 #'   \item{primary_county_flag}{"Yes"|"No"}
 #'   \item{data_run_date}{Date of data ingestion from Monday}
+#'   \item{year_joined}{Integer year the community joined RIN ("Year Joined RIN" on the Monday board); NA if unknown}
 #'   ...
 #' }
 #' @source <https://docs.google.com/spreadsheets/d/1Qv3nyQ4GrkhIxVs1uEOgN5tfFLtdt_MA71BquPQDGmw>
@@ -44,5 +45,7 @@ utils::globalVariables(c(
   "rin_community",
   "STUSPS",
   "temp_centroid",
-  "year"
+  "year",
+  "year_joined",
+  "year_joined_monday"
 ))

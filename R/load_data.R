@@ -151,6 +151,23 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
     rin_only$monday_id <- lookup_monday_id(rin_only$name, params$rin_community_alias_to_item_id)
   }
 
+  # Current-group monday_id -> year_joined lookup ("Year Joined RIN": `date4` from the API,
+  # `year_joined_rin` from the XLSX export). Used on every run for new and updated records.
+  year_joined_raw <- if ("date4" %in% names(rin_only)) {
+    rin_only$date4
+  } else if ("year_joined_rin" %in% names(rin_only)) {
+    rin_only$year_joined_rin
+  } else {
+    warning("No 'Year Joined RIN' column in the Monday data - year_joined will not be updated", call. = FALSE)
+    rep(NA_character_, nrow(rin_only))
+  }
+  current_joined <- data.frame(
+    monday_id = rin_only$monday_id,
+    year_joined = .parse_year_joined(year_joined_raw)
+  ) |>
+    dplyr::filter(!is.na(monday_id)) |>
+    dplyr::distinct(monday_id, .keep_all = TRUE)
+
   # Apply primary county overrides from params for communities missing primary_county
   if (!is.null(params$primary_county_overrides)) {
     overrides <- do.call(rbind, lapply(params$primary_county_overrides, as.data.frame))
@@ -231,6 +248,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   base_cols <- c("monday_id", "geoid_co", "rin_community", "county", "primary_county_flag", "data_run_date", "year")
   if (has_latest_version_col) base_cols <- c(base_cols, "latest_version")
 
+  has_year_joined_col <- "year_joined" %in% names(old_rin_service_areas)
+  if (has_year_joined_col) base_cols <- c(base_cols, "year_joined")
+
   preserved_old <- old_rin_service_areas |>
     sf::st_drop_geometry() |>
     dplyr::filter(
@@ -241,6 +261,35 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   if (!has_latest_version_col) {
     preserved_old <- preserved_old |>
       dplyr::mutate(latest_version = "No")
+  }
+
+  # First run after year_joined was introduced: start it as an empty integer column
+  # (populated from `joined_lookup` in STEP 5)
+  if (!has_year_joined_col) {
+    preserved_old$year_joined <- NA_integer_
+  }
+
+  # Backfill monday_id for historical rows that never received one (alias list in params.yml).
+  # Only fills NA; an existing monday_id is never overwritten.
+  missing_monday_id <- is.na(preserved_old$monday_id)
+  preserved_old$monday_id[missing_monday_id] <- lookup_monday_id(
+    preserved_old$rin_community[missing_monday_id],
+    params$rin_community_alias_to_item_id
+  )
+
+  # One-time year_joined backfill: only while the old table has no year_joined column, read every
+  # board group (Current and Former) so historical rows for communities that left "Current" are
+  # populated. Once the package data carries year_joined, the Current data alone is used.
+  if (!has_year_joined_col && nchar(monday_token) > 0) {
+    joined_lookup <- fetch_monday_year_joined(board_id = 6951894369) |>
+      dplyr::filter(!is.na(monday_id)) |>
+      dplyr::distinct(monday_id, .keep_all = TRUE)
+  } else {
+    if (!has_year_joined_col) {
+      warning("No MONDAY_API_TOKEN - year_joined backfill only covers communities in the Current XLSX export",
+              call. = FALSE)
+    }
+    joined_lookup <- current_joined
   }
 
   # STEP 3: Detect changes by comparing on monday_id + geoid_co + year
@@ -281,7 +330,16 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   }
 
   # STEP 5: Final combination
+  # year_joined is a community-level attribute, so it is joined on monday_id only: it fills every
+  # historical and new row without creating rows or touching latest_version / data_run_date.
+  # Monday wins when it has a value; otherwise the previously stored value is kept.
   final_result <- dplyr::bind_rows(preserved_old, updates_and_new) |>
+    dplyr::left_join(
+      joined_lookup |> dplyr::rename(year_joined_monday = year_joined),
+      by = "monday_id"
+    ) |>
+    dplyr::mutate(year_joined = dplyr::coalesce(year_joined_monday, year_joined)) |>
+    dplyr::select(-year_joined_monday) |>
     dplyr::distinct() |>
     dplyr::arrange(year, rin_community, county, data_run_date)
 
