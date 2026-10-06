@@ -56,7 +56,9 @@ list(
   tar_target(rin_service_areas_db, (function (schema_name, table_name, dta) {
     con <- cori.db::connect_to_db(schema_name)
     on.exit(DBI::dbDisconnect(con))
-    result <- cori.db::write_db(con, table_name, dta, spatial = TRUE)
+    # The DB table holds current records only (history stays in the package data and S3 outputs)
+    dta <- dplyr::filter(dta, `latest_version` == "Yes")
+    result <- cori.db::write_db(con, table_name, dta, overwrite = TRUE, spatial = TRUE)
     if (result == table_name) return(dta)
     else return(NULL)
   })("rin", "rin_service_areas", rin_service_areas_sf)),

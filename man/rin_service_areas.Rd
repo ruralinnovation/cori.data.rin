@@ -14,6 +14,7 @@ A data.frame with at least these 5 columns:
 \item{county}{County name}
 \item{primary_county_flag}{"Yes"|"No"}
 \item{data_run_date}{Date of data ingestion from Monday}
+\item{year_joined}{Integer year the community joined RIN ("Year Joined RIN" on the Monday board); NA if unknown}
 ...
 }
 }

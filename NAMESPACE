@@ -3,6 +3,7 @@
 export(build_econ_dev_link)
 export(calculate_rural_rin_metrics)
 export(fetch_monday_board)
+export(fetch_monday_year_joined)
 export(get_rural_rin_counties)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,bind_rows)
