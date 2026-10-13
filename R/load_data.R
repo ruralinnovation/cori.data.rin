@@ -43,7 +43,7 @@ lookup_monday_id <- function(names_vec, alias_list) {
 #' each rin_community in the rin_community_alias_to_item_id mapping from params.
 #'
 #' @param params An object containing the rin_community_alias_to_item_id mapping
-#' @param old_rin_service_areas data.frame from cori.data.rin::rin_service_areas
+#' @param old_rin_service_areas data.frame from load_rin_service_areas_rda()
 #'
 #' @return data.frame with monday_id prepended as first column
 augment_with_monday_id <- function(params, old_rin_service_areas) {
@@ -71,6 +71,22 @@ augment_with_monday_id <- function(params, old_rin_service_areas) {
   }
 
   return(df)
+}
+
+#' Read the previous RIN service areas build from the project's .rda
+#'
+#' Loads the file this pipeline also rewrites (the `rin_service_areas_package`
+#' target), so the history new snapshots are appended to is the working copy on disk
+#' rather than whatever snapshot the installed package was built from.
+#'
+#' @param file_path Path to the .rda. Default: `data/rin_service_areas.rda`
+#'   in the project root.
+#'
+#' @return data.frame of the previous RIN service areas build
+load_rin_service_areas_rda <- function (file_path = here::here("data/rin_service_areas.rda")) {
+  env <- new.env(parent = emptyenv())
+  load(file_path, envir = env)
+  env$rin_service_areas
 }
 
 #' A function to generate RIN service areas (county level) from an XLSX extract from Monday (see params.yml)
@@ -230,7 +246,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
     }
   }
   
-  for (r in c(1:nrow(areas))) {
+  # seq_len, not 1:nrow -- on an empty `areas` the latter is c(1, 0) and fails with an opaque
+  # "Subscript `r` can't contain `0` values", pre-empting the snapshot check further down.
+  for (r in seq_len(nrow(areas))) {
     name <- areas[r, ]$rin_community
     county <- areas[r, ]$county
   
@@ -292,42 +310,50 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
     joined_lookup <- current_joined
   }
 
-  # STEP 3: Detect changes by comparing on monday_id + geoid_co + year
-  # A record needs updating if rin_community changed OR monday_id is new
-  comparison <- todays_snapshot |>
-    dplyr::left_join(
-      preserved_old |> dplyr::select(monday_id, geoid_co, year, rin_community_old = rin_community),
-      by = c("monday_id", "geoid_co", "year")
+  # Every current record is about to be superseded, so a short or empty snapshot would wipe the
+  # current set rather than update it: zero "Yes" rows would reach the `rin` schema, which is
+  # written with overwrite = TRUE. Checked while preserved_old still carries its original flags.
+  n_current <- sum(preserved_old$latest_version == "Yes")
+
+  if (nrow(todays_snapshot) == 0) {
+    stop(sprintf(
+      "Today's snapshot has no usable rows; refusing to supersede %d current records. Check the
+       Monday fetch (or the XLSX fallback) before re-running.", n_current
+    ), call. = FALSE)
+  }
+
+  # Warn rather than stop: a genuine bulk removal has to remain possible.
+  if (n_current > 0 && nrow(todays_snapshot) < 0.9 * n_current) {
+    warning(sprintf(
+      "Today's snapshot has %d rows against %d current records (%.0f%%). Every missing row loses
+       its current version. Confirm this is a real removal and not a truncated fetch.",
+      nrow(todays_snapshot), n_current, 100 * nrow(todays_snapshot) / n_current
+    ), call. = FALSE)
+  }
+
+  # STEP 3: Today's snapshot IS the new version -- every row in it, not just the ones that
+  # differ from what is stored. `data_run_date` therefore means "the run that observed this
+  # state", which is what lets any run's view be reconstructed. Change detection used to live
+  # here and left unchanged rows carrying the date of whichever earlier run last touched them.
+  updates_and_new <- todays_snapshot |>
+    dplyr::mutate(data_run_date = Sys.Date(), latest_version = "Yes")
+
+  # STEP 4: Everything previously current becomes a superseded version. A community absent from
+  # today's snapshot simply never gets a new "Yes" row, so departures need no special handling.
+  preserved_old <- preserved_old |>
+    dplyr::mutate(
+      latest_version = dplyr::if_else(latest_version == "Yes", "No", latest_version)
     )
 
-  # Records where rin_community changed OR monday_id is entirely new
-  updates_and_new <- comparison |>
-    dplyr::filter(is.na(rin_community_old) | rin_community != rin_community_old) |>
-    dplyr::mutate(data_run_date = Sys.Date(), latest_version = "Yes") |>
-    dplyr::select(-rin_community_old)
-
-  has_new_records <- nrow(updates_and_new) > 0
-
-  # STEP 4: Mark old versions of changed records as not latest
-  if (has_new_records) {
-    changed_monday_ids <- unique(updates_and_new$monday_id)
-    preserved_old <- preserved_old |>
-      dplyr::mutate(
-        latest_version = dplyr::if_else(monday_id %in% changed_monday_ids, "No", latest_version)
-      )
-  }
-
-  removed_monday_ids <- setdiff(
-    unique(preserved_old$monday_id),
-    unique(todays_snapshot$monday_id)
-  )
-  
-  if (length(removed_monday_ids) > 0) {
-    preserved_old <- preserved_old |>
-      dplyr::mutate(
-        latest_version = dplyr::if_else(monday_id %in% removed_monday_ids, "No", latest_version)
-      )
-  }
+  # Carried forward so a freshly stamped row keeps its year_joined when Monday has no value for
+  # it. Every current row is now rebuilt from the snapshot, which has no year_joined column, so
+  # without this a failed or renamed `date4` lookup would blank the whole current set rather
+  # than just the handful of rows change detection used to touch.
+  year_joined_stored <- preserved_old |>
+    dplyr::filter(!is.na(year_joined)) |>
+    dplyr::arrange(dplyr::desc(data_run_date)) |>
+    dplyr::distinct(monday_id, .keep_all = TRUE) |>
+    dplyr::select(monday_id, year_joined_stored = year_joined)
 
   # STEP 5: Final combination
   # year_joined is a community-level attribute, so it is joined on monday_id only: it fills every
@@ -338,8 +364,11 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
       joined_lookup |> dplyr::rename(year_joined_monday = year_joined),
       by = "monday_id"
     ) |>
-    dplyr::mutate(year_joined = dplyr::coalesce(year_joined_monday, year_joined)) |>
-    dplyr::select(-year_joined_monday) |>
+    dplyr::left_join(year_joined_stored, by = "monday_id") |>
+    dplyr::mutate(
+      year_joined = dplyr::coalesce(year_joined_monday, year_joined, year_joined_stored)
+    ) |>
+    dplyr::select(-year_joined_monday, -year_joined_stored) |>
     dplyr::distinct() |>
     dplyr::arrange(year, rin_community, county, data_run_date)
 
