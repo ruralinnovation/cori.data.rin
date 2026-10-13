@@ -2,7 +2,6 @@ library(targets)
 
 tar_option_set(
   packages = c(
-    "cori.data.rin",
     "cori.data.cisco",
     "cori.data.coursera",
     "cori.db",
@@ -24,7 +23,7 @@ tar_option_set(
   )
 )
 
-tar_source(files = c("R/monday_api.R", "R/load_data.R"))
+tar_source(files = c("R/monday_api.R", "R/load_data.R", "R/write_rin_to_s3.R"))
 
 # setup_dir()
 if (! file.exists("data/")) dir.create("data/")
@@ -46,8 +45,16 @@ list(
   #   augment_with_monday_id(global_params, cori.data.rin::rin_service_areas)
   # ),
 
-  tar_target(rin_service_areas, 
-    load_rin_service_areas(global_params, cori.data.rin::rin_service_areas),
+  # The version history new snapshots append to is data/rin_service_areas.rda,
+  # read straight from this project -- which is also the file that
+  # rin_service_areas_package (below) rewrites, so it is the working copy
+  # rather than whatever snapshot the installed package carries. Each run
+  # appends the full current set; see load_rin_service_areas() STEP 3/4.
+  # Not a format = "file" target on purpose: this
+  # target already runs on every pass, and tracking a file the pipeline itself
+  # rewrites would invalidate it on each run for no benefit.
+  tar_target(rin_service_areas,
+    load_rin_service_areas(global_params, load_rin_service_areas_rda()),
     cue = tar_cue(mode = "always")
   ),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
@@ -135,6 +142,17 @@ list(
   tar_target(rin_service_areas_parquet_s3, write_data_to_s3("cori.agent.kb", "rin_service_areas.parquet", rin_service_areas_parquet_file)),
 
   tar_target(rin_service_areas_parquet_s3_test, write_data_to_s3("cori.agent.kb-test", "rin_service_areas.parquet", rin_service_areas_parquet_file, s3_prefix = "test/data/")),
+
+  # S3 upload - cori.data.rin bucket: data_processed/vintage_YYYYMMDD/ + data_processed/_LATEST
+  tar_target(
+    rin_service_areas_parquet_s3_versioned,
+    write_rin_service_areas_to_s3(
+      rin_service_areas_parquet_file,
+      s3_bucket = global_params$s3_bucket,
+      s3_path_prefix = global_params$s3_path_prefix,
+      overwrite = TRUE
+    )
+  ),
 
   # RIN Map Data Pipeline (sourced from Comms Google Sheet)
   tar_target(comms_communities, load_comms_communities(global_params), cue = tar_cue(mode = "always")),

@@ -18,9 +18,7 @@
 #' @export
 build_econ_dev_link <- function(primary_only = FALSE) {
 
-  service_areas <- cori.data.rin::rin_service_areas |>
-    sf::st_drop_geometry() |>
-    dplyr::filter(latest_version == "Yes")
+  service_areas <- get_rin_service_areas(latest_only = TRUE)
 
   if (primary_only) {
     service_areas <- service_areas |>
