@@ -9,7 +9,7 @@ augment_with_monday_id(params, old_rin_service_areas)
 \arguments{
 \item{params}{An object containing the rin_community_alias_to_item_id mapping}
 
-\item{old_rin_service_areas}{data.frame from cori.data.rin::rin_service_areas}
+\item{old_rin_service_areas}{data.frame from load_rin_service_areas_rda()}
 }
 \value{
 data.frame with monday_id prepended as first column

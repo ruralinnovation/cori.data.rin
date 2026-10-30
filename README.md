@@ -2,6 +2,36 @@
 
 Framework for defining and capturing metrics to monitor and report out on RIN projects
 
+## Accessing `rin_service_areas`
+
+`cori.data.rin::rin_service_areas` is no longer available as a dataset, because an installed copy goes stale as soon as the pipeline publishes again. Reaching for that name now raises an error, on plain assignment as much as on use. Read the current data from S3 instead:
+
+```r
+get_rin_service_areas()                    # full version history
+get_rin_service_areas(latest_only = TRUE)  # current records only
+rin_service_areas_tbl()                    # lazy dbplyr table; filters push down into the S3 read
+```
+
+Prefer `rin_service_areas_tbl()` for anything but a whole-table read — `dplyr` verbs piped onto it translate to SQL, so predicates and column selection are pushed into the parquet scan and only the bytes you need come over the wire. The caller owns its connection; close it with `DBI::dbDisconnect(dbplyr::remote_con(x), shutdown = TRUE)`.
+
+Reading requires valid IAM credentials configured locally, in `~/.aws/credentials` or in `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`. The `cori.data.rin` bucket is private and is not available through the credential-vending endpoint, so vended read-only credentials will not work.
+
+Vintages are published to `s3://cori.data.rin/data_processed/vintage_<YYYYMMDD>/`, with `data_processed/_LATEST` naming the current one. `latest_rin_vintage()` resolves that pointer, `get_rin_vintages()` lists every published vintage with the time its parquet was written to S3, and `get_rin_service_areas(vintage = "20261011")` pins a specific one.
+
+```r
+get_rin_vintages()
+#>     vintage            modified
+#> 1 20261012 2026-10-12 20:07:54
+#> 2 20261011 2026-10-11 08:27:35
+#> 3 20261009 2026-10-09 16:31:05
+```
+
+`modified` is a `POSIXct` that prints in your session's time zone. Every vintage carries the full version history, so you rarely need an old one: filter `data_run_date` to see the state on a given run. Pin a vintage to reproduce an analysis exactly as it was published.
+
+`latest_version` and `primary_county_flag` are logical (`TRUE`/`FALSE`), so `filter(latest_version, primary_county_flag)` selects current primary counties. Vintages published before 2026-10-13 stored these as `"Yes"`/`"No"` strings; the readers convert them on the way in, so you always get logical columns whatever vintage you read.
+
+The bundled `data/rin_service_areas.rda` remains the authoritative copy that the pipeline appends to, but it is no longer reachable through the package namespace. If you specifically need that snapshot rather than the published vintage, read it with `utils::data("rin_service_areas", package = "cori.data.rin")`.
+
 ## Updating RIN Map Data
 
 The [RIN map](https://github.com/ruralinnovation/rin-map) displays community locations sourced from the Google Sheet named **[RIN Communities on Website](https://docs.google.com/spreadsheets/d/1fDGclR7GqncaLdkEipOJLLwDn3h4gYHVRcJtP_K1wcU)** that is maintained by Comms.
@@ -99,32 +129,33 @@ The previous ETL would, on every pipeline run:
 
 This destroyed historical snapshot dates on each run and made the dataset effectively a single moving window rather than a versioned series.
 
-The new ETL treats each Monday board export (`data/Network_Communities_Current_*.xlsx`, declared via `monday_network_communities_file_name` in `params.yml`) as an immutable snapshot:
+The new ETL treats each read of the Monday board as an immutable snapshot:
 
-- All records derived from the Monday XLSX are assigned `year = params$current_year` only — no historical years are inferred from the XLSX
-- Historical records (years 2023, 2024, 2025) are preserved verbatim from the installed `cori.data.rin::rin_service_areas` package data, with their original `data_run_date` values
-- A new boolean field, `latest_version` ("Yes"/"No"), marks the most recent snapshot
+- All records from the board are assigned `year = params$current_year` only — no historical years are inferred
+- Historical records are preserved verbatim with their original `data_run_date` values
+- A logical field `latest_version` (`TRUE`/`FALSE`) marks the current snapshot
 
-### Snapshot Trigger via Git
+### Snapshot Rule
 
-A new snapshot is created only when `git diff HEAD params.yml` shows an uncommitted change to `monday_network_communities_file_name`. The workflow is:
+Every pipeline run appends a complete new snapshot of the current set. There is no trigger and no condition: each run reads the Monday board, writes **every** row it returns with `data_run_date = Sys.Date()` and `latest_version = TRUE`, and demotes every previously current row to `latest_version = FALSE`. The workflow is simply:
 
-1. Export a new XLSX from the Monday board into `data/`
-2. Update `monday_network_communities_file_name` in `params.yml`
-3. Run `targets::tar_make()` — the function detects the uncommitted filename change and appends new records with `data_run_date = Sys.Date()` and `latest_version = "Yes"`, demoting all prior records to `latest_version = "No"`
-4. Run `devtools::install()` to bake the new snapshot into the package
-5. Commit `params.yml`
+1. Run `targets::tar_make()`
+2. Run `devtools::install()` if you need the new bundled snapshot in your installed copy
 
-Once `params.yml` is committed, subsequent pipeline runs produce no new records. The anti-join key `(rin_community, county, year, data_run_date)` ensures same-day re-runs after install do not create duplicates.
+So `data_run_date` means "the run that observed this state", which is what lets any run's view be reconstructed: filter to a date to see exactly what the board said then. `latest_version = TRUE` always identifies the current set, and all of its rows always share one `data_run_date`.
 
-### Note: Greenfield → Greenfield MA Rename
+Two consequences worth knowing:
 
-The Monday board record formerly named `Greenfield` was renamed to `Greenfield MA`. Because the ETL keys records by the `rin_community` name as given in the XLSX, this rename produces two distinct community names in the dataset:
+- A county removed from a community on the board loses its current version on the next run, as it should. Nothing carries forward implicitly.
+- Re-running on the same day appends another snapshot and demotes the previous one. From the third run in a day the two demoted batches become indistinguishable — same date, same values, both `FALSE` — and are collapsed, so a day retains at most two batches. Only intermediate same-day state is lost; the final snapshot of each day is always kept.
 
-- `Greenfield` — historical records only (years 2024, 2025, and the May 14 2026 snapshot), `latest_version = "No"`
-- `Greenfield MA` — current snapshot (year 2026, `data_run_date = 2026-06-03`), `latest_version = "Yes"`
+### Note: history before 2026-10-12
 
-Both map to Franklin County, MA. The 44 unique communities in the latest XLSX therefore appear as only 43 distinct names under `latest_version = "Yes"`. A future fix should normalize the name (mapping `Greenfield MA` → `Greenfield`) before the snapshot is keyed, so the rename does not fragment the historical series.
+Between 2026-08-31 (commit `b4ca51f`) and 2026-10-12, the function only appended rows that were **new or renamed**, so unchanged rows kept the `data_run_date` of whichever earlier run last touched them. Rows dated on or before 2026-10-11 therefore mean "last changed", not "last observed" — for example 94 of the then-current 198 rows carried August dates through three later runs that all saw them as current. This cannot be backfilled, because past Monday board states are not recoverable. Treat `data_run_date` as an observation date only from 2026-10-12 onward.
+
+### Note: community renames fragment the series
+
+Because records are keyed by the `rin_community` name as it appears on the board, a rename produces two distinct community names in the dataset — the old name on historical rows marked `latest_version = FALSE`, the new name on current rows. `Greenfield` → `Greenfield MA` and `Tahlequah, OK` → `Cherokee Nation | Tahlequah, OK` are both in the data this way. The `rin_community_alias_to_item_id` map in `params.yml` reconciles the historical names to `monday_id`, which is the stable key; prefer joining on `monday_id` rather than on `rin_community`.
 
 ### Archived Implementation
 

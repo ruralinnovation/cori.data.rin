@@ -157,7 +157,7 @@ rin_service_areas |>
  
 # Primary counties only
 rin_service_areas |>
-  filter(primary_county_flag == "Yes")
+  filter(primary_county_flag)
  
 # Join RIN community membership onto another county dataset
 county_data |>
@@ -175,7 +175,7 @@ A data frame with one row per community–county pair:
 | `geoid_co` | character | County FIPS (5-digit: STATEFP + COUNTYFP) |
 | `rin_community` | character | CORI name for the RIN community |
 | `county` | character | County name |
-| `primary_county_flag` | character | `"Yes"` / `"No"` — primary county for this community |
+| `primary_county_flag` | logical | `TRUE` if primary county for this community |
 | `data_run_date` | Date | Date the dataset was last refreshed from the source sheet |
  
 ## Data Coverage

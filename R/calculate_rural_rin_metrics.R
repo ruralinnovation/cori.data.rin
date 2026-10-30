@@ -46,13 +46,11 @@ calculate_rural_rin_metrics <- function(
   metric <- match.arg(metric)
 
  # Build the base RIN county set
-  rin_counties <- cori.data.rin::rin_service_areas |>
-    sf::st_drop_geometry() |>
-    dplyr::filter(latest_version == "Yes")
+  rin_counties <- get_rin_service_areas(latest_only = TRUE)
 
   if (primary_only) {
     rin_counties <- rin_counties |>
-      dplyr::filter(primary_county_flag == "Yes")
+      dplyr::filter(primary_county_flag)
   }
 
   # Join rural definitions
@@ -160,13 +158,11 @@ calculate_rural_rin_metrics <- function(
 #' @export
 get_rural_rin_counties <- function(primary_only = FALSE, rural_only = TRUE) {
 
-  rin_counties <- cori.data.rin::rin_service_areas |>
-    sf::st_drop_geometry() |>
-    dplyr::filter(latest_version == "Yes")
+  rin_counties <- get_rin_service_areas(latest_only = TRUE)
 
   if (primary_only) {
     rin_counties <- rin_counties |>
-      dplyr::filter(primary_county_flag == "Yes")
+      dplyr::filter(primary_county_flag)
   }
 
   rin_counties <- rin_counties |>
