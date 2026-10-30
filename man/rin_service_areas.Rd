@@ -30,10 +30,10 @@ vintage, read it with
 \item{geoid_co}{County geoid (STATEFP + COUNTYFP)}
 \item{rin_community}{CORI name for the RIN community}
 \item{county}{County name}
-\item{primary_county_flag}{"Yes"|"No"}
+\item{primary_county_flag}{Logical; \code{TRUE} for the community's primary county}
 \item{data_run_date}{Date of data ingestion from Monday}
 \item{year_joined}{Integer year the community joined RIN ("Year Joined RIN" on the Monday board); NA if unknown}
-\item{latest_version}{"Yes" on current records}
+\item{latest_version}{Logical; \code{TRUE} on current records}
 ...
 }
 }

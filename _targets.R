@@ -58,13 +58,16 @@ list(
     cue = tar_cue(mode = "always")
   ),
   tar_target(rin_service_areas_sf, load_rin_service_areas_sf(rin_service_areas)),
-  tar_target(rin_service_areas_package, save_data_to_package(rin_service_areas_sf |> sf::st_drop_geometry()), format = "file"),
+  tar_target(rin_service_areas_package, 
+    save_data_to_package(rin_service_areas_sf |> sf::st_drop_geometry(), "data/rin_service_areas.rda"), 
+    format = "file"
+  ),
 
   tar_target(rin_service_areas_db, (function (schema_name, table_name, dta) {
     con <- cori.db::connect_to_db(schema_name)
     on.exit(DBI::dbDisconnect(con))
     # The DB table holds current records only (history stays in the package data and S3 outputs)
-    dta <- dplyr::filter(dta, `latest_version` == "Yes")
+    dta <- dplyr::filter(dta, `latest_version`)
     result <- cori.db::write_db(con, table_name, dta, overwrite = TRUE, spatial = TRUE)
     if (result == table_name) return(dta)
     else return(NULL)

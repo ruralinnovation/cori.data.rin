@@ -50,7 +50,7 @@ calculate_rural_rin_metrics <- function(
 
   if (primary_only) {
     rin_counties <- rin_counties |>
-      dplyr::filter(primary_county_flag == "Yes")
+      dplyr::filter(primary_county_flag)
   }
 
   # Join rural definitions
@@ -162,7 +162,7 @@ get_rural_rin_counties <- function(primary_only = FALSE, rural_only = TRUE) {
 
   if (primary_only) {
     rin_counties <- rin_counties |>
-      dplyr::filter(primary_county_flag == "Yes")
+      dplyr::filter(primary_county_flag)
   }
 
   rin_counties <- rin_counties |>

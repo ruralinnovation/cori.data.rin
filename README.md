@@ -28,6 +28,8 @@ get_rin_vintages()
 
 `modified` is a `POSIXct` that prints in your session's time zone. Every vintage carries the full version history, so you rarely need an old one: filter `data_run_date` to see the state on a given run. Pin a vintage to reproduce an analysis exactly as it was published.
 
+`latest_version` and `primary_county_flag` are logical (`TRUE`/`FALSE`), so `filter(latest_version, primary_county_flag)` selects current primary counties. Vintages published before 2026-10-13 stored these as `"Yes"`/`"No"` strings; the readers convert them on the way in, so you always get logical columns whatever vintage you read.
+
 The bundled `data/rin_service_areas.rda` remains the authoritative copy that the pipeline appends to, but it is no longer reachable through the package namespace. If you specifically need that snapshot rather than the published vintage, read it with `utils::data("rin_service_areas", package = "cori.data.rin")`.
 
 ## Updating RIN Map Data
@@ -131,21 +133,21 @@ The new ETL treats each read of the Monday board as an immutable snapshot:
 
 - All records from the board are assigned `year = params$current_year` only — no historical years are inferred
 - Historical records are preserved verbatim with their original `data_run_date` values
-- A field `latest_version` ("Yes"/"No") marks the current snapshot
+- A logical field `latest_version` (`TRUE`/`FALSE`) marks the current snapshot
 
 ### Snapshot Rule
 
-Every pipeline run appends a complete new snapshot of the current set. There is no trigger and no condition: each run reads the Monday board, writes **every** row it returns with `data_run_date = Sys.Date()` and `latest_version = "Yes"`, and demotes every previously current row to `latest_version = "No"`. The workflow is simply:
+Every pipeline run appends a complete new snapshot of the current set. There is no trigger and no condition: each run reads the Monday board, writes **every** row it returns with `data_run_date = Sys.Date()` and `latest_version = TRUE`, and demotes every previously current row to `latest_version = FALSE`. The workflow is simply:
 
 1. Run `targets::tar_make()`
 2. Run `devtools::install()` if you need the new bundled snapshot in your installed copy
 
-So `data_run_date` means "the run that observed this state", which is what lets any run's view be reconstructed: filter to a date to see exactly what the board said then. `latest_version = "Yes"` always identifies the current set, and all of its rows always share one `data_run_date`.
+So `data_run_date` means "the run that observed this state", which is what lets any run's view be reconstructed: filter to a date to see exactly what the board said then. `latest_version = TRUE` always identifies the current set, and all of its rows always share one `data_run_date`.
 
 Two consequences worth knowing:
 
 - A county removed from a community on the board loses its current version on the next run, as it should. Nothing carries forward implicitly.
-- Re-running on the same day appends another snapshot and demotes the previous one. From the third run in a day the two demoted batches become indistinguishable — same date, same values, both `"No"` — and are collapsed, so a day retains at most two batches. Only intermediate same-day state is lost; the final snapshot of each day is always kept.
+- Re-running on the same day appends another snapshot and demotes the previous one. From the third run in a day the two demoted batches become indistinguishable — same date, same values, both `FALSE` — and are collapsed, so a day retains at most two batches. Only intermediate same-day state is lost; the final snapshot of each day is always kept.
 
 ### Note: history before 2026-10-12
 
@@ -153,7 +155,7 @@ Between 2026-08-31 (commit `b4ca51f`) and 2026-10-12, the function only appended
 
 ### Note: community renames fragment the series
 
-Because records are keyed by the `rin_community` name as it appears on the board, a rename produces two distinct community names in the dataset — the old name on historical rows marked `latest_version = "No"`, the new name on current rows. `Greenfield` → `Greenfield MA` and `Tahlequah, OK` → `Cherokee Nation | Tahlequah, OK` are both in the data this way. The `rin_community_alias_to_item_id` map in `params.yml` reconciles the historical names to `monday_id`, which is the stable key; prefer joining on `monday_id` rather than on `rin_community`.
+Because records are keyed by the `rin_community` name as it appears on the board, a rename produces two distinct community names in the dataset — the old name on historical rows marked `latest_version = FALSE`, the new name on current rows. `Greenfield` → `Greenfield MA` and `Tahlequah, OK` → `Cherokee Nation | Tahlequah, OK` are both in the data this way. The `rin_community_alias_to_item_id` map in `params.yml` reconciles the historical names to `monday_id`, which is the stable key; prefer joining on `monday_id` rather than on `rin_community`.
 
 ### Archived Implementation
 

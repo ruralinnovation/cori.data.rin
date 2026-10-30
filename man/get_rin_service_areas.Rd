@@ -16,7 +16,7 @@ get_rin_service_areas(
 date stamp such as \code{"20261009"} (or \code{"vintage_20261009"}).}
 
 \item{latest_only}{Logical. Keep only current records
-(\code{latest_version == "Yes"}). Default: \code{FALSE}, i.e. the full version
+(\code{latest_version} is \code{TRUE}). Default: \code{FALSE}, i.e. the full version
 history.}
 
 \item{s3_bucket}{Character. S3 bucket. Default: \code{"cori.data.rin"}.}
@@ -42,6 +42,10 @@ recently.
 This collects the whole vintage. To pull a subset, pipe \code{dplyr} verbs onto
 \code{\link[=rin_service_areas_tbl]{rin_service_areas_tbl()}} instead and let the filters push down into the
 parquet scan.
+
+\code{latest_version} and \code{primary_county_flag} are logical (\code{TRUE}/\code{FALSE}). Older
+vintages store them as \code{"Yes"}/\code{"No"}; those are converted on read, so every
+vintage returns the same types.
 
 The bucket is private and is not available through the credential-vending
 endpoint, so reading it requires valid IAM credentials configured locally,

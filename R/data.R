@@ -20,10 +20,10 @@
 #'   \item{geoid_co}{County geoid (STATEFP + COUNTYFP)}
 #'   \item{rin_community}{CORI name for the RIN community}
 #'   \item{county}{County name}
-#'   \item{primary_county_flag}{"Yes"|"No"}
+#'   \item{primary_county_flag}{Logical; `TRUE` for the community's primary county}
 #'   \item{data_run_date}{Date of data ingestion from Monday}
 #'   \item{year_joined}{Integer year the community joined RIN ("Year Joined RIN" on the Monday board); NA if unknown}
-#'   \item{latest_version}{"Yes" on current records}
+#'   \item{latest_version}{Logical; `TRUE` on current records}
 #'   ...
 #' }
 #'

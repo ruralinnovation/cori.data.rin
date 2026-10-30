@@ -73,6 +73,20 @@ augment_with_monday_id <- function(params, old_rin_service_areas) {
   return(df)
 }
 
+# `latest_version` and `primary_county_flag` are logical. Builds stored before
+# 2026-10-13 hold "Yes"/"No" strings, so a baseline checked out from git history is
+# converted on the way in rather than rejected.
+.as_flag <- function (x) {
+  if (is.logical(x)) return(x)
+  out <- dplyr::case_when(x == "Yes" ~ TRUE, x == "No" ~ FALSE)
+  bad <- is.na(out) & !is.na(x)
+  if (any(bad)) {
+    stop("Expected logical or \"Yes\"/\"No\" flag values, found: ",
+         paste(unique(x[bad]), collapse = ", "), call. = FALSE)
+  }
+  out
+}
+
 #' Read the previous RIN service areas build from the project's .rda
 #'
 #' Loads the file this pipeline also rewrites (the `rin_service_areas_package`
@@ -222,7 +236,7 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
       `geoid_co` = ifelse(`county` == 'Natchitoches County, LA', '22069', `geoid_co`)  # Natchitoches Parish, LA
     ) |> 
     dplyr::mutate(
-      primary_county_flag = "No",
+      primary_county_flag = FALSE,
       year = params$current_year
     ) |>
     dplyr::select(
@@ -239,10 +253,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
     primary_county <- (rin_primary_counties |> dplyr::filter(`name` == rin_community_name))$county
   
     if (length(primary_county) > 0) {
-      if (county %in% primary_county) return("Yes")
-      else return("No")
+      return(county %in% primary_county)
     } else {
-      return("No")
+      return(FALSE)
     }
   }
   
@@ -278,8 +291,11 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
 
   if (!has_latest_version_col) {
     preserved_old <- preserved_old |>
-      dplyr::mutate(latest_version = "No")
+      dplyr::mutate(latest_version = FALSE)
   }
+
+  preserved_old <- preserved_old |>
+    dplyr::mutate(dplyr::across(c(`primary_county_flag`, `latest_version`), .as_flag))
 
   # First run after year_joined was introduced: start it as an empty integer column
   # (populated from `joined_lookup` in STEP 5)
@@ -311,9 +327,9 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   }
 
   # Every current record is about to be superseded, so a short or empty snapshot would wipe the
-  # current set rather than update it: zero "Yes" rows would reach the `rin` schema, which is
+  # current set rather than update it: zero current rows would reach the `rin` schema, which is
   # written with overwrite = TRUE. Checked while preserved_old still carries its original flags.
-  n_current <- sum(preserved_old$latest_version == "Yes")
+  n_current <- sum(preserved_old$latest_version, na.rm = TRUE)
 
   if (nrow(todays_snapshot) == 0) {
     stop(sprintf(
@@ -336,13 +352,13 @@ load_rin_service_areas <- function (params, old_rin_service_areas) {
   # state", which is what lets any run's view be reconstructed. Change detection used to live
   # here and left unchanged rows carrying the date of whichever earlier run last touched them.
   updates_and_new <- todays_snapshot |>
-    dplyr::mutate(data_run_date = Sys.Date(), latest_version = "Yes")
+    dplyr::mutate(data_run_date = Sys.Date(), latest_version = TRUE)
 
   # STEP 4: Everything previously current becomes a superseded version. A community absent from
-  # today's snapshot simply never gets a new "Yes" row, so departures need no special handling.
+  # today's snapshot simply never gets a new current row, so departures need no special handling.
   preserved_old <- preserved_old |>
     dplyr::mutate(
-      latest_version = dplyr::if_else(latest_version == "Yes", "No", latest_version)
+      latest_version = dplyr::if_else(latest_version, FALSE, latest_version)
     )
 
   # Carried forward so a freshly stamped row keeps its year_joined when Monday has no value for
@@ -478,10 +494,10 @@ save_data_to_db_instance <- function (db_instance, schema_name, table_name, df) 
   return(df)
 }
 
-save_data_to_package <- function (df) {
+save_data_to_package <- function (df, path) {
   rin_service_areas <- df
   usethis::use_data(rin_service_areas, overwrite = TRUE)
-  here::here("data/rin_service_areas.rda")
+  here::here(path)
 }
 
 
@@ -489,10 +505,10 @@ write_data_to_geojson <- function (df, file_path) {
 
   rin_service_areas <- df |>
     dplyr::filter(
-      `latest_version` == "Yes"
+      `latest_version`
     ) |>
     # dplyr::filter(
-    #   `primary_county_flag` == "Yes"
+    #   `primary_county_flag`
     # ) |>
     sf::st_drop_geometry() |>
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4269, remove = FALSE) |>
@@ -558,7 +574,7 @@ geocode_rin_map_data <- function(communities_data, rin_service_areas) {
   valid_communities <- communities_data |>
     dplyr::filter(!is.na(geocode_column) & geocode_column != "") |>
     dplyr::semi_join(
-      rin_service_areas |> dplyr::filter(latest_version == "Yes"),
+      rin_service_areas |> dplyr::filter(latest_version),
       by = "rin_community"
     )
 

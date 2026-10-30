@@ -1,6 +1,27 @@
 #' @importFrom dbplyr remote_con
 NULL
 
+# Internal: SQL clause that makes a vintage's two flags logical, "" when they
+# already are.
+#
+# `latest_version` and `primary_county_flag` are logical from the 2026-10-13
+# build onward. Vintages published before that (through 20261012) store them as
+# "Yes"/"No" strings, and a published vintage is never rewritten, so those are
+# converted here to give every vintage the same types. Keyed to the column
+# type, so a logical vintage is read untouched and its filters still push down
+# into the parquet scan.
+.rin_legacy_flag_sql <- function(con, uri) {
+  flags  <- c("primary_county_flag", "latest_version")
+  probe  <- DBI::dbGetQuery(con, sprintf(
+    "SELECT %s FROM read_parquet('%s') LIMIT 0", paste(flags, collapse = ", "), uri
+  ))
+  legacy <- flags[vapply(probe[flags], is.character, logical(1))]
+
+  if (length(legacy) == 0) return("")
+  sprintf(" REPLACE (%s)",
+          paste(sprintf("(%s = 'Yes') AS %s", legacy, legacy), collapse = ", "))
+}
+
 # dplyr::tbl() on a DBI connection dispatches to dbplyr, which dplyr only
 # Suggests, so rin_service_areas_tbl() fails without it. No code here calls
 # dbplyr directly (remote_con is what the docs tell callers to use), so the
@@ -224,11 +245,12 @@ rin_service_areas_tbl <- function(vintage        = "latest",
     .rin_prepare_con(con, uri)
 
     lazy_tbl <- dplyr::tbl(con, dplyr::sql(sprintf(
-      "SELECT * EXCLUDE (geometry) FROM read_parquet('%s')", uri
+      "SELECT * EXCLUDE (geometry)%s FROM read_parquet('%s')",
+      .rin_legacy_flag_sql(con, uri), uri
     )))
 
     if (latest_only) {
-      lazy_tbl <- dplyr::filter(lazy_tbl, latest_version == "Yes")
+      lazy_tbl <- dplyr::filter(lazy_tbl, latest_version)
     }
 
     lazy_tbl
@@ -256,6 +278,10 @@ rin_service_areas_tbl <- function(vintage        = "latest",
 #' [rin_service_areas_tbl()] instead and let the filters push down into the
 #' parquet scan.
 #'
+#' `latest_version` and `primary_county_flag` are logical (`TRUE`/`FALSE`). Older
+#' vintages store them as `"Yes"`/`"No"`; those are converted on read, so every
+#' vintage returns the same types.
+#'
 #' The bucket is private and is not available through the credential-vending
 #' endpoint, so reading it requires valid IAM credentials configured locally,
 #' in `~/.aws/credentials` or in the `AWS_ACCESS_KEY_ID` /
@@ -264,7 +290,7 @@ rin_service_areas_tbl <- function(vintage        = "latest",
 #' @param vintage Character. `"latest"` (default) to follow `_LATEST`, or a
 #'   date stamp such as `"20261009"` (or `"vintage_20261009"`).
 #' @param latest_only Logical. Keep only current records
-#'   (`latest_version == "Yes"`). Default: `FALSE`, i.e. the full version
+#'   (`latest_version` is `TRUE`). Default: `FALSE`, i.e. the full version
 #'   history.
 #' @param s3_bucket Character. S3 bucket. Default: `"cori.data.rin"`.
 #' @param s3_path_prefix Character. Optional prefix, e.g. `"test/"`. Default:
